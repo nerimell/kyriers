@@ -30,7 +30,6 @@ public class MyEngine extends ApplicationAdapter {
     private MovingMenu leftMovingMenu;
     ScreenButton leftMovingMenuButton;
 
-    public Explorer open;
     public Viewport view;
     public static int idev = 1;
     public FirstMenu firstMenu;
@@ -150,7 +149,6 @@ public class MyEngine extends ApplicationAdapter {
         screenArray.add(new FirstView(this));
         screenArray.add(new AddAdvertView(this));
         screenArray.add(new MyAdvertView(this));
-        screenArray.add(new LoadSave(this));
 
         orthoCamera = new OrthographicCamera();
         height = Gdx.graphics.getHeight();

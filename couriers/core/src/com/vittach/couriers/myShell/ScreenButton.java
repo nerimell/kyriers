@@ -11,14 +11,14 @@ import com.vittach.couriers.controllers.InputListener;
 public class ScreenButton extends InputListener {
     public MyFont font;
     public String itext;
+    public MyColor icolor;
     public MyImage choice;
+    public int x = 0, y = 0;
     private boolean backgrn;
     public int textX, textY;
-    protected MyColor icolor;
     protected Sprite sprite1;
     protected Sprite sprite2;
     public MyImage background;
-    public int x = 0, y = 0;
 
     public ScreenButton() {
         font = new MyFont();

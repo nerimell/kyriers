@@ -2,5 +2,9 @@
     {
         "merged": "D:\\Downloads\\test\\couriers\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
         "source": "D:\\Downloads\\test\\couriers\\android\\res\\drawable-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "D:\\Downloads\\test\\kyriers\\couriers\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\ic_launcher.png",
+        "source": "D:\\Downloads\\test\\kyriers\\couriers\\android\\res\\drawable-xxhdpi\\ic_launcher.png"
     }
 ]

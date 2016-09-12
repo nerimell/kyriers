@@ -5,13 +5,13 @@ import org.robovm.apple.uikit.UIApplication;
 
 import com.badlogic.gdx.backends.iosrobovm.IOSApplication;
 import com.badlogic.gdx.backends.iosrobovm.IOSApplicationConfiguration;
-import com.vittach.couriers.MyEngine;
+import com.vittach.couriers.simpleEngine.MyEngine;
 
 public class IOSLauncher extends IOSApplication.Delegate {
     @Override
     protected IOSApplication createApplication() {
         IOSApplicationConfiguration config = new IOSApplicationConfiguration();
-        return new IOSApplication(new MyEngine(), config);
+        return new IOSApplication(new MyEngine(1),config);
     }
 
     public static void main(String[] argv) {
