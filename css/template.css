@@ -1,0 +1,878 @@
+body {
+    color: #797979;
+    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus, input:active, textarea:active, button:focus, button:active {
+outline: 0 !important;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+
+div.verticalWrapper {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+div.verticalWrapper::before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle; /* vertical alignment of the inline element */
+    height: 100%;
+}
+
+div.verticalAligner {
+    display: inline-block;
+    vertical-align: middle; /* vertical alignment of the inline element */
+}
+
+div.loginFirst {
+    font-size: 50px;
+    color: #90A4AE !important;
+    margin-bottom: 25px;
+}
+
+.loginFirst i {
+    border: solid 4px #90A4Ae;
+    padding: 15px;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+.loginFirst h5 {
+    font-size: 17px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loginFirst h5 span {
+    display: block;
+    margin-top: 5px;
+    text-transform: lowercase;
+}
+
+#loginForm input[type="text"], #loginForm input[type="email"], #loginForm input[type="password"] {
+    padding-left: 38px;
+}
+
+.absLogin {
+    position: absolute;
+    top: 0;
+    line-height: 36px;
+    left: 28px;
+    color: #b2b2b2;
+    font-size: 17px;
+    z-index: 1;
+}
+
+#loginForm button.btn {
+    background-color: #6e8cd7;
+    border-color: #6e8cd7;
+    width: 100%;
+    border-radius: 4px;
+}
+
+#loginForm button.btn i {
+    margin-left: 7px;
+    font-size: 15px;
+}
+
+
+
+img {
+    width: 100%;
+}
+
+.white-bg {
+    background: #fff;
+}
+
+.p15 {
+    padding: 15px;
+}
+
+.p25 {
+    padding: 25px;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+a, a:hover, a:focus, a:visited {
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+a, input {
+    outline: 0 !important;
+    -webkit-outline: 0;
+}
+
+.tran25 {
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+}
+
+/* LoginForm */
+
+.fixed_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+    z-index: 2000;
+    text-align: center;
+}
+
+#loginFormWrapper {
+    background-color: #667380;
+}
+
+.fixed_overlay::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.fixed_overlay_central {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#loginForm {
+    background-color: #fff;
+    box-shadow: 1px 1px 5px rgba(126, 142, 159, 0.1);
+    margin-bottom: 10px;
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+
+#loginForm .header, #loginForm .enterArea {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#loginForm .enterArea {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+#loginForm .enterArea input[type=text], #loginForm .enterArea input[type=password] {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 7px 4px 7px 35px;
+    font-size: 15px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.11) inset;
+    border: solid 1px #efefef;
+    position: relative;
+    background: transparent;
+    z-index: 2;
+}
+
+#loginForm .header {
+    color: #97A4B1;
+    padding: 20px;
+    line-height: 30px;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #85CE36;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: transparent;
+    display: block;
+}
+
+#loginForm .header i {
+    color: #85CE36;
+    margin-right: 8px;
+    position: relative;
+    top: 1px;
+}
+
+#loginForm .login_wrapper i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #a9a9a9;
+    z-index: 1;
+}
+
+/* ------------------------------------------------ */
+
+#sidebar-menu li ul {
+    height: auto;
+}
+
+#tabs_settings {
+    list-style-type: none;
+}
+
+#tabs_header li a {
+    padding: 5px 25px;
+    color: #fff;
+    float: left;
+    width: 100%;
+    border-radius: 4px;
+}
+
+#tabs_header li {
+    float: left;
+    margin-right: 3px;
+}
+
+.pdef {
+    padding: 8px 20px;
+}
+
+.bor-bottom {
+    border-bottom: 1px solid #d7dde4;
+}
+
+.input_overlay {
+    float: left;
+    width: 100%;
+    padding-left: 230px;
+    margin-bottom: 10px;
+}
+
+.input_desc {
+    width: 225px;
+    float: left;
+    position: absolute;
+    top: 0;
+    color: #4f5f6f;
+    font-weight: 600;
+}
+
+.submit_form_in_header {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+}
+
+.form-control {
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 1;
+}
+
+.combobox-wrapper {
+    width: 100%;
+    padding-right: 34px;
+    position: relative;
+    display: block;
+}
+
+.combobox-toggle {
+    height: 34px;
+    width: 34px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #6e8cd7;
+    cursor: pointer;
+    color: #fff;
+    line-height: 34px;
+    text-align: center;
+    z-index: 2;
+}
+
+.form-control:focus {
+    border: 1px solid #e0e0e0;
+    background: #FFF;
+    box-shadow: none;
+}
+
+.t-a-r {
+    text-align: right;
+}
+.m0 {
+    margin: 0 !important;
+}
+
+.header_buttons_row {
+    padding: 7px 20px;
+}
+
+.header_buttons_row .btn {
+    margin: 0 7px 0 0;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-left: .3em solid transparent;
+    float: right;
+    top: 8px;
+    position: relative;
+}
+
+.fll {
+    float: left;
+}
+
+#user_actions {
+    min-width: 160px;
+    text-align: left;
+}
+
+#search_users {
+    float: right;
+}
+
+#search_users .form-inline .input-group {
+    margin-bottom: 0;
+}
+
+.text-xs-right {
+    text-align: right !important;
+}
+
+.item-actions-dropdown.toggled .item-actions-toggle-btn span.inactive {
+    display: none;
+}
+
+.item-actions-dropdown.toggled .item-actions-toggle-btn span.active {
+    display: initial;
+}
+
+.item-actions-dropdown.toggled .item-actions-block {
+    margin-left: 0;
+}
+
+.ajaxAlertModal span.title {
+    text-align: center;
+    width: 100%;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+.ajaxAlertError span.title {
+    text-align: center;
+    width: 100%;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+.ajaxAlertError div.content {
+    text-align: center;
+}
+
+.combobox-toggle:focus, .combobox-toggle:hover {
+    color: #ffffff;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+#goWebSite {
+    float: right;
+    color: #777;
+    margin: 24px 50px;
+}
+
+#goWebSite i {
+    margin-right: 7px;
+}
+
+.fr {
+    float: right;
+}
+
+.error-msg {
+    padding: 100px 30px;
+    text-align: center;
+    font-size: 17px;
+    color: #777;
+}
+
+#addSlide i {
+    margin-right: 7px;
+}
+
+.t-a-c {
+    text-align: center;
+}
+
+#saveSiteConfigs {
+    position: absolute;
+    top: -78px;
+    right: 15px;
+}
+
+#postContentWrapper {
+    margin-top: 35px;
+}
+
+
+
+#pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pagination .disabled {
+    display: none;
+}
+
+
+.noUsers {
+    text-align: center;
+    display: block;
+    width: 100%;
+    line-height: 15px;
+    margin-top: 55px;
+}
+
+
+.topRightHeadingButton {
+    position: absolute;
+    top: 15px;
+    right: 45px;
+    border-radius: 4px;
+}
+
+.topRightHeadingButton i {
+margin-right: 7px;
+    position: relative;
+    top: 1.5px;
+}
+
+.autoCloseAlert {
+    text-align: center;
+    font-weight: bold;
+    color: #777;
+}
+
+span.alertCentered {
+    padding-top: 5px;
+    width: 100%;
+    display: block;
+}
+
+label.middle {
+    line-height: 29px;
+}
+
+#userAddForm .form-control2 {
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 1;
+}
+
+#addUserSubmitWrapper {
+
+}
+
+#addUserButton {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+#addUserSubmitWrapper {
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+}
+
+div#addUserSubmitWrapper::before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+#uberModal .btn-primary {
+    float: none;
+    margin: 0 0 0 5px;
+}
+
+#uberModal .modal-footer .btn-default {
+    border-color: #adadad;
+    background-color: #fff;
+}
+
+.requiredRed {
+    border-color: rgba(255, 96, 96, 0.44);
+}
+
+.smBtn {
+    border: solid 1px transparent;
+    color: #595959;
+    border-radius: 4px;
+    padding: 1px 5px;
+    background: #e9e9e9;
+    margin-bottom: 0;
+    font-size: 11px;
+    border-color: #c8c8c8;
+}
+
+.noRates {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 16px;
+}
+
+.ratesPanel {
+    min-height: 400px;
+}
+
+.tarBtnWrapper {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.tarBtnWrapper i {
+margin: 0 7px;
+position: relative;
+top: 1px;
+}
+
+.toggleableBtn {
+    border: solid 1px transparent;
+    color: #595959;
+    border-radius: 4px;
+    padding: 1px 5px;
+    background: transparent;
+    margin-bottom: 0;
+    font-size: 14px;
+    border-color: transparent;
+    color: #33b86c;
+    display: none;
+    position: relative;
+    top: 0.5px;
+}
+
+
+.editRateSubmit:focus, .editRateSubmit:active, .editRateSubmit:hover {
+    color: #33b86c;
+}
+
+.toggledTr .toggleableBtn, .toggledTr .toggleableInput {
+    display: initial;
+}
+
+
+
+.table.editable tr:nth-child(2n) .toggleableInput {
+    background-color: #fff;
+}
+.toggleableInput {
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    display: none;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.toggleableInput:focus, .toggleableInput:active {
+    background: #fff;
+
+}
+
+.ratePercent {
+    text-align: center;
+}
+
+.toggledTr .toggledHide {
+    display: none;
+}
+
+#ratesListTable tr {
+    height: 40px;
+}
+
+#uberAccountsListTable .toggleableInput {
+    width: 100%;
+}
+
+.rateName input {
+    width: 100%;
+}
+
+.rateName {
+    width: 220px;
+}
+
+.ratePercent input {
+    width: 35px;
+    padding: 2px 0;
+    text-align: center;
+}
+
+table .t-a-r button {
+    margin-left: 3px;
+}
+
+.ratesPanel .form-group {
+    margin-bottom: 7px;
+}
+
+.transpBtn {
+    border: none;
+    background: transparent;
+    line-height: 1px;
+}
+
+.transpBtn .fa-pencil {
+    position: relative;
+    top: 1px;
+}
+
+.toggledHide {
+    line-height: 25px;
+}
+
+#ServerTime {
+    font-family: cambria;
+    padding-top: 10px;
+}
+
+.ServerTime label {
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+}
+
+.ServerTime .timer {
+    text-align: center;
+    font-size: 13px;
+}
+
+.ServerTime span.icon {
+    font-size: 11px;
+    margin-right: 0;
+}
+
+.ServerTime span.hour {
+    position: relative;
+    right: -2px;
+}
+
+.ServerTime .day {
+    display: none;
+}
+
+.ServerTime span.delimeter {
+    position: relative;
+    top: -0.5px;
+    font-weight: bold;
+}
+
+.ServerTime span.minute {
+    position: relative;
+    left: -1.5px;
+}
+
+.ServerTime span.seconds {
+    display: none;
+}
+
+.form-horizontal.leftLabels .control-label {
+    text-align: left;
+}
+
+.form-horizontal.leftLabels .form-control {
+    text-align: center;
+}
+
+
+#uberAccountsListActions td {
+    vertical-align: middle;
+}
+
+.AjaxPreloadTitle span.main {
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 21px;
+}
+
+.AjaxPreloadTitle span.mini {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.scanUberAccount .active {
+    display: none;
+}
+
+.scanUberAccount.scanning .active {
+    display: initial;
+}
+
+.scanUberAccount.scanning .default {
+    display: none;
+}
+
+.scanUberAccount i {
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+button.btn.scanUberAccount.btn-success.scanning {
+    background: #6e8cd7;
+    border-color: #6e8cd7;
+    cursor: default;
+}
+
+.driverStatusIco {
+    font-size: 20px;
+}
+
+.status-ok {
+    color: #33b86c;
+}
+
+.status-wrong {
+    color: #e70000;
+    position: relative;
+    top: 0.5px;
+}
+
+#uberDrivers .t-a-r {
+    width: 20px;
+    padding: 10px 8px;
+}
+
+.CustomSelectMenu {
+    width: 100%;
+    display: block;
+}
+
+.AppLabsSelect {
+    display: none;
+}
+
+.AppLabsSelectProto {
+    width: 100%;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.AppLabsSelectProto ul {
+    position: absolute;
+    top: 35px;
+    border: solid 1px #eee;
+    border-radius: 2px;
+    background: #fff;
+    width: 100%;
+    left: 0;
+}
+
+.AppLabsSelectProto ul li {
+    padding: 3px;
+}
+
+.AppLabsSelectProto ul li.current, .AppLabsSelectProto ul li:hover {
+    background: #33b86c;
+    color: #fff;
+}
