@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Net;
 import com.badlogic.gdx.net.HttpParametersUtils;
 
+import static java.lang.Thread.sleep;
+
 public class httpRequest {
     public String urlSite;
     private boolean getResponseFlag;
@@ -53,7 +55,12 @@ public class httpRequest {
                 getResponseFlag = true;
             }
         });
-        while(getResponseFlag == false);
+        while(getResponseFlag == false)
+            try {
+                sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         getResponseFlag = false;
         return response;
     }

@@ -4,9 +4,9 @@ import java.util.Map;
 import java.util.HashMap;
 import java.io.IOException;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.utils.JsonValue;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.JsonReader;
 import com.vittach.couriers.myShell.MyFont;
 import com.vittach.couriers.myShell.MyImage;
@@ -14,11 +14,13 @@ import com.vittach.couriers.myShell.MyColor;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.vittach.couriers.simpleEngine.Engine;
 import com.vittach.couriers.myShell.ScreenButton;
 import com.vittach.couriers.ethernet.httpRequest;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.vittach.couriers.simpleEngine.MyEngine;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.TextField;
@@ -50,6 +52,8 @@ public class StartMenu extends Stage implements ProcessorInput {
     private httpRequest request;
     private String resultRequest;
 
+    private Dialog errorwindow;
+
     public ScreenButton loginButton;
 
     private SpriteBatch spriteBatch;
@@ -58,7 +62,7 @@ public class StartMenu extends Stage implements ProcessorInput {
     private TextButton createAccount;
 
     private FileHandle file;
-    private String filename= "usersData.txt";
+    private String filename = "couriers/usersData.bin";
 
     @Override
     public void setIDOffset(int s){}
@@ -91,10 +95,9 @@ public class StartMenu extends Stage implements ProcessorInput {
                         MyEngine.user.setId (root.getInt("userId"));
                         if(checkBox.isChecked())
                         file.writeString("login=" + getLogin() + ";password=" + getPassword(), false);
-                        //passField.setText("");
                         DWNKey = 1;
                     } else
-                        loginField.setText(" Ой чето ты мне не знаком");
+                        addActor(errorwindow);
                 } else
                     loginField.setText(" Проверьте WiFi пожалуйста");
             }
@@ -110,13 +113,29 @@ public class StartMenu extends Stage implements ProcessorInput {
 
     public void Display(Viewport view) {
         view.apply();
-        spriteBatch.setProjectionMatrix(view.getCamera().combined);
+        spriteBatch.setProjectionMatrix (view. getCamera ().combined);
         spriteBatch.begin();
         sprite.draw(spriteBatch);
         loginButton.draw(spriteBatch);
         spriteBatch.end();
         setViewport(view);
+        act();
         draw();
+    }
+
+    private void errorWindowDialog() {
+        Skin uiskinjson = new Skin(Gdx.files.internal("uiskin.json"));
+        errorwindow = new Dialog("Исключение", uiskinjson, "default"){
+            @Override
+            public void result(Object ob) {
+                errorwindow.remove();
+                errorWindowDialog ();
+            }
+        };
+        errorwindow.text("Проверьте правильность введенных вами\nданных и повторите попытку снова");
+        errorwindow.button("Хорошо, я обязательно исправлюсь!", true);
+        errorwindow.setSize(textfield.getWidth(),100);
+        errorwindow.setPosition(Engine.screenX/2-errorwindow.getWidth()/2,300);
     }
 
     public StartMenu() throws IOException {
@@ -152,6 +171,9 @@ public class StartMenu extends Stage implements ProcessorInput {
         forgotpass = new MyImage();
         forgotpass.load("ui/startbutsunder.png");
 
+        errorWindowDialog();
+
+        //--------------------------------------forgotAccount----------------------------------------------------------
         TextButton.TextButtonStyle textButtonStyle = new TextButton.TextButtonStyle();
         textButtonStyle.up=new TextureRegionDrawable(forgotpass.flip());
         textButtonStyle.down=new TextureRegionDrawable(forgotpass.flip());
@@ -167,7 +189,9 @@ public class StartMenu extends Stage implements ProcessorInput {
                 System.out.println("LOL");
             }
         });
+        //--------------------------------------forgotAccount---------------------------------------------------------/
 
+        //--------------------------------------createAccount----------------------------------------------------------
         createAccount = new TextButton("Создать аккаунт",textButtonStyle);
         createAccount.setPosition(97,Engine.screenY-350);
         createAccount.setSize(215,26);
@@ -176,6 +200,7 @@ public class StartMenu extends Stage implements ProcessorInput {
                 System.out.println("LAL");
             }
         });
+        //--------------------------------------createAccount---------------------------------------------------------/
 
         CheckBox.CheckBoxStyle
                 checkBoxStyle = new CheckBox.CheckBoxStyle(
@@ -208,10 +233,6 @@ public class StartMenu extends Stage implements ProcessorInput {
         loginField.setTextFieldListener(new TextField.TextFieldListener(){
             @Override
             public void keyTyped(TextField textField1, char key) {
-                if (loginField.getText().length() <2) {
-                    loginField.setText(" " + key);
-                    loginField.setCursorPosition(2);
-                }
                 if(key=='\n')textField1.getOnscreenKeyboard().show(false);
             }
         });
@@ -229,14 +250,13 @@ public class StartMenu extends Stage implements ProcessorInput {
             if (string!=null)
             {
                 checkBox.setChecked(true);
-                String[]keyValPairs= string.split("; ?");
-                for (String encodedPair : keyValPairs) {
-                    String keyVal[] = encodedPair.split("=");
-                    if (keyVal[0].equalsIgnoreCase("login"))
-                        loginField.setText(" " + keyVal[1]);
-                    else
-                    if (keyVal[0].equalsIgnoreCase("password"))
-                        passField.setText(keyVal[1]);
+                String[] keyValPairs = string.split(";");
+                for (String encodedPairs : keyValPairs) {
+                String keyVal[]= encodedPairs.split("=");
+                if (keyVal[0].equalsIgnoreCase("login")){
+                    loginField.setText(keyVal[1]);
+                    }
+                    else if (keyVal[0].equalsIgnoreCase("password")) passField.setText(keyVal[1]);
                 }
             }
         }
@@ -282,7 +302,7 @@ public class StartMenu extends Stage implements ProcessorInput {
 
     public String getLogin() {
         int length =loginField.getText().length();
-        return length > 0 ? loginField.getText().substring(1,length): "";
+        return length > 0 ? loginField.getText():"";
     }
 
     public void dispose() {

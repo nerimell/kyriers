@@ -29,6 +29,7 @@ public class MyImage {
         Sprite sprt;
         frame.begin();
         frwindow.begin();
+        frwindow.enableBlending();
         if (w != 0 && h != 0) {
             regon= new TextureRegion(img.flip().getTexture(), m, n, w, h);
             sprt = new Sprite(regon);
@@ -41,6 +42,7 @@ public class MyImage {
             sprt.setPosition(x, y);
             sprt.draw(frwindow);
         }
+        frwindow.disableBlending();
         frwindow.end();
         frame.end();
     }

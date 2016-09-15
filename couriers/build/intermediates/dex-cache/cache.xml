@@ -2,39 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.4\4b4b7962d1bc75af0438f5c81ec1010557bc9ee5\gdx-1.9.4.jar"
+        jar="C:\Users\VITTACH\dOCUME\GitHub\kyriers\couriers\core\build\libs\core-1.0.jar"
         jumboMode="false"
         revision="24.0.2"
-        sha1="4b4b7962d1bc75af0438f5c81ec1010557bc9ee5">
-        <dex dex="D:\Downloads\test\kyriers\couriers\android\build\intermediates\pre-dexed\debug\gdx-1.9.4_bdcfb5b8dfbf1fd2f67ed00d493f25ffc91fdfc1.jar" />
-    </item>
-    <item
-        jar="D:\Downloads\test\kyriers\couriers\core\build\libs\core-1.0.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="2b3b75fa862ce7c8d619eff059dedbc10ce24b8c">
-        <dex dex="D:\Downloads\test\kyriers\couriers\android\build\intermediates\pre-dexed\debug\core-1.0_19eb70c7b7f894750b913d77ca9aa4ba4e810c87.jar" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.kotcrab.vis\vis-ui\1.1.1\842e46897e09630af3f126f3761e1e0b8cf797a8\vis-ui-1.1.1.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="842e46897e09630af3f126f3761e1e0b8cf797a8">
-        <dex dex="D:\Downloads\test\kyriers\couriers\android\build\intermediates\pre-dexed\debug\vis-ui-1.1.1_b0d2fe87f74ff5405e7756a3e44788e5b04db9ac.jar" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.4\194b33382d6d58fad031521ba3331d926c476c9b\gdx-backend-android-1.9.4.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="194b33382d6d58fad031521ba3331d926c476c9b">
-        <dex dex="D:\Downloads\test\kyriers\couriers\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.4_ecfdb8295a58c42fded6e2396b804075731dd03a.jar" />
-    </item>
-    <item
-        jar="C:\Users\User\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-freetype\1.9.4\8816dd669b8ca09e7d5e9575807e92c4318f708\gdx-freetype-1.9.4.jar"
-        jumboMode="false"
-        revision="24.0.2"
-        sha1="08816dd669b8ca09e7d5e9575807e92c4318f708">
-        <dex dex="D:\Downloads\test\kyriers\couriers\android\build\intermediates\pre-dexed\debug\gdx-freetype-1.9.4_80f2a37016f95d8ab5c7fbcc586ee19b6fd9da86.jar" />
+        sha1="2348ffbb5f85bd1194c69c3ddb68709931bf28ba">
+        <dex dex="C:\Users\VITTACH\dOCUME\GitHub\kyriers\couriers\android\build\intermediates\pre-dexed\debug\core-1.0_8aa976fdef08d659f9a3b7d3c8e17604210e1707.jar" />
     </item>
 
 </items>

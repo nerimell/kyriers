@@ -5,9 +5,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.4/20a8e0f597a4192c867aee06fb50b9b4f1116b01/gdx-freetype-1.9.4-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.4/20a8e0f597a4192c867aee06fb50b9b4f1116b01/gdx-freetype-1.9.4-sources.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.4/20a8e0f597a4192c867aee06fb50b9b4f1116b01/gdx-freetype-1.9.4-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.GRADLE/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.4/20a8e0f597a4192c867aee06fb50b9b4f1116b01/gdx-freetype-1.9.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

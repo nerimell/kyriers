@@ -5,7 +5,7 @@
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-robovm/1.9.4/efed340f61c78922b34d9525483709f425ecdd67/gdx-backend-robovm-1.9.4-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.GRADLE/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-robovm/1.9.4/efed340f61c78922b34d9525483709f425ecdd67/gdx-backend-robovm-1.9.4-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
