@@ -1,14 +1,20 @@
 package com.vittach.couriers.account;
 
 public class User {
-    private int id;
+    private int id=-1;
     private int number;
+
+    private String pin;
     private String mail;
     private String userName;
     private String password;
 
     public int getId() {
         return id;
+    }
+
+    public String getPin() {
+        return pin;
     }
 
     public int getNumber() {
@@ -29,6 +35,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public void setPin(String pin) {
+        this.pin = pin;
     }
 
     public

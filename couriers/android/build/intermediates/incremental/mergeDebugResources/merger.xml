@@ -3,7 +3,7 @@
 		<item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFullscreen">false</item>
     </style></file></source><source path="C:\Users\VITTACH\dOCUME\GitHub\kyriers\couriers\android\build\generated\res\rs\debug"/><source path="C:\Users\VITTACH\dOCUME\GitHub\kyriers\couriers\android\build\generated\res\resValues\debug"/></dataSet><dataSet config="debug" generated-set="debug$Generated"><source path="C:\Users\VITTACH\dOCUME\GitHub\kyriers\couriers\android\src\debug\res"/></dataSet><mergedItems/></merger>

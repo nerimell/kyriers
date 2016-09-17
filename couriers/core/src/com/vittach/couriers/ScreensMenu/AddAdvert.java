@@ -25,10 +25,6 @@ public class AddAdvert extends Stage implements ProcessorInput {
 
     public int DWNKey= -1;
 
-    private MyFont font;
-    private MyFont textFont;
-    private MyFont fontScreen;
-
     private MyColor textColor;
     private MyColor redColor;
     private MyColor blackColor;
@@ -147,7 +143,7 @@ public class AddAdvert extends Stage implements ProcessorInput {
                 parameters.put("title", getTitle());
                 parameters.put("point", getDotB());
 
-                httpRequest request = new httpRequest("http://tz.app-labs.ru/app/submitNewPost");
+                httpRequest request = new httpRequest(MyEngine.baseURL + "app/submitNewPost");
                 request.sendRequest(parameters, "POST");
             }
         }
@@ -159,6 +155,20 @@ public class AddAdvert extends Stage implements ProcessorInput {
         if (leftMovingMenu.buttonArray.get(1).MyTouch_Down(x, y) == true) {
             leftMovingMenu.hideMovingMenu();
             DWNKey=2;
+        }
+        if (leftMovingMenu.buttonArray.get(2).MyTouch_Down(x, y) == true) {
+            leftMovingMenu.hideMovingMenu();
+            DWNKey=3;
+        }
+        if (leftMovingMenu.buttonArray.get(3).MyTouch_Down(x, y) == true) {
+            leftMovingMenu.hideMovingMenu();
+            DWNKey=4;
+        }
+        if (leftMovingMenu.buttonArray.get(4).MyTouch_Down(x, y) == true) {
+            httpRequest request = new httpRequest(MyEngine.baseURL + "auth/appLogout");
+            request.sendRequest(new HashMap(), "GET");
+            leftMovingMenu.hideMovingMenu();
+            DWNKey=5;
         }
         return true;
     }
@@ -180,21 +190,10 @@ public class AddAdvert extends Stage implements ProcessorInput {
         this.navBarButton= navBarButton;
         listForCombBox = new ArrayList<String>();
 
-        font = new MyFont();
-        font.load("arial.ttf");
-        font.setPixelSizes(40);
-
-        textFont = new MyFont();
-        textFont.load("arial.ttf");
-        textFont.setPixelSizes(28);
         textColor= new MyColor(1,1,1,1);
 
         redColor = new MyColor(1, 0, 0, 1);
         blackColor = new MyColor(0, 0, 0, 1);
-
-        fontScreen = new MyFont();
-        fontScreen.load("arial.ttf");
-        fontScreen.setPixelSizes(30);
 
         sprite = new Sprite();
         spriteBatch = new SpriteBatch();
@@ -220,13 +219,13 @@ public class AddAdvert extends Stage implements ProcessorInput {
         this.leftMovingMenu = leftMovingMenu;
 
         SelectBox.SelectBoxStyle boxStyle = new SelectBox.SelectBoxStyle();
-        boxStyle.font = textFont.get_font();
+        boxStyle.font = MyEngine.textFont28.get_font();
         boxStyle.fontColor = textColor.color();
         boxStyle.background = new TextureRegionDrawable(combofield.flip());
         boxStyle.scrollStyle = new ScrollPane.ScrollPaneStyle();
         boxStyle.scrollStyle.background=new TextureRegionDrawable(combofield.flip());
         boxStyle.listStyle = new List.ListStyle();
-        boxStyle.listStyle.font = textFont.get_font();
+        boxStyle.listStyle.font = MyEngine.textFont28.get_font();
         boxStyle.listStyle.fontColorSelected = textColor.color();
         boxStyle.listStyle.fontColorUnselected = textColor.color();
         boxStyle.listStyle.selection = new TextureRegionDrawable(combofield.flip());
@@ -245,7 +244,7 @@ public class AddAdvert extends Stage implements ProcessorInput {
 
 
         listStyle = new List.ListStyle();
-        listStyle.font = textFont.get_font();
+        listStyle.font = MyEngine.textFont28.get_font();
         listStyle.fontColorSelected = textColor.color();
         listStyle.fontColorUnselected = textColor.color();
         listStyle.selection = new TextureRegionDrawable(combofield.flip());
@@ -393,7 +392,7 @@ public class AddAdvert extends Stage implements ProcessorInput {
 
         TextField.TextFieldStyle
                 textFieldStyle = new TextField.TextFieldStyle(
-                textFont.get_font(), textColor.color(),
+                MyEngine.textFont28.get_font(), textColor.color(),
                 new TextureRegionDrawable(cursor.flip()),
                 new TextureRegionDrawable(iSElector.flip()),
                 new TextureRegionDrawable(textfield.flip())
@@ -401,7 +400,7 @@ public class AddAdvert extends Stage implements ProcessorInput {
 
         TextField.TextFieldStyle
                 textAreaStyle = new TextField.TextFieldStyle(
-                textFont.get_font(), textColor.color(),
+                MyEngine.textFont28.get_font(), textColor.color(),
                 new TextureRegionDrawable(cursor.flip()),
                 new TextureRegionDrawable(iSElector.flip()),
                 new TextureRegionDrawable(textarea.flip())
@@ -476,7 +475,7 @@ public class AddAdvert extends Stage implements ProcessorInput {
         postInfoButton.choice = new MyImage();
         postInfoButton.choice.load("ui/choicepost.png");
         postInfoButton.background.load("ui/buttonpost.png");
-        postInfoButton.font= font;
+        postInfoButton.font= MyEngine.textFont40;
         postInfoButton.textY = 50;
         postInfoButton.textX = 80;
         postInfoButton.itext = "Отправить данные";
@@ -484,12 +483,12 @@ public class AddAdvert extends Stage implements ProcessorInput {
         postInfoButton.accept();
         //--------------------------------------postInfoButton---------------------------------------------------------/
 
-        //--------------------------------------combobuttonA------------------------------------------------------------
+        //--------------------------------------combobuttonCity------------------------------------------------------------
         combobuttonA = new ScreenButton();
         combobuttonA.background.load("ui/combobutton.png");
         combobuttonA.Position(Engine.screenX-combobuttonA.background.getWidth(), Engine.screenY-225);
         combobuttonA.accept();
-        //--------------------------------------combobuttonA-----------------------------------------------------------/
+        //--------------------------------------combobuttonCity-----------------------------------------------------------/
 
         //--------------------------------------combobuttonB------------------------------------------------------------
         combobuttonB = new ScreenButton();
@@ -502,24 +501,24 @@ public class AddAdvert extends Stage implements ProcessorInput {
 
 
 
-        background.fontPrint(fontScreen, 20, Engine.screenY - 80, "Я такой-то", blackColor);
-        background.fontPrint(fontScreen, 20, Engine.screenY - 150, "Заголовок", blackColor);
-        background.fontPrint(fontScreen, 20, Engine.screenY - 200, "из точки А",blackColor);
-        background.fontPrint(fontScreen, 20, Engine.screenY - 250, "в точку Б", blackColor);
-        background.fontPrint(fontScreen, 65, 340, "Забрать в", blackColor);
-        background.fontPrint(fontScreen, 340, 340,"Доставь к", blackColor);
+        background.fontPrint(MyEngine.textFont30, 20, Engine.screenY - 80, "Я такой-то", blackColor);
+        background.fontPrint(MyEngine.textFont30, 20, Engine.screenY - 150, "Заголовок", blackColor);
+        background.fontPrint(MyEngine.textFont30, 20, Engine.screenY - 200, "из точки А",blackColor);
+        background.fontPrint(MyEngine.textFont30, 20, Engine.screenY - 250, "в точку Б", blackColor);
+        background.fontPrint(MyEngine.textFont30, 65, 340, "Забрать в", blackColor);
+        background.fontPrint(MyEngine.textFont30, 340, 340,"Доставь к", blackColor);
 
-        background.fontPrint(fontScreen, 10, 300, "Год",redColor);
-        background.fontPrint(fontScreen, 75, 300, "М", redColor);
-        background.fontPrint(fontScreen, 120, 300, "Д", redColor);
-        background.fontPrint(fontScreen, 165, 300, "Ч", redColor);
-        background.fontPrint(fontScreen, 210, 300, "М", redColor);
+        background.fontPrint(MyEngine.textFont30, 10, 300, "Год",redColor);
+        background.fontPrint(MyEngine.textFont30, 75, 300, "М", redColor);
+        background.fontPrint(MyEngine.textFont30, 120, 300, "Д", redColor);
+        background.fontPrint(MyEngine.textFont30, 165, 300, "Ч", redColor);
+        background.fontPrint(MyEngine.textFont30, 210, 300, "М", redColor);
 
-        background.fontPrint(fontScreen, 284, 300, "Год",redColor);
-        background.fontPrint(fontScreen, 349, 300, "М", redColor);
-        background.fontPrint(fontScreen, 394, 300, "Д", redColor);
-        background.fontPrint(fontScreen, 439, 300, "Ч", redColor);
-        background.fontPrint(fontScreen, 484, 300, "М",redColor);
+        background.fontPrint(MyEngine.textFont30, 284, 300, "Год",redColor);
+        background.fontPrint(MyEngine.textFont30, 349, 300, "М", redColor);
+        background.fontPrint(MyEngine.textFont30, 394, 300, "Д", redColor);
+        background.fontPrint(MyEngine.textFont30, 439, 300, "Ч", redColor);
+        background.fontPrint(MyEngine.textFont30, 484, 300, "М",redColor);
 
 
 
@@ -668,5 +667,6 @@ public class AddAdvert extends Stage implements ProcessorInput {
         textfield.dispose();
         textarea.dispose();
         cursor.dispose();
+        super.dispose();
     }
 }

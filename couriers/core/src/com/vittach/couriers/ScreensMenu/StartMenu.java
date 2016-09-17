@@ -33,7 +33,6 @@ public class StartMenu extends Stage implements ProcessorInput {
 
     private Sprite sprite;
     public int DWNKey = -1;
-    private MyFont textFont;
     private MyColor textColor;
 
     private MyImage cursor;
@@ -73,18 +72,18 @@ public class StartMenu extends Stage implements ProcessorInput {
         if (loginButton.MyTouch_Down(x, y)) {
             if (getLogin().length() > 3 && getPassword().length() > 3) {
                 Map parameters = new HashMap();
-                MyEngine.user.setUserName(getLogin());
+                MyEngine.user.setUserName( getLogin());
                 MyEngine.user.setPassword( getPassword());
                 parameters.put("username", getLogin());
                 parameters.put("password", getPassword());
 
                 if(!Engine.sessionChecker) {
-                    request = new httpRequest("http://tz.app-labs.ru/auth/AppAuth");
+                    request = new httpRequest(MyEngine.baseURL + "auth/AppAuth");
                     resultRequest = request.sendRequest(parameters,"POST");
-                    Engine.sessionChecker=true;
+                    Engine.sessionChecker = true;
                 }
                 else {
-                    request.urlSite = "http://tz.app-labs.ru/auth/checker";
+                    request.urlSite = MyEngine.baseURL + "auth/checker";
                     request.sendRequest(new HashMap(), "GET");
                 }
 
@@ -94,7 +93,7 @@ public class StartMenu extends Stage implements ProcessorInput {
                         Gdx.input.setOnscreenKeyboardVisible(false);
                         MyEngine.user.setId (root.getInt("userId"));
                         if(checkBox.isChecked())
-                        file.writeString("login=" + getLogin() + ";password=" + getPassword(), false);
+                        file.writeString("login=" + getLogin() + ";password=" + getPassword() + ";pin=1234", false);
                         DWNKey = 1;
                     } else
                         addActor(errorwindow);
@@ -138,17 +137,13 @@ public class StartMenu extends Stage implements ProcessorInput {
         errorwindow.setPosition(Engine.screenX/2-errorwindow.getWidth()/2,300);
     }
 
-    public StartMenu() throws IOException {
+    public StartMenu() {
         file= Gdx.files.external(filename);
 
         sprite = new Sprite();
 
         cursor = new MyImage();
         cursor.load("ui/cursor.png");
-
-        textFont = new MyFont();
-        textFont.load("arial.ttf");
-        textFont.setPixelSizes(28);
 
         spriteBatch = new SpriteBatch();
         textColor= new MyColor(1,1,1,1);
@@ -179,7 +174,7 @@ public class StartMenu extends Stage implements ProcessorInput {
         textButtonStyle.down=new TextureRegionDrawable(forgotpass.flip());
         textButtonStyle.checked=new TextureRegionDrawable(forgotpass.flip());
         textButtonStyle.fontColor = Color.BLACK;
-        textButtonStyle.font=textFont.get_font();
+        textButtonStyle.font=MyEngine.textFont28.get_font();
 
         forgotAccount = new TextButton("Забыли пароль?",textButtonStyle);
         forgotAccount.setPosition(97,Engine.screenY-300);
@@ -197,7 +192,7 @@ public class StartMenu extends Stage implements ProcessorInput {
         createAccount.setSize(215,26);
         createAccount.addListener(new ChangeListener() {
             public void changed (ChangeEvent event, Actor actor) {
-                System.out.println("LAL");
+                DWNKey = 2;
             }
         });
         //--------------------------------------createAccount---------------------------------------------------------/
@@ -206,7 +201,7 @@ public class StartMenu extends Stage implements ProcessorInput {
                 checkBoxStyle = new CheckBox.CheckBoxStyle(
                 new TextureRegionDrawable(checkOff.flip()),
                 new TextureRegionDrawable(checkOn.flip()),
-                textFont.get_font(),new MyColor(1,0,0,1).color()
+                MyEngine.textFont28.get_font(),new MyColor(1,0,0,1).color()
         );
 
         checkBox = new CheckBox("Запомнить меня",checkBoxStyle);
@@ -223,7 +218,7 @@ public class StartMenu extends Stage implements ProcessorInput {
 
         TextField.TextFieldStyle
                 textFieldStyle = new TextField.TextFieldStyle(
-                textFont.get_font(), textColor.color(),
+                MyEngine.textFont28.get_font(), textColor.color(),
                 new TextureRegionDrawable(cursor.flip()),
                 new TextureRegionDrawable(iSElector.flip()),
                 new TextureRegionDrawable(textfield.flip())
@@ -245,10 +240,11 @@ public class StartMenu extends Stage implements ProcessorInput {
             }
         });
 
-        if(file.exists()) {
+        if(file.exists() && MyEngine.user.getId()<0) {
             String string = file.readString();
             if (string!=null)
             {
+                MyEngine.user.setId(0);
                 checkBox.setChecked(true);
                 String[] keyValPairs = string.split(";");
                 for (String encodedPairs : keyValPairs) {
@@ -257,8 +253,10 @@ public class StartMenu extends Stage implements ProcessorInput {
                     loginField.setText(keyVal[1]);
                     }
                     else if (keyVal[0].equalsIgnoreCase("password")) passField.setText(keyVal[1]);
+                    else if (keyVal[0].equalsIgnoreCase("pin")) MyEngine.user.setPin(keyVal[1]);
                 }
             }
+            DWNKey=3;
         }
 
         //--------------------------------------loginButton------------------------------------------------------------
@@ -266,7 +264,7 @@ public class StartMenu extends Stage implements ProcessorInput {
         loginButton.choice = new MyImage();
         loginButton.choice.load("ui/startchoi.png");
         loginButton.background.load("ui/startbuts.png");
-        loginButton.font = textFont;
+        loginButton.font = MyEngine.textFont28;
         loginButton.itext = "Войти в систему";
         loginButton.textY = 31;
         loginButton.textX = 70;
@@ -311,7 +309,7 @@ public class StartMenu extends Stage implements ProcessorInput {
         iSElector.dispose();
         textfield.dispose();
         backgound.dispose();
-        textFont.dispose();
         cursor.dispose();
+        super.dispose();
     }
 }

@@ -13,8 +13,8 @@ public class ScreenButton extends InputListener {
     public String itext;
     public MyColor icolor;
     public MyImage choice;
+    public boolean backgrn;
     public int x = 0, y = 0;
-    private boolean backgrn;
     public int textX, textY;
     protected Sprite sprite1;
     protected Sprite sprite2;
@@ -56,8 +56,9 @@ public class ScreenButton extends InputListener {
 
         if (xops >= x * scalex && xops <= x * scalex + background.getWidth()
         *scalex&&ypos >= (Engine.height - y * scaley) - background.getHigh()
-           * scaley && ypos <= (Engine.height - y * scaley))
+           * scaley && ypos <= (Engine.height - y * scaley)) {
             return true;
+        }
         else return false;
     }
 

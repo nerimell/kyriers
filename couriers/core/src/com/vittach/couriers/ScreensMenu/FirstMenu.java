@@ -1,13 +1,17 @@
 package com.vittach.couriers.ScreensMenu;
 
 import com.vittach.couriers.myShell.MyImage;
-import com.vittach.couriers.myShell.MovingMenu;
-import com.vittach.couriers.myShell.ScreenButton;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.vittach.couriers.myShell.MovingMenu;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.vittach.couriers.myShell.ScreenButton;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.vittach.couriers.ethernet.httpRequest;
 import com.vittach.couriers.interfaces.ProcessorInput;
+import com.vittach.couriers.simpleEngine.MyEngine;
+
+import java.util.HashMap;
 
 public class FirstMenu extends Stage implements ProcessorInput {
 
@@ -47,9 +51,19 @@ public class FirstMenu extends Stage implements ProcessorInput {
             leftMovingMenu.hideMovingMenu();
             DWNKey=2;
         }
+        if (leftMovingMenu.buttonArray.get(2).MyTouch_Down(x, y) == true) {
+            leftMovingMenu.hideMovingMenu();
+            DWNKey=3;
+        }
         if (leftMovingMenu.buttonArray.get(3).MyTouch_Down(x, y) == true) {
             leftMovingMenu.hideMovingMenu();
             DWNKey=4;
+        }
+        if (leftMovingMenu.buttonArray.get(4).MyTouch_Down(x, y) == true) {
+            httpRequest request = new httpRequest(MyEngine.baseURL + "auth/appLogout");
+            request.sendRequest(new HashMap(), "GET");
+            leftMovingMenu.hideMovingMenu();
+            DWNKey=5;
         }
         return true;
     }
@@ -87,5 +101,6 @@ public class FirstMenu extends Stage implements ProcessorInput {
     public void dispose() {
         spriteBatch.dispose();
         background.dispose();
+        super.dispose();
     }
 }

@@ -11,14 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "C:\\Users\\VITTACH\\dOCUME\\GitHub\\kyriers\\couriers\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 59,
-                        "endColumn": 45,
-                        "endOffset": 100
-                    }
+                    "file": "C:\\Users\\VITTACH\\dOCUME\\GitHub\\kyriers\\couriers\\android\\res\\values\\strings.xml"
                 }
             },
             {
@@ -28,7 +21,7 @@
                     "startOffset": 101,
                     "endLine": 10,
                     "endColumn": 12,
-                    "endOffset": 559
+                    "endOffset": 561
                 },
                 "from": {
                     "file": "C:\\Users\\VITTACH\\dOCUME\\GitHub\\kyriers\\couriers\\android\\res\\values\\styles.xml",
@@ -38,7 +31,7 @@
                         "startOffset": 19,
                         "endLine": 9,
                         "endColumn": 12,
-                        "endOffset": 484
+                        "endOffset": 486
                     }
                 }
             }

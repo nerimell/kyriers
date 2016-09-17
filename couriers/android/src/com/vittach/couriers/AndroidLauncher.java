@@ -17,6 +17,8 @@ public class AndroidLauncher extends AndroidApplication implements ActivityWiFiH
 		super.onCreate(savedInstanceState);
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 		config.useAccelerometer = false;
+		config.useImmersiveMode = true;
+		config.hideStatusBar = false;
 		initialize(new MyEngine(1), config);
 	}
 
