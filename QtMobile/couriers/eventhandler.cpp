@@ -1,52 +1,73 @@
 #include "eventhandler.h"
 
+#include <QFile>
 #include <QJsonObject>
 #include <QJsonDocument>
 
-using namespace std;
-
-QString domain = "http://tz.app-labs.ru/";
+bool EventHandler::isPined() {
+    return isPin;
+}
 
 EventHandler::EventHandler(QObject *parent) : QObject(parent) {
-connect(&manager, SIGNAL(finished(QNetworkReply*)), this,SLOT(successfull_auth()));
 }
 
-void EventHandler::network_login(const QVariant &login, const QVariant &pass) {
-    apiUrl = domain+ "auth/AppAuth";
-    string username=login.toString().toStdString();
-    string password= pass.toString().toStdString();
-    qDebug() << QString(username.c_str());
-    qDebug() << QString(password.c_str());
-    requestString= ("username=" + username + "&password=" + password).c_str();
-    QNetworkRequest request(apiUrl);
-    if (sessID.size()!=0)
-    request.setRawHeader("Cookie", ("laravel_session=" + sessID).c_str());
-    else
-    request.setRawHeader("Content-Type", "application/x-www-form-urlencoded");
-    reply = manager.post(request, requestString);
-}
-
-void EventHandler::successfull_auth() {
-    QString str = reply->readAll();
-
-    QList<QByteArray> headerList = reply->rawHeaderList();
-    foreach(QByteArray head, headerList) {
-        if (head == "Set-Cookie") {
-            QString cookieString = reply->rawHeader(head);
-            if (cookieString.size()!= 0)
-            {
-                QStringList keyValPairs=cookieString.split(";");
-                foreach (QString encodedPair, keyValPairs) {
-                    QStringList keyVal = encodedPair.split("=");
-                    if (keyVal.at(0)=="laravel_session")
-                        sessID = keyVal.at(1).toStdString();
-                }
-            }
-        }
+void EventHandler::savingToFile(QString phone,QString mypass) {
+    QFile file("couriers.txt");
+    if (file.open(QIODevice::WriteOnly)) {
+       file.write(QString("phone=" + phone + ";password=" + mypass + ";pin=1234").toStdString().c_str());
     }
+    file.close();
+}
+
+bool EventHandler::registration(QString login, QString pass1, QString pass2, QString email, QString phone, QString city) {
+    string name = login.toStdString();
+    string icity = city.toStdString();
+    string iphone=phone.toStdString();
+    string iemail=email.toStdString();
+    QUrl qUrl = domain+"auth/appRegistration";
+    string password_one = pass1.toStdString();
+    string password_two = pass2.toStdString();
+
+    QByteArray
+    requestString = ("phone=" + iphone + "&email=" + iemail + "&name=" + name + "&password_one=" + password_one + "&password_two=" + password_two + "&city=" + icity).c_str();
+
+    httpPost.setUrl(&qUrl);
+    QString str = httpPost.sendPost(&requestString);
 
     QJsonDocument itemDoc = QJsonDocument::fromJson(str.toStdString().c_str());
     QJsonObject itemObject = itemDoc.object();
-    if (itemObject["result"].toBool())
-        qDebug() << sessID.c_str();
+    if (itemObject["result"].toBool()) {
+        user.setSsid(httpPost.sessID);
+        return true;
+    }
+    return false;
+}
+
+bool EventHandler::network_login(QString login, QString pass) {
+    QUrl qUrl = domain+ "auth/AppAuth";
+    string password = pass.toStdString();
+    string username = login.toStdString();
+
+    QByteArray
+    requestString = ("phone=" + username + "&password=" + password).c_str();
+
+    httpPost.setUrl(&qUrl);
+    user.setResponse(httpPost.sendPost(&requestString).toStdString());
+
+    qDebug()<< user.getResponse().c_str();
+
+    QJsonDocument itemDoc= QJsonDocument::fromJson(user.getResponse().c_str());
+    QJsonObject itemObject = itemDoc.object();
+    if (itemObject["result"].toBool()) {
+        user.setSsid(httpPost.sessID);
+        return true;
+    }
+    return false;
+}
+
+void EventHandler::exitMenu() {
+    QUrl qUrl = domain+ "auth/appLogout";
+    httpGet.setUrl(&qUrl);
+    httpPost.sendGet();
+    user.setSsid("");
 }

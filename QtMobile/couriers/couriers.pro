@@ -3,9 +3,12 @@ QT += qml quick
 CONFIG += c++11
 
 SOURCES += main.cpp \
-    eventhandler.cpp
+    eventhandler.cpp \
+    user.cpp \
+    httpnetwork.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += \
+    qml.qrc
 QT += widgets
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
@@ -17,4 +20,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    eventhandler.h
+    eventhandler.h \
+    user.h \
+    httpnetwork.h
