@@ -29,7 +29,6 @@ class PostController extends Controller
 
     public function getPosts(Request $request) {
         $userData = Auth::user();
-        $result = [];
         if (!$userData) {
             $result = [
                 'result' => false,
@@ -38,8 +37,8 @@ class PostController extends Controller
             return \json_encode($result);
         }
        $model = new postModel;
-       $result['code'] = 1003;
        $result = $model->getPosts();
+       return \json_encode($result);
 
     }
 

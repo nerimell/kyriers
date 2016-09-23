@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="f1cac960-235d-4bf2-bd62-d937003cb83f" name="couriers" url="http://a120504.ftp.mchost.ru">
+        <fileTransfer host="a120504.ftp.mchost.ru" port="21" rootFolder="/subdomains/couriers/httpdocs/" password="dfcddfccdfcedffedfe5df9adf9edf92df99df9adf99" username="a120504_1">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
