@@ -3,8 +3,8 @@ import QtQuick.Controls 2.0
 
 ApplicationWindow {
     id: root
-    width: 540
-    height: 800
+    width: 500
+    height: 900
     visible: true
     title: qsTr("couriers app-labs")
 

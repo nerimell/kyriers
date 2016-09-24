@@ -1,12 +1,16 @@
 <RCC>
     <qresource prefix="/">
-        <file>ui/background.png</file>
-        <file>ui/iselect.png</file>
+        <file>ui/background1.png</file>
+        <file>ui/background2.png</file>
+        <file>ui/drawerButton.png</file>
+        <file>ui/mainlogo.png</file>
         <file>ui/navbarMenu.png</file>
+        <file>ui/passIcon.png</file>
+        <file>ui/phoneIcon.png</file>
+        <file>loads.qml</file>
+        <file>login.qml</file>
         <file>main.qml</file>
         <file>Page1Form.ui.qml</file>
-        <file>loads.qml</file>
         <file>piner.qml</file>
-        <file>login.qml</file>
     </qresource>
 </RCC>

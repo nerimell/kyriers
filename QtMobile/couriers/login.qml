@@ -145,7 +145,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/background.png"
+                source: "ui/background1.png"
             }
         }
 
@@ -160,9 +160,177 @@ Item {
     //-------------------------------------------------------------------------------------------------------------
 
 
-    //--------------------------------------------------mainScreen.qml---------------------------------------------
+    //--------------------------------------------------basicScreen.qml--------------------------------------------
     Item {
         visible:true
+        id: basicScreen
+        anchors.fill: parent
+
+        RowLayout {
+            anchors.fill: parent
+            id: basicScreenRowLayout
+
+            Image {
+                anchors.fill: parent
+                source: "ui/background1.png"
+            }
+        }
+
+
+        Image {
+            id: imagelogo
+            x: parent.width/2-imagelogo.width/2
+            y: 0.2*parent.height
+            //width:0.73*parent.width
+            width: 365
+            height: 0.2*parent.height
+            source: "ui/mainlogo.png"
+        }
+
+        Text {
+            anchors.left: basicScreen.left
+            anchors.right: basicScreen.right
+            anchors.leftMargin: basicScreen.width / 2 - 100
+            anchors.rightMargin: basicScreen.width/ 2 - 100
+
+            font.pointSize: 18
+            color: "#FFFFFF"
+            y: 0.5*basicScreen.height
+            horizontalAlignment: Text.AlignHCenter
+
+            text:"Какой-то текст, слоган\nкакой-то текст"
+        }
+
+        Drawer {
+            dragMargin: 20
+            height: rootlogin.height
+            id: basicScreenDrawer
+            width: 0.75 * rootlogin.width
+
+            background: Rectangle {
+                color: "#337CFD"
+            }
+
+            Button {
+                id: basicScreenDrawerButtonExit
+                x: 0
+                y: 80
+                height: 80
+                text: qsTr("Выйти из программы")
+
+                font.pointSize: 24
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                        color: basicScreenDrawerButtonExit.down ? "#10387E" : "#337CFD"
+                }
+                contentItem: Text {
+                        text: basicScreenDrawerButtonExit.text
+                        font: basicScreenDrawerButtonExit.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: basicScreenDrawerButtonExit.down ? "#FFFFFF" : "#FFFFFF"
+                        padding: 10
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+                onClicked: {
+                    Qt.quit()
+                }
+            }
+
+            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+                x: 0
+                y: basicScreenDrawerButtonExit.y + basicScreenDrawerButtonExit.height
+                width: parent.width
+                height: 1
+                border.width: 1
+            }
+        }
+
+        Button {
+            id: basicScreenButtonLogin
+            y: 0.67*basicScreen.height
+            height: 60
+            text: qsTr("Войти")
+            autoRepeat: false
+            autoExclusive: false
+            checked: false
+            checkable: false
+            highlighted: false
+
+            font.pointSize: 14
+
+            anchors.left: basicScreenRowLayout.left
+            anchors.right: basicScreenRowLayout.right
+            anchors.leftMargin: 50
+            anchors.rightMargin:50
+
+            onClicked: {
+                basicScreen.visible=false
+                mainScreen.visible=true
+            }
+
+            background: Rectangle {
+                    color: basicScreenButtonLogin.down ? "#96337CFD" : "#337CFD"
+            }
+
+            contentItem: Text {
+                    text: basicScreenButtonLogin.text
+                    font: basicScreenButtonLogin.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: basicScreenButtonLogin.down ? "#FFFFFF" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+            }
+        }
+
+        Button {
+            id: basicScreenLabelCreateAcc
+            y: basicScreenButtonLogin.y+ 70
+            height: 60
+            text: qsTr("Регистрация")
+            autoRepeat: false
+            autoExclusive: false
+            checked: false
+            checkable: false
+            highlighted: false
+
+            font.pointSize: 14
+
+            anchors.left: basicScreenRowLayout.left
+            anchors.right: basicScreenRowLayout.right
+            anchors.leftMargin: 50
+            anchors.rightMargin:50
+
+            onClicked: {
+                basicScreen.visible=false
+                registScreen.visible=true
+            }
+
+            background: Rectangle {
+                    color: basicScreenLabelCreateAcc.down ? "#9610387E" : "#10387E"
+            }
+
+            contentItem: Text {
+                    text: basicScreenLabelCreateAcc.text
+                    font: basicScreenLabelCreateAcc.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: basicScreenLabelCreateAcc.down ? "#FFFFFF" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+            }
+        }
+    }
+    //-------------------------------------------------------------------------------------------------------------
+
+
+    //--------------------------------------------------mainScreen.qml---------------------------------------------
+    Item {
+        visible:false
         id: mainScreen
         anchors.fill: parent
 
@@ -175,7 +343,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/background.png"
+                source: "ui/background2.png"
             }
         }
 
@@ -227,19 +395,34 @@ Item {
             }
         }
 
+        Text {
+            anchors.left: mainScreen.left
+            anchors.right: mainScreen.right
+            anchors.topMargin: 25
+            anchors.top: mainScreen.top
+            anchors.leftMargin: mainScreen.width / 2 - 100
+            anchors.rightMargin: mainScreen.width/ 2 - 100
+
+            font.pointSize: 17
+            color: "#FFFFFF"
+            horizontalAlignment: Text.AlignHCenter
+
+            text:"Войти"
+        }
+
         Button {
             id: mainScreenButtonLogin
             x: 236
-            y: 303
-            height: 48
-            text: qsTr("Войти в систему")
+            y: textFieldPass.y + 130
+            height: 60
+            text: qsTr("Вход")
             autoRepeat: false
             autoExclusive: false
             checked: false
             checkable: false
             highlighted: false
 
-            font.pointSize: 20
+            font.pointSize: 14
 
             anchors.left: mainScreenRowLayout.left
             anchors.right: mainScreenRowLayout.right
@@ -258,15 +441,15 @@ Item {
                     dialogAndroid.open();
                 }
                 else {
-                    mainScreen.visible= false
+                    mainScreen.visible = false
                     busyIndicatorMainScreen.visible = true
-                    if(event_handler.network_login(textFieldLogin.text,textFieldPass.text)) {
+                    if(event_handler.network_login(textFieldLogin.text, textFieldPass.text)) {
                         if(mainScreencheckBoxRememberMe.checked)
-                            event_handler.savingToFile(textFieldLogin.text,textFieldPass.text);
-                        loader.source="qrc:/main.qml"
+                        event_handler.savingToFile(textFieldLogin.text, textFieldPass.text);
+                        loader.source = "qrc:/main.qml"
                     }
                     else {
-                        dialogAndroidTextLabel.text= "Вы не зарегистрированы"
+                        dialogAndroidTextLabel.text = "Вы не зарегистрированы"
                         mainScreen.visible = true
                         dialogAndroid.open();
                     }
@@ -275,7 +458,7 @@ Item {
             }
 
             background: Rectangle {
-                    color: mainScreenButtonLogin.down ? "#10387E" : "#337CFD"
+                    color: mainScreenButtonLogin.down ? "#9610387E" : "#10387E"
             }
 
             contentItem: Text {
@@ -291,61 +474,88 @@ Item {
 
         TextField {
             id: textFieldLogin
-            x: 69
-            y: 134
+            y: 0.22*basicScreen.height
             height: 44
-            placeholderText: qsTr("8XXX-XXX-XXXX")
+            placeholderText: qsTr("+7 Номер мобильного")
 
-            font.pointSize: 24
+            color: "#FFFFFF"
+            font.pointSize: 14
+            validator: DoubleValidator {}
 
             anchors.left: mainScreenRowLayout.left
             anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width
+            anchors.leftMargin: 0.09 * mainScreenRowLayout.width + 30
             anchors.rightMargin: 0.09 * mainScreenRowLayout.width
 
             background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
+                opacity: 0
             }
 
-            horizontalAlignment: Text.AlignHCenter
+            //horizontalAlignment: Text.AlignHCenter
         }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0.09 * mainScreenRowLayout.width
+            y: textFieldLogin.y + textFieldLogin.height + 10
+            width: parent.width - 2 * 0.09 * mainScreenRowLayout.width
+            height: 1
+            border.width: 1
+        }
+        Image {
+            id: phoneLogo
+            x: textFieldLogin.x-27
+            y: textFieldLogin.y+10
+            width:24
+            height:34
+            source: "ui/phoneIcon.png"
+        }
+
 
         TextField {
             id: textFieldPass
-            x: 69
-            y: 191
+            y: 0.22*basicScreen.height + 90
             width: 250
             height: 44
             placeholderText: qsTr("Введите пароль")
 
-            font.pointSize: 24
+            color: "#FFFFFF"
+            font.pointSize: 14
 
             echoMode: TextInput.Password
             anchors.left: mainScreenRowLayout.left
             anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width
+            anchors.leftMargin: 0.09 * mainScreenRowLayout.width + 30
             anchors.rightMargin: 0.09 * mainScreenRowLayout.width
 
             background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
+                opacity: 0
             }
 
-            horizontalAlignment: Text.AlignHCenter
+            //horizontalAlignment: Text.AlignHCenter
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0.09 * mainScreenRowLayout.width
+            y: textFieldPass.y + textFieldPass.height + 10
+            width: parent.width - 2 * 0.09 * mainScreenRowLayout.width
+            height: 1
+            border.width: 1
+        }
+        Image {
+            id: passLogo
+            x: textFieldPass.x-27
+            y: textFieldPass.y+10
+            width:26
+            height:30
+            source: "ui/passIcon.png"
         }
 
         CheckBox {
             id: mainScreencheckBoxRememberMe
-            x: 69
-            y: 241
+            y: textFieldPass.y + 70
             width: 250
             height: 48
             text: qsTr("Запомнить меня")
 
-            font.pointSize: 24
+            font.pointSize: 14
 
             anchors.left: mainScreenRowLayout.left
             anchors.right: mainScreenRowLayout.right
@@ -363,10 +573,10 @@ Item {
                     border.color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#337CFD"
 
                     Rectangle {
-                        width: 18
-                        height: 18
-                        x: 4
-                        y: 4
+                        width: 22
+                        height: 22
+                        x: 2
+                        y: 2
                         radius: 2
                         color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#337CFD"
                         visible: mainScreencheckBoxRememberMe.checked
@@ -377,7 +587,7 @@ Item {
                     text: mainScreencheckBoxRememberMe.text
                     font: mainScreencheckBoxRememberMe.font
                     opacity: enabled ? 1.0 : 0.3
-                    color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#337CFD"
+                    color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#10387E"
                     verticalAlignment: Text.AlignVCenter
                     leftPadding: mainScreencheckBoxRememberMe.indicator.width + mainScreencheckBoxRememberMe.spacing
                 }
@@ -385,13 +595,12 @@ Item {
 
         Button {
             id: mainScreenLabelForgotPass
-            x: 69
-            y: 365
+            y: textFieldPass.y + 230
             text: qsTr("Забыли пароль?")
 
-            font.pointSize: 20
+            font.pointSize: 10
 
-            font.underline: true
+            //font.underline: true
             anchors.left: mainScreenRowLayout.left
             anchors.right: mainScreenRowLayout.right
             anchors.leftMargin: 0.09 * mainScreenRowLayout.width
@@ -404,42 +613,11 @@ Item {
                 text: mainScreenLabelForgotPass.text
                 font: mainScreenLabelForgotPass.font
                 opacity: enabled ? 1.0 : 0.3
-                color: mainScreenLabelForgotPass.down ? "#0094FF" : "#26282A"
+                color: mainScreenLabelForgotPass.down ? "#10387E" : "#FFFFFF"
                 padding: -8
+                horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
-            }
-        }
-
-        Button {
-            id: mainScreenLabelCreateAcc
-            x: 69
-            y: 409
-            text: qsTr("Создать аккаунт?")
-
-            font.pointSize: 20
-
-            font.underline: true
-            anchors.left: mainScreenRowLayout.left
-            anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width
-            anchors.rightMargin: 0.09 * mainScreenRowLayout.width
-
-            background: Rectangle {
-                opacity: 0
-            }
-            contentItem: Text {
-                text: mainScreenLabelCreateAcc.text
-                font: mainScreenLabelCreateAcc.font
-                opacity: enabled ? 1.0 : 0.3
-                color: mainScreenLabelCreateAcc.down ? "#0094FF" : "#26282A"
-                padding: -8
-                verticalAlignment:Text.AlignVCenter
-                elide: Text.ElideRight
-            }
-            onClicked: {
-                mainScreen.visible=false
-                registScreen.visible=true
             }
         }
     }
@@ -458,7 +636,7 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/background.png"
+                source: "ui/background2.png"
             }
         }
 
@@ -569,6 +747,7 @@ Item {
             placeholderText: qsTr("+7-XXX-XXX-XX-XX")
 
             font.pointSize: 24
+            validator: DoubleValidator {}
 
             anchors.left: registScreenRowLayout.left
             anchors.right: registScreenRowLayout.right
@@ -640,14 +819,17 @@ Item {
                     dialogAndroid.open();
                 }
                 else {
+                    busyIndicatorMainScreen.visible = true
                     if(event_handler.registration(registScreentextFieldLogin.text,registScreentextFieldPass.text,registScreentextFieldPassRepeat.text,registScreentextFieldEmail.text,registScreentextFieldPhone.text,registScreencomboBoxCitys.currentText)) {
                         registScreen.visible=false
                         dialogAndroidTextLabel.text="Вы успешно зарегистрированы"
                         dialogAndroid.open();
-                        firstScreen.visible = true
+                        busyIndicatorMainScreen.visible = false
+                        loader.source="qrc:/main.qml"
                     }
                     else {
                         dialogAndroidTextLabel.text="Вы уже зарегистрированы"
+                        busyIndicatorMainScreen.visible = false
                         dialogAndroid.open();
                     }
                 }
@@ -679,35 +861,9 @@ Item {
             }
 
             Button {
-                id: registScreenDrawerButtonMySettings
-                x: 0
-                y: 80
-                height: 80
-                text: qsTr("Мои настройки")
-
-                font.pointSize: 24
-
-                anchors.left: parent.left
-                anchors.right: parent.right
-
-                background: Rectangle {
-                        color: registScreenDrawerButtonMySettings.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                        text: registScreenDrawerButtonMySettings.text
-                        font: registScreenDrawerButtonMySettings.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: registScreenDrawerButtonMySettings.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                }
-            }
-
-            Button {
                 id: registScreenDrawerButtonExit
                 x: 0
-                y: 159
+                y: 80
                 height: 80
                 text: qsTr("Назад")
 
@@ -729,7 +885,7 @@ Item {
                         elide: Text.ElideRight
                 }
                 onClicked: {
-                    mainScreen.visible=true
+                    basicScreen.visible=true
                     registScreen.visible=false
                     registScreenDrawer.close()
                 }
@@ -742,19 +898,11 @@ Item {
                 height: 1
                 border.width: 1
             }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: registScreenDrawerButtonMySettings.y + registScreenDrawerButtonMySettings.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
         }
 
         Image {
             id: registScreenNavbarMenu
             x: 0
-            height: 59
             anchors.topMargin: 0
             anchors.top: parent.top
             source: "ui/navbarMenu.png"
@@ -778,7 +926,7 @@ Item {
 
                 Image {
                     anchors.fill: parent
-                    source: "ui/iselect.png"
+                    source: "ui/drawerButton.png"
                     fillMode: Image.Tile
                 }
             }
