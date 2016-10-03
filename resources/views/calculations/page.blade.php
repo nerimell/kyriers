@@ -1,8 +1,5 @@
 @extends('layouts.wrapper')
 
-
-
-
 @section('page')
 <div id="calcForm" class="col-xs-12">
     <div class="row">
@@ -23,16 +20,32 @@
             </div>
         </div>
         <div class="col-xs-12">
-        {{ Form::open(['method' => 'POST', 'class' => 'form-control', 'id' => 'defaultDelivery']) }}
+        {{ Form::open(['method' => 'POST', 'class' => 'form-horizontal', 'id' => 'defaultDelivery']) }}
+        <div id="takeFrom">
             <div class="form-group">
               <label class="control-label">Откуда</label>
               <input type="text" name="source" class="form-control source" id="source" onFocus="geolocate()" placeholder="Московский проспект, 25"></input>
             </div>
+            <div class="form-group">
+              <label class="control-label">Телефон</label>
+              <input type="text" class="form-control sourcePhone" id="sourcePhone" placeholder="+7 951 644 49 03">
+            </div>
+        </div>
+        <div id="getTo">
+            <div class="form-group">
+                <label class="control-label">Куда</label>
+                <input type="text" name="source" class="form-control point" id="point" onFocus="geolocate()" placeholder="Московский проспект, 25"></input>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Телефон</label>
+                <input type="text" class="form-control pointPhone" id="pointPhone" placeholder="+7 951 644 49 03">
+            </div>
+        </div>
         {{ Form::close() }}
         </div>
     <!-- AIzaSyBi6MTjAMf0rk9fGX0krZL5f8qEcu1RFRI -->
     </div>
-<div>
+</div>
 <div id="testLocationAutocomplete">
 
 
@@ -58,6 +71,10 @@
             autocomplete = new google.maps.places.Autocomplete(
                     /** @type {!HTMLInputElement} */(document.getElementById('source')),
                     {types: ['geocode']});
+            autocomplete = new google.maps.places.Autocomplete(
+                    /** @type {!HTMLInputElement} */(document.getElementById('point')),
+                    {types: ['geocode']});
+
 
             // When the user selects an address from the dropdown, populate the address
             // fields in the form.
@@ -113,5 +130,6 @@
 @endSection
 
 @section('head_data')
+    @parent
 <script src="{{ URL::asset('js/calcActions.js') }}"></script>
 @endSection
