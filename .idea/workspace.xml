@@ -2,60 +2,457 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9da81684-2f01-4b96-861d-52a5634c5162" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/deployment.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/webServers.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/CalcModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/CustomAuthModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/CustomUserModel.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/CalcController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/DefaultController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserActionsController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Middleware/CustomAuthMiddleware.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/calcActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/frontActions.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/configs/global.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/configs/slider.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/elements/sidebar.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/pages/dashboard.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/calculations/page.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/elements/footer.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/elements/navbar.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/layouts/wrapper.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/pages/mainPage.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/users/settings.blade.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/css/jquery-confirm.less" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/errorCodes.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/parserActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/rateActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/timer.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/uberAccountActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/js/userActions.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/kyrier.7z" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/users/addUser.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/resources/views/users/list.blade.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/trial2.7z" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/css/vendor.css" afterPath="$PROJECT_DIR$/resources/views/admin/admin.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gradle/2.10/taskArtifacts/cache.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gradle/2.10/taskArtifacts/cache.properties.lock" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gradle/2.10/taskArtifacts/fileHashes.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gradle/2.10/taskArtifacts/fileSnapshots.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gradle/2.10/taskArtifacts/outputFileStates.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.gradle/2.10/taskArtifacts/taskArtifacts.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/gradle.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/android_android_21.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/core_core_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/desktop_desktop_1_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_1_9_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_backend_android_1_9_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_backend_lwjgl_1_9_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_backend_robovm_1_9_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_freetype_1_9_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_freetype_platform_1_9_4_natives_desktop.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_freetype_platform_1_9_4_natives_ios.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_platform_1_9_4_natives_desktop.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/gdx_platform_1_9_4_natives_ios.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jinput_2_0_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jinput_platform_2_0_5_natives_linux.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jinput_platform_2_0_5_natives_osx.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jinput_platform_2_0_5_natives_windows.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jlayer_1_0_1_gdx.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jorbis_0_0_17.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/jutils_1_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/lwjgl_2_9_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/lwjgl_platform_2_9_2_natives_linux.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/lwjgl_platform_2_9_2_natives_osx.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/lwjgl_platform_2_9_2_natives_windows.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/lwjgl_util_2_9_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/robovm_cocoatouch_2_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/robovm_objc_2_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/robovm_rt_2_2_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/libraries/vis_ui_1_1_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/modules/android/android.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/modules/core/core.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/modules/couriers.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/modules/desktop/desktop.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/modules/ios/ios.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/check-off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/check-on.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/cursor.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-pane-noborder.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-pane.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-rect-down.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-rect-pad.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-rect.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-round-down.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-round-large.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-round.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-scroll.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-select-selection.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-select.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-slider-knob.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-slider.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-splitpane-vertical.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-splitpane.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default-window.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default.fnt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/pack.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/paint_brush.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/selection.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/textfield.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/tree-minus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/tree-plus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/Button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/CheckBox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/ImageButton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/Label.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/List.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/ProgressBar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/ScrollPane.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/SelectBox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/Slider.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/SplitPane.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/TextButton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/TextField.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/Touchpad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/Tree.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/assets/widgets/Window.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/backups/uiskin_1473881548.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/backups/uiskin_1473881605.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/backups/uiskin_1473881610.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/backups/uiskin_1473881655.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/backups/uiskin_1473881658.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/uiskin.atlas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/uiskin.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/projects/errorwindow/uiskin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/default_button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/check-off.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/check-on.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/cursor.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-pane-noborder.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-pane.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-rect-down.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-rect-pad.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-rect.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-round-down.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-round-large.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-round.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-scroll.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-select-selection.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-select.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-slider-knob.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-slider.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-splitpane-vertical.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-splitpane.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default-window.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default.fnt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/pack.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/paint_brush.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/selection.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/textfield.9.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/tree-minus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/tree-plus.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/Button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/CheckBox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/ImageButton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/Label.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/List.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/ProgressBar.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/ScrollPane.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/SelectBox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/Slider.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/SplitPane.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/TextButton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/TextField.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/Touchpad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/Tree.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/raw/widgets/Window.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/uiskin.atlas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/uiskin.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/resources/uiskin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/SkinsEditor/skinEd.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/arial.fnt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/arial.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/arial.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/hs_err_pid3256.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/background.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/buttonpost.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/checkboxOff.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/checkboxOn.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/choice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/choicepost.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/circlebackchoice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/circlebacks.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/circlebackschoice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/circlebuttchoice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/circlebutton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/combobox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/combobutton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/cursor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/homescreen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/homescreenchoise.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/iselect.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/iselector.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/movingMenu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/navbarMenu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/pincircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/pincircleactive.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/startbuts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/startbutsunder.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/startchoi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/textArea.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/ui/textField.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/uiskin.atlas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/uiskin.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/assets/uiskin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/generated/source/buildConfig/androidTest/debug/com/vittach/couriers/test/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/generated/source/buildConfig/debug/com/vittach/couriers/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/generated/source/r/debug/com/vittach/couriers/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/arial.fnt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/arial.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/arial.ttf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/hs_err_pid3256.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/background.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/button.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/buttonpost.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/checkboxOff.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/checkboxOn.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/choice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/choicepost.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/circlebackchoice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/circlebacks.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/circlebackschoice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/circlebuttchoice.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/circlebutton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/combobox.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/combobutton.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/cursor.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/homescreen.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/homescreenchoise.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/iselect.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/iselector.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/movingMenu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/navbarMenu.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/pincircle.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/pincircleactive.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/startbuts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/startbutsunder.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/startchoi.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/textArea.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/ui/textField.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/uiskin.atlas" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/uiskin.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/assets/debug/uiskin.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/blame/res/debug/multi/values.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/blame/res/debug/single/drawable-hdpi-v4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/blame/res/debug/single/drawable-mdpi-v4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/blame/res/debug/single/drawable-xhdpi-v4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/blame/res/debug/single/drawable-xxhdpi-v4.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/androidTest/debug/com/vittach/couriers/test/BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/AndroidLauncher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/BuildConfig.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/R$attr.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/R$drawable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/R$string.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/R$style.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/classes/debug/com/vittach/couriers/R.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/compileDebugAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/compileDebugAndroidTestAidl/dependency.store" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/mergeDebugAndroidTestAssets/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/mergeDebugAndroidTestResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/incremental/mergeDebugResources/merger.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/arm64-v8a/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/arm64-v8a/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/armeabi-v7a/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/armeabi-v7a/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/armeabi/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/armeabi/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/x86/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/x86/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/x86_64/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/jniLibs/debug/x86_64/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/manifest/androidTest/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/pre-dexed/debug/core-1.0_8aa976fdef08d659f9a3b7d3c8e17604210e1707.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/pre-dexed/debug/debug_a51167c74351520b5bfe07c6fde84612d6d832a7.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/pre-dexed/debug/gdx-1.9.4_200e85163dbce4d055bbe6b45fde8893b59f087d.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/pre-dexed/debug/gdx-backend-android-1.9.4_8f6f0a8f5e22b192552aa015957338d0f9909d5e.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/pre-dexed/debug/gdx-freetype-1.9.4_c961d77d98239171a85ec100aef191ee99677803.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/pre-dexed/debug/vis-ui-1.1.1_05af4c93d00e7b8ab190ab64940c7edb96bf9415.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/merged/debug/drawable-mdpi-v4/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/merged/debug/drawable-xxhdpi-v4/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/merged/debug/values/values.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/resources-debug-androidTest.ap_" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/res/resources-debug.ap_" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJavaRes/debug/jars/2/1f/main.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/arm64-v8a/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/arm64-v8a/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi-v7a/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi-v7a/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/armeabi/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/x86/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/x86/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/x86_64/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/intermediates/transforms/mergeJniLibs/debug/folders/2000/1f/main/lib/x86_64/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/outputs/apk/android-debug-unaligned.apk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/outputs/apk/android-debug.apk" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/gen/com/vittach/couriers/BuildConfig.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/gen/com/vittach/couriers/Manifest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/gen/com/vittach/couriers/R.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/ic_launcher-web.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/arm64-v8a/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/arm64-v8a/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/armeabi-v7a/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/armeabi-v7a/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/armeabi/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/armeabi/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/x86/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/x86/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/x86_64/libgdx-freetype.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/libs/x86_64/libgdx.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/proguard-project.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/project.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/res/drawable-hdpi/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/res/drawable-mdpi/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/res/drawable-xhdpi/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/res/drawable-xxhdpi/ic_launcher.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/res/values/strings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/res/values/styles.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/android/src/com/vittach/couriers/AndroidLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/build/generated/mockable-android-21.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/build/intermediates/dex-cache/cache.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/LoadAndSave.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$10.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$8.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert$9.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/AddAdvert.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/FirstMenu.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/MyAdvert.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/MyPin$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/MyPin.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/MySettings.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/MyStatus.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration$7.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/Registration.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu$3.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu$4.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu$5.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu$6.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ScreensMenu/StartMenu.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/account/User.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/controllers/Control.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/controllers/InputListener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ethernet/httpRequest$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/ethernet/httpRequest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/interfaces/ActivityWiFiHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/interfaces/ForGameScreen.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/interfaces/ProcessorInput.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/AddAdvertView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/FirstView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/MyAdvertView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/MyPinView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/MySettingsView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/MyStatusView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/RegistrationView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/menuViewers/StartView.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/MovingMenu.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/Mp3Me.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/MyColor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/MyFont.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/MyImage.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/MyPoint.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/MyTimer.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/ScreenButton.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/myShell/ToggleButton.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/simpleEngine/Engine.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/classes/main/com/vittach/couriers/simpleEngine/MyEngine.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/libs/core-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/build/tmp/jar/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/LoadAndSave.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/AddAdvert.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/FirstMenu.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/MyAdvert.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/MyPin.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/MySettings.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/MyStatus.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/Registration.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ScreensMenu/StartMenu.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/account/User.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/controllers/Control.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/controllers/InputListener.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/ethernet/httpRequest.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/interfaces/ActivityWiFiHandler.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/interfaces/ForGameScreen.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/interfaces/ProcessorInput.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/AddAdvertView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/FirstView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/MyAdvertView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/MyPinView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/MySettingsView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/MyStatusView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/RegistrationView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/menuViewers/StartView.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/MovingMenu.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/Mp3Me.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/MyColor.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/MyFont.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/MyImage.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/MyPoint.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/MyTimer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/ScreenButton.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/myShell/ToggleButton.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/simpleEngine/Engine.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/core/src/com/vittach/couriers/simpleEngine/MyEngine.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/couriers.ipr" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/couriers.iws" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/desktop/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/desktop/build/classes/main/com/vittach/couriers/desktop/DesktopLauncher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/desktop/build/libs/desktop-1.0.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/desktop/build/tmp/dist/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/desktop/build/tmp/jar/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/desktop/src/com/vittach/couriers/desktop/DesktopLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/gradle.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/gradlew" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/gradlew.bat" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/Info.plist.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default-1024w-1366h@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default-375w-667h@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default-414w-736h@3x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default-568h@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default@2x~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Default~ipad.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Icon-72.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Icon-72@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Icon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/data/Icon@2x.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/robovm.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/robovm.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/ios/src/com/vittach/couriers/IOSLauncher.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/local.properties" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/rUnhiero.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/couriers/settings.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/.gitignore" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/app/Http/Controllers/CalcController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/CalculateController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/couriers.tar.gz" afterPath="$PROJECT_DIR$/couriers.tar.gz" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AppControllers/PostController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppControllers/PostController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/CustomAuthModel.php" afterPath="$PROJECT_DIR$/app/CustomAuthModel.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Controller.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Kernel.php" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/MainModel.php" afterPath="$PROJECT_DIR$/app/MainModel.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/User.php" afterPath="$PROJECT_DIR$/app/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/bootstrap.css" afterPath="$PROJECT_DIR$/css/bootstrap.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/jquery-ui.css" afterPath="$PROJECT_DIR$/css/jquery-ui.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/overrides.css" afterPath="$PROJECT_DIR$/css/overrides.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/template.css" afterPath="$PROJECT_DIR$/css/template.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/config.xml" afterPath="$PROJECT_DIR$/data/config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app-labsSelect.js" afterPath="$PROJECT_DIR$/js/app-labsSelect.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/plan.txt" afterPath="$PROJECT_DIR$/plan.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/pages/404.blade.php" afterPath="$PROJECT_DIR$/resources/views/pages/404.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/app.php" afterPath="$PROJECT_DIR$/config/app.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/errorCodes.txt" afterPath="$PROJECT_DIR$/data/errorCodes.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/calculations/page.blade.php" afterPath="$PROJECT_DIR$/resources/views/calculations/page.blade.php" />
     </list>
     <ignored path="trial.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -76,53 +473,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="config" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.git/config">
+      <file leaf-file-name="AppAuthController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="9" column="49" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HEAD" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.git/HEAD">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="calcActions.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/calcActions.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.htaccess">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="575">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
+            <state relative-caret-position="125">
+              <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
               <folding>
-                <element signature="e#40#80#0#PHP" expanded="true" />
+                <element signature="e#56#92#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,40 +488,90 @@
       <file leaf-file-name="CustomAuthModel.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/CustomAuthModel.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="875">
-              <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
+            <state relative-caret-position="2650">
+              <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+      <file leaf-file-name="CalculateController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CalculateController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1800">
-              <caret line="76" column="11" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CustomAuthMiddleware.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CustomAuthMiddleware.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+            <state relative-caret-position="275">
+              <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
               <folding>
-                <element signature="e#39#51#0#PHP" expanded="true" />
+                <element signature="e#40#80#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="siteData.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Http/Middleware/siteData.php">
+      <file leaf-file-name="RouteServiceProvider.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="wrapper.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/layouts/wrapper.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="275">
+              <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/app.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="775">
+              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/calculations/page.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="725">
+              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -185,9 +592,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Http/Controllers/appControllers/postController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AppControllers/PostController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/MainController.php" />
         <option value="$PROJECT_DIR$/resources/views/elements/footer.blade.php" />
         <option value="$USER_HOME$/Documents/.env" />
@@ -196,7 +600,6 @@
         <option value="$PROJECT_DIR$/../trial2/.env" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php" />
         <option value="$PROJECT_DIR$/js/app-labsSelect.js" />
         <option value="$PROJECT_DIR$/css/jquery-ui.css" />
         <option value="$PROJECT_DIR$/css/overrides.css" />
@@ -205,9 +608,7 @@
         <option value="$PROJECT_DIR$/app/Http/Middleware/CustomAuthMiddleware.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/pages/dashboard.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/admin.blade.php" />
-        <option value="$PROJECT_DIR$/app/CustomAuthModel.php" />
         <option value="$PROJECT_DIR$/errorCodes.txt" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" />
         <option value="$PROJECT_DIR$/app/MainModel.php" />
         <option value="$PROJECT_DIR$/resources/views/pages/mainPage.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/layouts/wrapper.blade.php" />
@@ -226,16 +627,22 @@
         <option value="$PROJECT_DIR$/data/config.xml" />
         <option value="$PROJECT_DIR$/css/admin/overrides.css" />
         <option value="$PROJECT_DIR$/resources/views/admin/configs/global.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/routes.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/CalcController.php" />
         <option value="$PROJECT_DIR$/app/CalcModel.php" />
         <option value="$PROJECT_DIR$/css/admin/template.css" />
         <option value="$PROJECT_DIR$/css/template.css" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" />
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/js/calcActions.js" />
-        <option value="$PROJECT_DIR$/resources/views/calculations/page.blade.php" />
         <option value="$PROJECT_DIR$/.git/config" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" />
+        <option value="$PROJECT_DIR$/data/errorCodes.txt" />
+        <option value="$PROJECT_DIR$/app/CustomAuthModel.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CalcController.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/CalculateController.php" />
+        <option value="$PROJECT_DIR$/resources/views/calculations/page.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/routes.php" />
       </list>
     </option>
   </component>
@@ -250,9 +657,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
     <option name="width" value="1920" />
-    <option name="height" value="993" />
+    <option name="height" value="1037" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -279,7 +685,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -334,6 +739,28 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couriers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="couriers" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="calculations" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -362,7 +789,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -379,9 +806,14 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Http" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -471,20 +903,23 @@
       <workItem from="1474460068722" duration="7636000" />
       <workItem from="1474485304159" duration="16000" />
       <workItem from="1474618063393" duration="1966000" />
+      <workItem from="1474625243159" duration="4592000" />
+      <workItem from="1475485957789" duration="178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36701000" />
+    <option name="totallyTimeSpent" value="41471000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="1920" height="993" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1037" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13177083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22604166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32837406" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -493,7 +928,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32897604" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -527,45 +961,8 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/frontActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="700">
-          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pages/404.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="29" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/asd/admin.blade.php" />
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/asd/app.blade.php" />
     <entry file="file://$PROJECT_DIR$/errorCodes.txt" />
     <entry file="file://$PROJECT_DIR$/resources/views/admin/asd/sidebar.blade.php" />
-    <entry file="file://$PROJECT_DIR$/data/errorCodes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/MainModel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="650">
@@ -654,13 +1051,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/wrapper.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1575">
-          <caret line="63" column="72" selection-start-line="63" selection-start-column="72" selection-end-line="63" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -725,20 +1115,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CalcController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/admin/template.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
@@ -775,16 +1151,8 @@
         <state relative-caret-position="300">
           <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
           <folding>
-            <element signature="e#23#62#0#PHP" expanded="true" />
+            <element signature="e#23#62#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/calculations/page.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="28" column="86" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -792,7 +1160,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,33 +1167,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="42" selection-start-line="0" selection-start-column="42" selection-end-line="0" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding>
-            <element signature="e#40#80#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/CustomAuthModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="875">
-          <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1800">
-          <caret line="76" column="11" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -834,9 +1174,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
-          <folding>
-            <element signature="e#39#51#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -844,7 +1181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +1188,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,7 +1195,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,20 +1202,134 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="804">
+          <caret line="76" column="11" selection-start-line="76" selection-start-column="11" selection-end-line="76" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/errorCodes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="76" selection-start-line="11" selection-start-column="76" selection-end-line="11" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage/logs/laravel.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+          <folding>
+            <element signature="e#40#80#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.git/config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="49" />
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="49" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="775">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/CustomAuthModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2650">
+          <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/wrapper.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="68" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/calculations/page.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="725">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/CalculateController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
+          <folding>
+            <element signature="e#40#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/AppControllers/AppAuthController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding>
+            <element signature="e#56#92#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
   </component>
   <component name="webServersAuthStorage">
-    <data>AAAAsHDDBJWc2/UpLlpHu4bEsO8kTros1tdlRYZimTYHzEZZT/Y7blIglELo55RkUgRm/XEK/e3zmAKqfbe6NfMhFMnDKQq/1gv2HySNoJu75cNAM/Y9ayuvx/fbIK+kD7WWhz7RWlY6zvSxeaDktfUGEL+yGA/2/R7tunj4hm8Zg1BgqmG2L8X7SGOHFAjkgxHlqopgqMQOaTUEFtrYJ/ASJlR+OjcIAPcnWB5FTxUk0HJG80uhtT9xbgV0m5yDdf+ohg==</data>
+    <data>AAAAsI0RU23LTK8LaqxKsQhzrVDnLdpTTvjO/zSp5EtqxfGO7uvKZLsxlmnDgh/6r9R7NXSw1nCXafoGm08Kp6CWAakRrUsHaYUZhVRhD3Wo2mfe58j6NQ2RoWqWT2Lz7GmkSF1i/5IGEXZu5oK2UYLTvOOaXzQfktH1gRh4ddS2mn4LZVpNwdyHFZ127vWPwllFINAfwS2nFuxZO8VuNpHaRj0UH9IoHeHeGXxmB/wfX4qI6Udjd/LoGxX4k8mgEpZMVg==</data>
   </component>
 </project>

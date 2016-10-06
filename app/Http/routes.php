@@ -13,8 +13,8 @@
 
 
 // Main
-Route::get('/', 'DefaultController@index');
-Route::get('/calculate', 'CalcController@calculatorPage');
+//Route::get('/', 'DefaultController@index');
+Route::get('/calculate', 'CalculateController@calculatorPage');
 
 
 
@@ -40,6 +40,8 @@ Route::post('/auth/AppAuth', 'AppControllers\AppAuthController@appAuth');
 Route::get('/auth/checker', 'AppControllers\AppAuthController@appChecker');
 Route::post('/auth/appRegistration', 'AppControllers\AppAuthController@appRegistration');
 Route::get('/auth/appLogout', 'AppControllers\AppAuthController@appLogout');
+Route::post('/auth/appGetPin', 'AppControllers\AppAuthController@appGetPin');
+Route::post('/auth/appRegPin', 'AppControllers\AppAuthController@appRegPin');
 // WebAuth
 Route::post('/auth/sendRegistration', 'AuthController@sendRegistration');
 Route::post('/auth/sendAuthorization', 'AuthController@sendAuthorization');

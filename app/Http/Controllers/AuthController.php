@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Hash;
 use DB;
 use App\MainModel;
+use App\CustomAuthModel;
 
 class AuthController extends Controller
 {
@@ -27,7 +28,8 @@ class AuthController extends Controller
     }
 
     public function sendAuthorization(Request $request) {
-        Auth::attempt(['username' => $request->input('phone'), 'password' => $request->input('password')]);
+        $phone = CustomAuthModel::reformatPhone($request->input('phone'));
+        Auth::attempt(['username' => $phone, 'password' => $request->input('password')]);
         return Redirect::back();
     }
 
