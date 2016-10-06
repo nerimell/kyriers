@@ -16,21 +16,43 @@ public:
     httpnetwork httpPost, httpGet;
     QString domain = "http://couriers.app-labs.ru/";
 
+    int pinInput = 0;
     bool isPin= false;
     string mypin = "";
 
 signals:
 
 public slots:
-    bool registration(QString, QString, QString, QString, QString, QString);
+    bool registration(QString, QString, QString, QString, QString, QString, QString);
+    bool registrationPin(QString, QString, QString);
     bool network_login(QString,QString);
     void savingToFile(QString, QString);
-    void setMyPin(QString);
-    bool isPined();
+    QString getMePin (QString, QString);
+
+    bool pinConnected();
+    int pinLength();
     void exitMenu();
     void clearPin();
+    bool isPined();
+
+    void setFamily(QString);
+    void setMyPin(QString);
+    void setPhone(QString);
+    void setLogin(QString);
+    void setPass(QString);
+    void setMail(QString);
+    void setPin(QString);
     bool network_login();
-    int getMyPinLength();
+    int getPinInput();
+    void cleanMePin();
+    void pinIncr();
+
+    QString getFamily();
+    QString getMePin();
+    QString getMyPin();
+    QString getPhone();
+    QString getLogin();
+    QString getPass();
 };
 
 #endif // EVENTHANDLER_H

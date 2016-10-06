@@ -2,44 +2,33 @@
 
 namespace App\Http\Controllers;
 
-
-use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Redirect;
+use App\CustomAuthModel;
 use Auth;
 use Illuminate\Http\Request;
 use Hash;
 use DB;
+use App\MainModel;
 
 class AuthController extends Controller
 {
 
-    public function appAuth(Request $request) {
-        $login = $request->input('username');
-        $password = $request->input('password');
-        $result = ['result' => false];
-        if (Auth::attempt(array('username' => $login, 'password' => $password))) {
-        $userData = Auth::user();
-            $result['result'] = true;
-            $result['userId'] = $userData->id;
-            $result['userName'] = $userData->username;
-        }
 
-        $response = \json_encode($result);
-        return view('auth.appAuth', compact('response'));
+
+    public function sendRegistration(Request $request) {
+        $type = 'user';
+        $registration = CustomAuthModel::sendRegistration($request, $type);
+        if($registration['result']) {
+            Auth::attempt(['username' => $request->input('phone'), 'password' => $request->input('password')]);
+            return Redirect::back()->with('regMessage', 'Регистрация прошла успешно');
+        }
+        $encodedError = MainModel::getErrorByCode($registration['errorCode']);
+        return Redirect::back()->with('regMessage', $encodedError);
     }
 
-
-    function appChecker() {
-        $userData = Auth::user();
-        if($userData) {
-            return $userData->id;
-        } else {
-            return 'false';
-        }
-    }
-
-    public function appAuthGet()
-    {
-        return view('pages.404', compact('response'));
+    public function sendAuthorization(Request $request) {
+        Auth::attempt(['username' => $request->input('phone'), 'password' => $request->input('password')]);
+        return Redirect::back();
     }
 
 

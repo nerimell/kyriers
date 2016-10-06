@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <params>
     <SiteMeta>
-     <metaTitle>Extended System</metaTitle>
-     <metaKeys></metaKeys>
-     <metaDesc></metaDesc>
+     <metaTitle>Couriers</metaTitle>
+     <metaKeys>Lorem, ipsum, dolor</metaKeys>
+     <metaDesc>Lorem ipsum dolor</metaDesc>
     </SiteMeta>
+    <SmsConfigs>
+        <smsRuId>B933E0BC-312B-A7E1-CC41-0D2ECD254C48</smsRuId>
+
+    </SmsConfigs>
 
 </params>

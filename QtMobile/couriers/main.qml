@@ -2,17 +2,10 @@ import QtQuick 2.7
 import QtQuick.Layouts 1.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Controls 2.0
-//import couriers.EventHandler 1.0
 
 Item {
-    id: rootmain
+    id: rootMain
     visible: true
-
-    /*
-    EventHandler {
-        id: event_handler
-    }
-    */
 
     //http://doc.qt.io/qt-5/qtquickcontrols2-customize.html
 
@@ -20,40 +13,36 @@ Item {
     Dialog {
         id: dialogAndroid
 
-        /* */
-        width: rootmain.width-40 // Задаём ширину диалога, работает на десктопе, но не на Android
-        height:rootmain.height/2 // Задаём высоту диалога, работает на декстопе, но не на Android
-        /* */
-
         // Создаём содержимое диалогового окна
         contentItem: Rectangle {
-            color: "#f7f7f7"     // Задаём цвет
-            width: rootmain.width-40 // Устанавливаем ширину, необходимо для Android - устройства
-            height:rootmain.height/2 // Устанавливаем высоту, необходимо для Android - устройства
+            color: "#f7f7f7"
+            width: rootMain.width-80
+            height: rootMain.height/3
 
             // Область для сообщения диалогового окна
             Rectangle {
+                color: "#f7f7f7"
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidDividerHorizontal.top
-                color: "#f7f7f7"//Задаём цвет области
 
                 Label {
                     id: dialogAndroidTextLabel
 
+                    color: "#000000"
+                    font.bold: true
                     font.pointSize: 20
-
-                    color: "#34aadc"
-                    anchors.centerIn: parent//Помещаем сообщение в центр области отобраэжения
+                    font.family: sfuiFont.name
+                    anchors.centerIn: parent// put сообщение в центр области отобраэжения
                 }
             }
 
             // Создаём горизонтальный разделитель с Rectangle
             Rectangle {
                 id: dialogAndroidDividerHorizontal
-                color: "#d7d7d7"
-                height: 2 // Устанавливаем ширину в два пикселя
+                color: "#808080"
+                height: 2 // Устанавливаем ширину в 2 пикселя
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidrow.top
@@ -65,8 +54,8 @@ Item {
              */
             Row {
                 id: dialogAndroidrow
-                height: 50
-                // А также прибиваем строку к низу диалогового окна
+                height: 100
+                // А также прибиваем строку к низу у диалогового окна
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
@@ -74,14 +63,13 @@ Item {
                 Button {
                     id: dialogAndroiddialogButtonCancel
 
-                    // Растягиваем кнопку по высоте строки
+                    // Растянем кнопку по высоте строки
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    //Задаём ширину кнопки на половину строки минус 1 пиксел
-                    width: parent.width / 2 - 1
+
+                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
 
                     contentItem: Text {
-
                         font.pointSize: 24
 
                         color: "#34aadc"
@@ -90,51 +78,50 @@ Item {
                         horizontalAlignment: Text.AlignHCenter
                     }
 
-                    // Стилизуем кнопку
                     background: Rectangle {
-                        border.width: 0
-                        color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
+                    border.width: 0
+                    color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
                     }
 
-                    onClicked: dialogAndroid.close()// По нажатию кнопки закрываем диалог
+                    //onClicked: dialogAndroid.close()// По нажатию кнопки закрыть диалог
                 }
 
-                // Создаём разделитель между кнопками шириной в 2 пикселя
+                //Создаю разделитель между кнопками шириной в 2 пикселя
                 Rectangle {
                     id: dialogAndroidDividerVertical
                     width: 2
+                    color: "#808080"
                     // Растягиваем разделитель по высоте объекта строки
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    color: "#d7d7d7" // Задаём цвет разделителя
                 }
 
                 Button {
                     id: dialogAndroidDialogButtonOk
 
-                    // Растягиваем кнопку по высоте строки
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    //Задаём ширину кнопки на половину строки минус 1 пиксел
-                    width: parent.width / 2 - 1
+                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
+                    //width: parent.width// если необходима только одна кнопочка на экран
 
                     contentItem: Text {
-
+                        font.bold: true
                         font.pointSize: 24
 
                         color: "#34aadc"
-                        text: qsTr("Ок")
+                        text: qsTr("Хорошо")
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
                     }
 
-                    // Стилизуем кнопку
                     background: Rectangle {
                         border.width: 0
-                        color: dialogAndroidDialogButtonOk.pressed ? "#d7d7d7" : "#f7f7f7"
+                        color:dialogAndroidDialogButtonOk.pressed? "#d7d7d7" : "#f7f7f7"
                     }
 
-                    onClicked: dialogAndroid.close()// По нажатию кнопки закрываем диалог
+                    onClicked: {
+                        dialogAndroid.close()
+                    }
                 }
             }
         }
@@ -148,22 +135,19 @@ Item {
         anchors.fill: parent
         id: busyIndicatorMainScreen
 
-        RowLayout {
-            anchors.fill: parent
-            id: busyIndicatorRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
+        Image {
+            x: parent.width/2 - width/2
+            y: (parent.width<parent.height)?parent.height/2-height/2:0
+            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
+            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
+            source: "ui/background4.png"
         }
 
         BusyIndicator {
-            id: busyIndicator
-            width: busyIndicatorRowLayout.width  /2
-            height: busyIndicatorRowLayout.height/2
-            x: busyIndicatorRowLayout.width/2 - busyIndicator.width  /2
-            y: busyIndicatorRowLayout.height/2 - busyIndicator.height/2
+            width: parent.width  /2
+            height: parent.height/2
+            x: parent.width/2 -width /2
+            y: parent.height/2-height/2
         }
     }
     //-------------------------------------------------------------------------------------------------------------
@@ -171,28 +155,24 @@ Item {
 
     //--------------------------------------------------basicScreen.qml--------------------------------------------
     Item {
-        visible:true
+        visible: false
         id: basicScreen
         anchors.fill: parent
 
-        RowLayout {
-            anchors.fill: parent
-            id: basicScreenRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
+        Image {
+            x: parent.width/2 - width/2
+            y: (parent.width<parent.height)?parent.height/2-height/2:0
+            height: (parent.width<parent.height)? parent.height:sourceSize.height*(width/sourceSize.width)
+            width:  (parent.width<parent.height)? sourceSize.width*(parent.height/sourceSize.height): parent.width
+            source: "ui/background1.png"
         }
-
 
         Image {
             id: imagelogo
             x: parent.width/2-imagelogo.width/2
-            y: 0.2*parent.height
-            //width:0.73*parent.width
-            width: 365
-            height: 0.2*parent.height
+            y: 0.21*basicScreen.height
+            width: (parent.width<620)? 365 * parent.width/500: 365 * 620/500
+            height: (parent.width<620)? 164 * parent.width/500: 164 * 620/500
             source: "ui/mainlogo.png"
         }
 
@@ -203,65 +183,95 @@ Item {
             anchors.rightMargin: basicScreen.width/ 2 - 100
 
             font.pointSize: 18
+            font.family: sfuiFont.name
             color: "#FFFFFF"
-            y: 0.5*basicScreen.height
+            y: imagelogo.y+imagelogo.height+(basicScreenButtonLogin.y-(imagelogo.y+imagelogo.height))/2-30
             horizontalAlignment: Text.AlignHCenter
 
-            text:"Какой-то текст, слоган\nкакой-то текст"
+            text: "Какой-то текст, слоган\nкакой-то текст"
         }
 
         Drawer {
-            dragMargin: 20
-            height: rootmain.height
             id: basicScreenDrawer
-            width: 0.75 * rootmain.width
+            dragMargin: 20
+            height: rootMain.height
+            width: 0.75 * rootMain.width
 
-            background: Rectangle {
-                color: "#337CFD"
+            Image {
+                anchors.fill: parent
+                source: "ui/navbarBack.png"
+            }
+            Image {
+                x: parent.width/2 - width/2
+                y: basicScreenDrawerButtonExit.y/2- height/2 - 10 * parent.height/900
+                width: sourceSize.width * 500 / 750
+                height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
+                source: "ui/navbarLogo.png"
+            }
+            Rectangle {
+                y: basicScreenDrawerButtonExit.y + basicScreenDrawerButtonExit.height + 1
+                color: "#87FFFFFF"
+                width: parent.width
+                height:parent.height - y
             }
 
             Button {
                 id: basicScreenDrawerButtonExit
                 x: 0
-                y: 80
-                height: 80
+                y: 156 * parent.height/900
+                height: (parent.height > 900)? 77 * parent.height/900: 77
                 text: qsTr("Выйти из программы")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: basicScreenDrawerButtonExit.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: basicScreenDrawerRectangle1
                 }
+
+                Image {
+                    id: basicScreenDrawerImage1
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/exit_blue.png"
+                }
+
                 contentItem: Text {
                         text: basicScreenDrawerButtonExit.text
                         font: basicScreenDrawerButtonExit.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: basicScreenDrawerButtonExit.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: basicScreenDrawerButtonExit.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
                 }
-                onClicked: {
-                    Qt.quit()
-                }
-            }
 
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: basicScreenDrawerButtonExit.y + basicScreenDrawerButtonExit.height
-                width: parent.width
-                height: 1
-                border.width: 1
+                onPressed: {
+                    basicScreenDrawerRectangle1.opacity = 0
+                    basicScreenDrawerImage1.source= "ui/icons/exit_white.png"
+                }
+
+                onPressedChanged: {
+                    basicScreenDrawerRectangle1.opacity = 1
+                    basicScreenDrawerImage1.source= "ui/icons/exit_blue.png"
+                }
+
+                onClicked: Qt.quit()
             }
         }
 
         Button {
             id: basicScreenButtonLogin
-            y: 0.67*basicScreen.height
-            height: 60
+            y: 0.67* basicScreen.height
+            x: parent.width/2-basicScreenButtonLogin.width/2
+
+            height: (parent.height>900)? 70*parent.height/900: 70
+            width: (parent.width<540)? 433 * parent.width/500: 433 * 540/500
             text: qsTr("Войти")
             autoRepeat: false
             autoExclusive: false
@@ -270,19 +280,14 @@ Item {
             highlighted: false
 
             font.pointSize: 14
-
-            anchors.left: basicScreenRowLayout.left
-            anchors.right: basicScreenRowLayout.right
-            anchors.leftMargin: 50
-            anchors.rightMargin:50
+            font.family: sfuiFont.name
 
             onClicked: {
-                basicScreen.visible=false
-                mainScreen.visible=true
+                loader.source="qrc:/login.qml"
             }
 
             background: Rectangle {
-                    color: basicScreenButtonLogin.down ? "#96337CFD" : "#337CFD"
+                    color: basicScreenButtonLogin.down ? "#96337CFD": "#337CFD"
             }
 
             contentItem: Text {
@@ -297,336 +302,38 @@ Item {
         }
 
         Button {
-            id: basicScreenLabelCreateAcc
-            y: basicScreenButtonLogin.y+ 70
-            height: 60
+            id: basicScreenButtonReg
+            x: parent.width/2-basicScreenButtonReg.width/2
+            y: basicScreenButtonLogin.y + basicScreenButtonLogin.height + 18 * parent.height/900
+
+            height: (parent.height>900)? 70*parent.height/900: 70
+            width: (parent.width<540)? 433 * parent.width/500: 433 * 540/500
+            checked: false
+            checkable: false
+            autoRepeat: false
+            highlighted: false
+            autoExclusive: false
             text: qsTr("Регистрация")
-            autoRepeat: false
-            autoExclusive: false
-            checked: false
-            checkable: false
-            highlighted: false
 
             font.pointSize: 14
-
-            anchors.left: basicScreenRowLayout.left
-            anchors.right: basicScreenRowLayout.right
-            anchors.leftMargin: 50
-            anchors.rightMargin:50
+            font.family: sfuiFont.name
 
             onClicked: {
-                basicScreen.visible=false
-                registScreen.visible=true
+                loader.source="qrc:/regist.qml"
             }
 
             background: Rectangle {
-                    color: basicScreenLabelCreateAcc.down ? "#9610387E" : "#10387E"
+                    color: basicScreenButtonReg.down ? "#9610387E" : "#10387E"
             }
 
             contentItem: Text {
-                    text: basicScreenLabelCreateAcc.text
-                    font: basicScreenLabelCreateAcc.font
+                    text: basicScreenButtonReg.text
+                    font: basicScreenButtonReg.font
                     opacity: enabled ? 1.0 : 0.3
-                    color: basicScreenLabelCreateAcc.down ? "#FFFFFF" : "#FFFFFF"
+                    color: basicScreenButtonReg.down ? "#FFFFFF" : "#FFFFFF"
                     horizontalAlignment: Text.AlignHCenter
                     verticalAlignment: Text.AlignVCenter
                     elide: Text.ElideRight
-            }
-        }
-    }
-    //-------------------------------------------------------------------------------------------------------------
-
-
-    //--------------------------------------------------mainScreen.qml---------------------------------------------
-    Item {
-        visible:false
-        id: mainScreen
-        anchors.fill: parent
-
-        property alias textFieldPass: textFieldPass
-        property alias textFieldLogin: textFieldLogin
-
-        RowLayout {
-            anchors.fill: parent
-            id: mainScreenRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background2.png"
-            }
-        }
-
-        Drawer {
-            dragMargin: 20
-            height: rootmain.height
-            id: mainScreenDrawer
-            width: 0.75 * rootmain.width
-
-            background: Rectangle {
-                color: "#337CFD"
-            }
-
-            Button {
-                id: mainScreenDrawerButtonExit
-                x: 0
-                y: 80
-                height: 80
-                text: qsTr("Выйти")
-
-                font.pointSize: 24
-
-                anchors.left: parent.left
-                anchors.right: parent.right
-
-                background: Rectangle {
-                        color: mainScreenDrawerButtonExit.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                        text: mainScreenDrawerButtonExit.text
-                        font: mainScreenDrawerButtonExit.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: mainScreenDrawerButtonExit.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                }
-                onClicked: {
-                    Qt.quit()
-                }
-            }
-
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: mainScreenDrawerButtonExit.y + mainScreenDrawerButtonExit.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
-        }
-
-        Text {
-            anchors.left: mainScreen.left
-            anchors.right: mainScreen.right
-            anchors.topMargin: 25
-            anchors.top: mainScreen.top
-            anchors.leftMargin: mainScreen.width / 2 - 100
-            anchors.rightMargin: mainScreen.width/ 2 - 100
-
-            font.pointSize: 17
-            color: "#FFFFFF"
-            horizontalAlignment: Text.AlignHCenter
-
-            text:"Войти"
-        }
-
-        Button {
-            id: mainScreenButtonLogin
-            x: 236
-            y: textFieldPass.y + 130
-            height: 60
-            text: qsTr("Вход")
-            autoRepeat: false
-            autoExclusive: false
-            checked: false
-            checkable: false
-            highlighted: false
-
-            font.pointSize: 14
-
-            anchors.left: mainScreenRowLayout.left
-            anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width
-            anchors.rightMargin: 0.09 * mainScreenRowLayout.width
-
-
-            onClicked: {
-                if(textFieldLogin.text.length<2) {
-                    dialogAndroidTextLabel.text = "Логин короче 2 символов"
-                    dialogAndroid.open();
-                }
-                else
-                if(textFieldPass.text.length<5) {
-                    dialogAndroidTextLabel.text = "Пароль короче 5 символов"
-                    dialogAndroid.open();
-                }
-                else {
-                    mainScreen.visible = false
-                    busyIndicatorMainScreen.visible = true
-                    if(event_handler.network_login(textFieldLogin.text, textFieldPass.text)) {
-                        if(mainScreencheckBoxRememberMe.checked)
-                        event_handler.savingToFile(textFieldLogin.text, textFieldPass.text);
-                        firstScreen.visible= true
-                    }
-                    else {
-                        dialogAndroidTextLabel.text = "Вы не зарегистрированы"
-                        mainScreen.visible = true
-                        dialogAndroid.open();
-                    }
-                    busyIndicatorMainScreen.visible = false
-                }
-            }
-
-            background: Rectangle {
-                    color: mainScreenButtonLogin.down ? "#9610387E" : "#10387E"
-            }
-
-            contentItem: Text {
-                    text: mainScreenButtonLogin.text
-                    font: mainScreenButtonLogin.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: mainScreenButtonLogin.down ? "#FFFFFF" : "#FFFFFF"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-            }
-        }
-
-        TextField {
-            id: textFieldLogin
-            y: 0.22*basicScreen.height
-            height: 44
-            placeholderText: qsTr("+7 Номер мобильного")
-
-            color: "#FFFFFF"
-            font.pointSize: 14
-            validator: DoubleValidator {}
-
-            anchors.left: mainScreenRowLayout.left
-            anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width + 30
-            anchors.rightMargin: 0.09 * mainScreenRowLayout.width
-
-            background: Rectangle {
-                opacity: 0
-            }
-
-            //horizontalAlignment: Text.AlignHCenter
-        }
-        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-            x: 0.09 * mainScreenRowLayout.width
-            y: textFieldLogin.y + textFieldLogin.height + 10
-            width: parent.width - 2 * 0.09 * mainScreenRowLayout.width
-            height: 1
-            border.width: 1
-        }
-        Image {
-            id: phoneLogo
-            x: textFieldLogin.x-27
-            y: textFieldLogin.y+10
-            width:24
-            height:34
-            source: "ui/phoneIcon.png"
-        }
-
-
-        TextField {
-            id: textFieldPass
-            y: 0.22*basicScreen.height + 90
-            width: 250
-            height: 44
-            placeholderText: qsTr("Введите пароль")
-
-            color: "#FFFFFF"
-            font.pointSize: 14
-
-            echoMode: TextInput.Password
-            anchors.left: mainScreenRowLayout.left
-            anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width + 30
-            anchors.rightMargin: 0.09 * mainScreenRowLayout.width
-
-            background: Rectangle {
-                opacity: 0
-            }
-
-            //horizontalAlignment: Text.AlignHCenter
-        }
-        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-            x: 0.09 * mainScreenRowLayout.width
-            y: textFieldPass.y + textFieldPass.height + 10
-            width: parent.width - 2 * 0.09 * mainScreenRowLayout.width
-            height: 1
-            border.width: 1
-        }
-        Image {
-            id: passLogo
-            x: textFieldPass.x-27
-            y: textFieldPass.y+10
-            width:26
-            height:30
-            source: "ui/passIcon.png"
-        }
-
-        CheckBox {
-            id: mainScreencheckBoxRememberMe
-            y: textFieldPass.y + 70
-            width: 250
-            height: 48
-            text: qsTr("Запомнить меня")
-
-            font.pointSize: 14
-
-            anchors.left: mainScreenRowLayout.left
-            anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width
-            anchors.rightMargin: 0.09 * mainScreenRowLayout.width
-            spacing: 8
-            leftPadding: 0
-
-            indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: mainScreencheckBoxRememberMe.leftPadding
-                    y: parent.height / 2 - height / 2
-                    radius: 3
-                    border.color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#337CFD"
-
-                    Rectangle {
-                        width: 22
-                        height: 22
-                        x: 2
-                        y: 2
-                        radius: 2
-                        color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#337CFD"
-                        visible: mainScreencheckBoxRememberMe.checked
-                    }
-                }
-
-            contentItem: Text {
-                    text: mainScreencheckBoxRememberMe.text
-                    font: mainScreencheckBoxRememberMe.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#10387E"
-                    verticalAlignment: Text.AlignVCenter
-                    leftPadding: mainScreencheckBoxRememberMe.indicator.width + mainScreencheckBoxRememberMe.spacing
-                }
-        }
-
-        Button {
-            id: mainScreenLabelForgotPass
-            y: textFieldPass.y + 230
-            text: qsTr("Забыли пароль?")
-
-            font.pointSize: 10
-
-            //font.underline: true
-            anchors.left: mainScreenRowLayout.left
-            anchors.right: mainScreenRowLayout.right
-            anchors.leftMargin: 0.09 * mainScreenRowLayout.width
-            anchors.rightMargin: 0.09 * mainScreenRowLayout.width
-
-            background: Rectangle {
-                opacity: 0
-            }
-            contentItem: Text {
-                text: mainScreenLabelForgotPass.text
-                font: mainScreenLabelForgotPass.font
-                opacity: enabled ? 1.0 : 0.3
-                color: mainScreenLabelForgotPass.down ? "#10387E" : "#FFFFFF"
-                padding: -8
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                elide: Text.ElideRight
             }
         }
     }
@@ -635,106 +342,86 @@ Item {
 
     //--------------------------------------------------firstScreen.qml--------------------------------------------
     Item {
-        visible:true
+        visible: true
         id: firstScreen
         anchors.fill: parent
 
-        RowLayout {
-            anchors.fill: parent
-            id: firstScreenRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
+        Image {
+            x: parent.width/2 - width/2
+            y: (parent.width<parent.height)?parent.height/2-height/2:0
+            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
+            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
+            source: "ui/background4.png"
         }
 
         Drawer {
-            dragMargin: 20
-            height: rootmain.height
             id: firstScreenDrawer
-            width: 0.75 * rootmain.width
+            dragMargin: 20
+            height: rootMain.height
+            width: 0.75 * rootMain.width
 
-            background: Rectangle {
-                color: "#337CFD"
+            Image {
+                anchors.fill: parent
+                source: "ui/navbarBack.png"
             }
-
-            Button {
-                id: firstScreenDrawerButtonMySettings
-                x: 0
-                y: 80
-                height: 80
-                text: qsTr("Мои настройки")
-
-                font.pointSize: 24
-
-                anchors.left: parent.left
-                anchors.right: parent.right
-
-                background: Rectangle {
-                        color: firstScreenDrawerButtonMySettings.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                        text: firstScreenDrawerButtonMySettings.text
-                        font: firstScreenDrawerButtonMySettings.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: firstScreenDrawerButtonMySettings.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                }
+            Image {
+                x: parent.width/2 - width/2
+                y: firstScreenDrawerButtonMyStatus.y/2- height/2 - 10 * parent.height/900
+                width: sourceSize.width * 500 / 750
+                height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
+                source: "ui/navbarLogo.png"
             }
-
-            Button {
-                id: firstScreenDrawerButtonMyAddverts
-                x: 0
-                y: 159
-                height: 80
-                text: qsTr("Мои объявления")
-
-                font.pointSize: 24
-
-                anchors.left: parent.left
-                anchors.right: parent.right
-
-                background: Rectangle {
-                        color: firstScreenDrawerButtonMyAddverts.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                        text: firstScreenDrawerButtonMyAddverts.text
-                        font: firstScreenDrawerButtonMyAddverts.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: firstScreenDrawerButtonMyAddverts.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                }
+            Rectangle {
+                y: firstScreenDrawerButtonExit.y + firstScreenDrawerButtonExit.height + 1
+                color: "#87FFFFFF"
+                width: parent.width
+                height:parent.height - y
             }
 
             Button {
                 id: firstScreenDrawerButtonMyStatus
                 x: 0
-                y: 238
-                height: 80
+                y: 156 * parent.height/900
+                height: (parent.height > 900)? 77 * parent.height/900: 77
                 text: qsTr("Мой статус")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: firstScreenDrawerButtonMyStatus.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: firstScreenDrawerRectangle1
+                }
+
+                Image {
+                    id: firstScreenDrawerImage1
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/status_blue.png"
                 }
 
                 contentItem: Text {
                         text: firstScreenDrawerButtonMyStatus.text
                         font: firstScreenDrawerButtonMyStatus.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: firstScreenDrawerButtonMyStatus.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: firstScreenDrawerButtonMyStatus.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    firstScreenDrawerRectangle1.opacity = 0
+                    firstScreenDrawerImage1.source= "ui/icons/status_white.png"
+                }
+
+                onPressedChanged: {
+                    firstScreenDrawerRectangle1.opacity = 1
+                    firstScreenDrawerImage1.source= "ui/icons/status_blue.png"
                 }
 
                 onClicked: {
@@ -745,97 +432,204 @@ Item {
             }
 
             Button {
-                id: firstScreenDrawerButtonFindAdverts
+                id: firstScreenDrawerButtonMyAddverts
                 x: 0
-                y: 317
-                height: 80
-                text: qsTr("Найти объявление")
+                y: firstScreenDrawerButtonMyStatus.y+firstScreenDrawerButtonMyStatus.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мои объявления")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: firstScreenDrawerButtonFindAdverts.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: firstScreenDrawerRectangle2
                 }
+
+                Image {
+                    id: firstScreenDrawerImage2
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/orders_blue.png"
+                }
+
+                contentItem: Text {
+                        text: firstScreenDrawerButtonMyAddverts.text
+                        font: firstScreenDrawerButtonMyAddverts.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: firstScreenDrawerButtonMyAddverts.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    firstScreenDrawerRectangle2.opacity = 0
+                    firstScreenDrawerImage2.source= "ui/icons/orders_white.png"
+                }
+
+                onPressedChanged: {
+                    firstScreenDrawerRectangle2.opacity = 1
+                    firstScreenDrawerImage2.source= "ui/icons/orders_blue.png"
+                }
+            }
+
+            Button {
+                id: firstScreenDrawerButtonFindAdverts
+                x: 0
+                y: firstScreenDrawerButtonMyAddverts.y+firstScreenDrawerButtonMyAddverts.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Найти объявление")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: firstScreenDrawerRectangle3
+                }
+
+                Image {
+                    id: firstScreenDrawerImage3
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/find_blue.png"
+                }
+
                 contentItem: Text {
                         text: firstScreenDrawerButtonFindAdverts.text
                         font: firstScreenDrawerButtonFindAdverts.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: firstScreenDrawerButtonFindAdverts.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: firstScreenDrawerButtonFindAdverts.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    firstScreenDrawerRectangle3.opacity = 0
+                    firstScreenDrawerImage3.source= "ui/icons/find_white.png"
+                }
+
+                onPressedChanged: {
+                    firstScreenDrawerRectangle3.opacity = 1
+                    firstScreenDrawerImage3.source= "ui/icons/find_blue.png"
+                }
+            }
+
+            Button {
+                id: firstScreenDrawerButtonMySettings
+                x: 0
+                y: firstScreenDrawerButtonFindAdverts.y+firstScreenDrawerButtonFindAdverts.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мои настройки")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: firstScreenDrawerRectangle4
+                }
+
+                Image {
+                    id: firstScreenDrawerImage4
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/config_blue.png"
+                }
+
+                contentItem: Text {
+                        text: firstScreenDrawerButtonMySettings.text
+                        font: firstScreenDrawerButtonMySettings.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: firstScreenDrawerButtonMySettings.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    firstScreenDrawerRectangle4.opacity = 0
+                    firstScreenDrawerImage4.source= "ui/icons/config_white.png"
+                }
+
+                onPressedChanged: {
+                    firstScreenDrawerRectangle4.opacity = 1
+                    firstScreenDrawerImage4.source= "ui/icons/config_blue.png"
+                }
+
+                onClicked: {
+                    settingsScreen.visible=true
+                    firstScreen.visible=false
+                    firstScreenDrawer.close()
                 }
             }
 
             Button {
                 id: firstScreenDrawerButtonExit
                 x: 0
-                y: 396
-                height: 80
-                text: qsTr("Выйти")
+                y: firstScreenDrawerButtonMySettings.y+firstScreenDrawerButtonMySettings.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Разлогиниться")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: firstScreenDrawerButtonExit.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: firstScreenDrawerRectangle5
                 }
+
+                Image {
+                    id: firstScreenDrawerImage5
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/exit_blue.png"
+                }
+
                 contentItem: Text {
                         text: firstScreenDrawerButtonExit.text
                         font: firstScreenDrawerButtonExit.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: firstScreenDrawerButtonExit.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: firstScreenDrawerButtonExit.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
                 }
+
+                onPressed: {
+                    firstScreenDrawerRectangle5.opacity = 0
+                    firstScreenDrawerImage5.source= "ui/icons/exit_white.png"
+                }
+
+                onPressedChanged: {
+                    firstScreenDrawerRectangle5.opacity = 1
+                    firstScreenDrawerImage5.source= "ui/icons/exit_blue.png"
+                }
+
                 onClicked: {
                     event_handler.exitMenu()
                     basicScreen.visible=true
                     firstScreen.visible=false
                     firstScreenDrawer.close()
                 }
-            }
-
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: firstScreenDrawerButtonExit.y + firstScreenDrawerButtonExit.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: firstScreenDrawerButtonMyStatus.y + firstScreenDrawerButtonMyStatus.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: firstScreenDrawerButtonMyAddverts.y + firstScreenDrawerButtonMyAddverts.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: firstScreenDrawerButtonMySettings.y + firstScreenDrawerButtonMySettings.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: firstScreenDrawerButtonFindAdverts.y + firstScreenDrawerButtonFindAdverts.height
-                width: parent.width
-                height: 1
-                border.width: 1
             }
         }
 
@@ -848,13 +642,15 @@ Item {
 
             anchors.left: parent.left
             anchors.right: parent.right
+            height: (parent.height > 900)? sourceSize.height * parent.height/900: sourceSize.height
 
             Button {
                 id: firstScreenNavbarButton
                 x: 20
-                y: 11
-                width: 53
-                height: 40
+                width: 80
+                height: 48
+                y: firstScreenNavbarMenu.height/2 - firstDrawerButton.height / 2
+
                 background: Rectangle {
                     opacity: 0
                 }
@@ -864,9 +660,10 @@ Item {
                 }
 
                 Image {
+                    id: firstDrawerButton
                     anchors.fill: parent
                     source: "ui/drawerButton.png"
-                    fillMode: Image.Tile
+                    fillMode: Image.PreserveAspectFit
                 }
             }
         }
@@ -880,102 +677,90 @@ Item {
         id: statusScreen
         anchors.fill: parent
 
-        RowLayout {
-            anchors.fill: parent
-            id: statusScreenRowLayout
+        Image {
+            x: parent.width/2 - width/2
+            y: (parent.width<parent.height)?parent.height/2-height/2:0
+            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
+            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
+            source: "ui/background4.png"
+        }
 
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
+        MouseArea {
+            drag.minimumY: -20
+            drag.maximumY: 111
+            anchors.fill: parent
+            drag.target: statusScreenSwitchBusy
+            drag.axis: Drag.YAxis
         }
 
         Drawer {
-            dragMargin: 20
-            height: rootmain.height
             id: statusScreenDrawer
-            width: 0.75 * rootmain.width
+            dragMargin: 20
+            height: rootMain.height
+            width: 0.75 * rootMain.width
 
-            background: Rectangle {
-                color: "#337CFD"
+            Image {
+                anchors.fill: parent
+                source: "ui/navbarBack.png"
             }
-
-            Button {
-                id: statusScreenDrawerButtonMySettings
-                x: 0
-                y: 80
-                height: 80
-                text: qsTr("Мои настройки")
-
-                font.pointSize: 24
-
-                anchors.left: parent.left
-                anchors.right: parent.right
-
-                background: Rectangle {
-                        color: statusScreenDrawerButtonMySettings.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                        text: statusScreenDrawerButtonMySettings.text
-                        font: statusScreenDrawerButtonMySettings.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: statusScreenDrawerButtonMySettings.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                }
+            Image {
+                x: parent.width/2 - width/2
+                y: statusScreenDrawerButtonMyStatus.y/2 - height/2 - 10 * parent.height/900
+                width: sourceSize.width * 500 / 750
+                height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
+                source: "ui/navbarLogo.png"
             }
-
-            Button {
-                id: statusScreenDrawerButtonMyAddverts
-                x: 0
-                y: 159
-                height: 80
-                text: qsTr("Мои объявления")
-
-                font.pointSize: 24
-
-                anchors.left: parent.left
-                anchors.right: parent.right
-
-                background: Rectangle {
-                        color: statusScreenDrawerButtonMyAddverts.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                        text: statusScreenDrawerButtonMyAddverts.text
-                        font: statusScreenDrawerButtonMyAddverts.font
-                        opacity: enabled ? 1.0 : 0.3
-                        color: statusScreenDrawerButtonMyAddverts.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
-                        verticalAlignment: Text.AlignVCenter
-                        elide: Text.ElideRight
-                }
+            Rectangle {
+                y: statusScreenDrawerButtonExit.y + statusScreenDrawerButtonExit.height + 1
+                color: "#87FFFFFF"
+                width: parent.width
+                height:parent.height - y
             }
 
             Button {
                 id: statusScreenDrawerButtonMyStatus
                 x: 0
-                y: 238
-                height: 80
+                y: 156 * parent.height/900
+                height: (parent.height > 900)? 77 * parent.height/900: 77
                 text: qsTr("Мой статус")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: statusScreenDrawerButtonMyStatus.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: statusScreenDrawerRectangle1
+                }
+
+                Image {
+                    id: statusScreenDrawerImage1
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/status_blue.png"
                 }
 
                 contentItem: Text {
                         text: statusScreenDrawerButtonMyStatus.text
                         font: statusScreenDrawerButtonMyStatus.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: statusScreenDrawerButtonMyStatus.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: statusScreenDrawerButtonMyStatus.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    statusScreenDrawerRectangle1.opacity = 0
+                    statusScreenDrawerImage1.source= "ui/icons/status_white.png"
+                }
+
+                onPressedChanged: {
+                    statusScreenDrawerRectangle1.opacity = 1
+                    statusScreenDrawerImage1.source= "ui/icons/status_blue.png"
                 }
 
                 onClicked: {
@@ -984,55 +769,198 @@ Item {
             }
 
             Button {
-                id: statusScreenDrawerButtonFindAdverts
+                id: statusScreenDrawerButtonMyAddverts
                 x: 0
-                y: 317
-                height: 80
-                text: qsTr("Найти объявление")
+                y: statusScreenDrawerButtonMyStatus.y+statusScreenDrawerButtonMyStatus.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мои объявления")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: statusScreenDrawerButtonFindAdverts.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: statusScreenDrawerRectangle2
                 }
+
+                Image {
+                    id: statusScreenDrawerImage2
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/orders_blue.png"
+                }
+
+                contentItem: Text {
+                        text: statusScreenDrawerButtonMyAddverts.text
+                        font: statusScreenDrawerButtonMyAddverts.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: statusScreenDrawerButtonMyAddverts.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    statusScreenDrawerRectangle2.opacity = 0
+                    statusScreenDrawerImage2.source= "ui/icons/orders_white.png"
+                }
+
+                onPressedChanged: {
+                    statusScreenDrawerRectangle2.opacity = 1
+                    statusScreenDrawerImage2.source= "ui/icons/orders_blue.png"
+                }
+            }
+
+            Button {
+                id: statusScreenDrawerButtonFindAdverts
+                x: 0
+                y: statusScreenDrawerButtonMyAddverts.y+statusScreenDrawerButtonMyAddverts.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Найти объявление")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: statusScreenDrawerRectangle3
+                }
+
+                Image {
+                    id: statusScreenDrawerImage3
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/find_blue.png"
+                }
+
                 contentItem: Text {
                         text: statusScreenDrawerButtonFindAdverts.text
                         font: statusScreenDrawerButtonFindAdverts.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: statusScreenDrawerButtonFindAdverts.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: statusScreenDrawerButtonFindAdverts.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    statusScreenDrawerRectangle3.opacity = 0
+                    statusScreenDrawerImage3.source= "ui/icons/find_white.png"
+                }
+
+                onPressedChanged: {
+                    statusScreenDrawerRectangle3.opacity = 1
+                    statusScreenDrawerImage3.source= "ui/icons/find_blue.png"
+                }
+            }
+
+            Button {
+                id: statusScreenDrawerButtonMySettings
+                x: 0
+                y: statusScreenDrawerButtonFindAdverts.y+statusScreenDrawerButtonFindAdverts.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мои настройки")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: statusScreenDrawerRectangle4
+                }
+
+                Image {
+                    id: statusScreenDrawerImage4
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/config_blue.png"
+                }
+
+                contentItem: Text {
+                        text: statusScreenDrawerButtonMySettings.text
+                        font: statusScreenDrawerButtonMySettings.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: statusScreenDrawerButtonMySettings.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    statusScreenDrawerRectangle4.opacity = 0
+                    statusScreenDrawerImage4.source= "ui/icons/config_white.png"
+                }
+
+                onPressedChanged: {
+                    statusScreenDrawerRectangle4.opacity = 1
+                    statusScreenDrawerImage4.source= "ui/icons/config_blue.png"
+                }
+
+                onClicked: {
+                    settingsScreen.visible=true
+                    statusScreen.visible=false
+                    statusScreenDrawer.close()
                 }
             }
 
             Button {
                 id: statusScreenDrawerButtonExit
                 x: 0
-                y: 396
-                height: 80
-                text: qsTr("Выйти")
+                y: statusScreenDrawerButtonMySettings.y+statusScreenDrawerButtonMySettings.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Разлогиниться")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: statusScreenDrawerButtonExit.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: statusScreenDrawerRectangle5
                 }
+
+                Image {
+                    id: statusScreenDrawerImage5
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/exit_blue.png"
+                }
+
                 contentItem: Text {
                         text: statusScreenDrawerButtonExit.text
                         font: statusScreenDrawerButtonExit.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: statusScreenDrawerButtonExit.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: statusScreenDrawerButtonExit.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
                 }
+
+                onPressed: {
+                    statusScreenDrawerRectangle5.opacity = 0
+                    statusScreenDrawerImage5.source= "ui/icons/exit_white.png"
+                }
+
+                onPressedChanged: {
+                    statusScreenDrawerRectangle5.opacity = 1
+                    statusScreenDrawerImage5.source= "ui/icons/exit_blue.png"
+                }
+
                 onClicked: {
                     event_handler.exitMenu()
                     basicScreen.visible=true
@@ -1040,46 +968,150 @@ Item {
                     statusScreenDrawer.close()
                 }
             }
+        }
 
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: statusScreenDrawerButtonExit.y + statusScreenDrawerButtonExit.height
-                width: parent.width
-                height: 1
-                border.width: 1
+        Switch {
+            id: statusScreenSwitchBusy
+            x: 40
+            y: 111
+
+            onClicked: {
+                if(statusScreenSwitchBusy.checked) {
+                statusScreenSwitchFreeText.color= "#A8A8A8"
+                statusScreenSwitchBusyText.color= "#FFFFFF"
+                statusScreenSwitchepartedText.color= "#A8A8A8"
+                statusScreenSwitchDoOrderText.color= "#A8A8A8"
+                }
+                else statusScreenSwitchBusyText.color="#A8A8A8"
+                statusScreenSwitchFree.checked=false
+                statusScreenSwitchDoOrder.checked=false
+                statusScreenSwitchDeparted.checked=false
             }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: statusScreenDrawerButtonMyStatus.y + statusScreenDrawerButtonMyStatus.height
-                width: parent.width
-                height: 1
-                border.width: 1
+        }
+        Text {
+            id: statusScreenSwitchBusyText
+            color: "#A8A8A8"
+            font.pointSize: 40
+            text: qsTr("Занят")
+            y: statusScreenSwitchBusy.y - 15
+            x: statusScreenSwitchBusy.x + 80
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0
+            y: statusScreenSwitchBusy.y + 60
+            width: parent.width
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+
+        Switch {
+            id: statusScreenSwitchFree
+            x: 40
+            y:statusScreenSwitchBusy.y + 100
+
+            onClicked: {
+                if(statusScreenSwitchFree.checked) {
+                statusScreenSwitchFreeText.color= "#FFFFFF"
+                statusScreenSwitchBusyText.color= "#A8A8A8"
+                statusScreenSwitchepartedText.color= "#A8A8A8"
+                statusScreenSwitchDoOrderText.color= "#A8A8A8"
+                }
+                else statusScreenSwitchFreeText.color="#A8A8A8"
+                statusScreenSwitchBusy.checked=false
+                statusScreenSwitchDoOrder.checked=false
+                statusScreenSwitchDeparted.checked=false
             }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: statusScreenDrawerButtonFindAdverts.y + statusScreenDrawerButtonFindAdverts.height
-                width: parent.width
-                height: 1
-                border.width: 1
+        }
+        Text {
+            id: statusScreenSwitchFreeText
+            color: "#A8A8A8"
+            font.pointSize: 40
+            text: qsTr("Свободен")
+            y: statusScreenSwitchFree.y - 15
+            x: statusScreenSwitchFree.x + 80
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0
+            y: statusScreenSwitchFree.y + 60
+            width: parent.width
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+
+        Switch {
+            id: statusScreenSwitchDeparted
+            x: 40
+            y:statusScreenSwitchBusy.y + 200
+
+            onClicked: {
+                if(statusScreenSwitchDeparted.checked) {
+                statusScreenSwitchFreeText.color= "#A8A8A8"
+                statusScreenSwitchBusyText.color= "#A8A8A8"
+                statusScreenSwitchepartedText.color= "#FFFFFF"
+                statusScreenSwitchDoOrderText.color= "#A8A8A8"
+                }
+                else statusScreenSwitchepartedText.color="#A8A8A8"
+                statusScreenSwitchBusy.checked=false
+                statusScreenSwitchFree.checked=false
+                statusScreenSwitchDoOrder.checked=false
             }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: statusScreenDrawerButtonMyAddverts.y + statusScreenDrawerButtonMyAddverts.height
-                width: parent.width
-                height: 1
-                border.width: 1
+        }
+        Text {
+            id: statusScreenSwitchepartedText
+            color: "#A8A8A8"
+            font.pointSize: 40
+            text: qsTr("Отошел")
+            y: statusScreenSwitchDeparted.y - 15
+            x: statusScreenSwitchDeparted.x + 80
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0
+            y: statusScreenSwitchDeparted.y + 60
+            width: parent.width
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+
+        Switch {
+            id: statusScreenSwitchDoOrder
+            x: 40
+            y:statusScreenSwitchBusy.y + 300
+
+            onClicked: {
+                if(statusScreenSwitchDoOrder.checked) {
+                statusScreenSwitchFreeText.color= "#A8A8A8"
+                statusScreenSwitchBusyText.color= "#A8A8A8"
+                statusScreenSwitchepartedText.color= "#A8A8A8"
+                statusScreenSwitchDoOrderText.color= "#FFFFFF"
+                }
+                else statusScreenSwitchDoOrderText.color="#A8A8A8"
+                statusScreenSwitchBusy.checked=false
+                statusScreenSwitchFree.checked=false
+                statusScreenSwitchDeparted.checked=false
             }
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-                x: 0
-                y: statusScreenDrawerButtonMySettings.y + statusScreenDrawerButtonMySettings.height
-                width: parent.width
-                height: 1
-                border.width: 1
-            }
+        }
+        Text {
+            id: statusScreenSwitchDoOrderText
+            color: "#A8A8A8"
+            font.pointSize: 40
+            text: qsTr("Выполняю\nзаказ\nID = 5497")
+            y: statusScreenSwitchDoOrder.y - 15
+            x: statusScreenSwitchDoOrder.x + 80
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0
+            y: statusScreenSwitchDoOrder.y + 190
+            width: parent.width
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
         }
 
         Image {
-            id: statusScreenNavbarManu
+            id: statusScreenNavbarMenu
             x: 0
             anchors.topMargin: 0
             anchors.top: parent.top
@@ -1087,13 +1119,15 @@ Item {
 
             anchors.left: parent.left
             anchors.right: parent.right
+            height: (parent.height > 900)? sourceSize.height * parent.height/900: sourceSize.height
 
             Button {
                 id: statusScreenNavbarButton
                 x: 20
-                y: 11
-                width: 53
-                height: 40
+                width: 80
+                height: 48
+                y: statusScreenNavbarMenu.height/2 - statusDrawerButton.height / 2
+
                 background: Rectangle {
                     opacity: 0
                 }
@@ -1103,380 +1137,601 @@ Item {
                 }
 
                 Image {
+                    id: statusDrawerButton
                     anchors.fill: parent
                     source: "ui/drawerButton.png"
-                    fillMode: Image.Tile
+                    fillMode: Image.PreserveAspectFit
                 }
-            }
-        }
-
-        Switch {
-            id: statusScreenSwitchBusy
-            x: 221
-            y: 111
-            width: 200
-            height: 59
-            text: qsTr("Занят")
-
-            font.pointSize: 20
-
-            anchors.left: statusScreenRowLayout.left
-            anchors.right: statusScreenRowLayout.right
-            anchors.leftMargin: 0.09 * statusScreenRowLayout.width
-            anchors.rightMargin: 0.09 * statusScreenRowLayout.width
-
-            onClicked: {
-                statusScreenSwitchFree.checked=false
-                statusScreenSwitchDoOrder.checked=false
-                statusScreenSwitchDeparted.checked=false
-            }
-        }
-
-        Switch {
-            id: statusScreenSwitchFree
-            x: 221
-            y: 211
-            width: 200
-            height: 59
-            text: qsTr("Свободен")
-
-            font.pointSize: 20
-
-            anchors.left: statusScreenRowLayout.left
-            anchors.right: statusScreenRowLayout.right
-            anchors.leftMargin: 0.09 * statusScreenRowLayout.width
-            anchors.rightMargin: 0.09 * statusScreenRowLayout.width
-
-            onClicked: {
-                statusScreenSwitchBusy.checked=false
-                statusScreenSwitchDoOrder.checked=false
-                statusScreenSwitchDeparted.checked=false
-            }
-        }
-
-        Switch {
-            id: statusScreenSwitchDeparted
-            x: 221
-            y: 311
-            width: 200
-            height: 59
-            text: qsTr("Отошел")
-
-            font.pointSize: 20
-
-            anchors.left: statusScreenRowLayout.left
-            anchors.right: statusScreenRowLayout.right
-            anchors.leftMargin: 0.09 * statusScreenRowLayout.width
-            anchors.rightMargin: 0.09 * statusScreenRowLayout.width
-
-            onClicked: {
-                statusScreenSwitchBusy.checked=false
-                statusScreenSwitchFree.checked=false
-                statusScreenSwitchDoOrder.checked=false
-            }
-        }
-
-        Switch {
-            id: statusScreenSwitchDoOrder
-            x: 221
-            y: 411
-            width: 200
-            height: 100
-            text: qsTr("Выполняю заказ\nID = 54975")
-
-            font.pointSize: 20
-
-            anchors.left: statusScreenRowLayout.left
-            anchors.right: statusScreenRowLayout.right
-            anchors.leftMargin: 0.09 * statusScreenRowLayout.width
-            anchors.rightMargin: 0.09 * statusScreenRowLayout.width
-
-            onClicked: {
-                statusScreenSwitchBusy.checked=false
-                statusScreenSwitchFree.checked=false
-                statusScreenSwitchDeparted.checked=false
             }
         }
     }
     //-------------------------------------------------------------------------------------------------------------
 
 
-    //--------------------------------------------------registScreen.qml-------------------------------------------
+    //--------------------------------------------------settingsScreen.qml--------------------------------------------
     Item {
-        visible:false
-        id: registScreen
+        visible: false
+        id: settingsScreen
         anchors.fill: parent
 
-        RowLayout {
+        Image {
+            x: parent.width/2 - width/2
+            y: (parent.width<parent.height)?parent.height/2-height/2:0
+            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
+            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
+            source: "ui/background4.png"
+        }
+
+        MouseArea {
+            drag.minimumY: -20
+            drag.maximumY: 100
             anchors.fill: parent
-            id: registScreenRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
-        }
-
-        TextField {
-            id: registScreentextFieldLogin
-            x: 69
-            y: 100
-            width: 250
-            height: 44
-            placeholderText: qsTr("Придумай логин")
-
-            font.pointSize: 24
-
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-
-            background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
-            }
-
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        TextField {
-            id: registScreentextFieldPass
-            x: 69
-            y: 170
-            width: 250
-            height: 44
-            placeholderText: qsTr("Придумай пароль")
-
-            font.pointSize: 24
-
-            echoMode: TextInput.Password
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-
-            background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
-            }
-
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        TextField {
-            id: registScreentextFieldPassRepeat
-            x: 69
-            y: 220
-            width: 250
-            height: 44
-            placeholderText: qsTr("Повторите пароль")
-
-            font.pointSize: 24
-
-            echoMode: TextInput.Password
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-
-            background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
-            }
-
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        TextField {
-            id: registScreentextFieldEmail
-            x: 69
-            y: 290
-            width: 250
-            height: 44
-            placeholderText: qsTr("Введите свой EMail")
-
-            font.pointSize: 24
-
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-
-            background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
-            }
-
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        TextField {
-            id: registScreentextFieldPhone
-            x: 69
-            y: 340
-            width: 250
-            height: 44
-            placeholderText: qsTr("+7-XXX-XXX-XX-XX")
-
-            font.pointSize: 24
-
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-
-            background: Rectangle {
-                border.color: "#0066FF"
-                color: "#80FFFFFF"
-                border.width: 1
-            }
-
-            horizontalAlignment: Text.AlignHCenter
-        }
-
-        ComboBox {
-            id: registScreencomboBoxCitys
-            y: 410
-            width: 250
-            height: 44
-            font.pointSize: 24
-
-            model: [ "Нигда", "Питер", "Москва" ]
-
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-        }
-
-        Button {
-            id: registScreenButtonRegister
-            x: 236
-            y: 500
-            height: 60
-            text: qsTr("Зарегистрироваться")
-            autoRepeat: false
-            autoExclusive: false
-            checked: false
-            checkable: false
-            highlighted: false
-
-            font.pointSize: 30
-
-            anchors.left: registScreenRowLayout.left
-            anchors.right: registScreenRowLayout.right
-            anchors.leftMargin: 0.09 * registScreenRowLayout.width
-            anchors.rightMargin: 0.09 * registScreenRowLayout.width
-
-
-            onClicked: {
-                if(registScreentextFieldLogin.text.length<2) {
-                    dialogAndroidTextLabel.text = "Логин короче 2 символов"
-                    dialogAndroid.open();
-                }
-                else
-                if(registScreentextFieldPass.text.length<5) {
-                    dialogAndroidTextLabel.text = "Пароль короче 5 символов"
-                    dialogAndroid.open();
-                }
-                else
-                if(registScreentextFieldPassRepeat.text!=registScreentextFieldPass.text) {
-                    dialogAndroidTextLabel.text = "Пароли не совпадают"
-                    dialogAndroid.open();
-                }
-                else
-                if(registScreentextFieldPhone.text.length<11) {
-                    dialogAndroidTextLabel.text = "Укажите верный номер телефона"
-                    dialogAndroid.open();
-                }
-                else {
-                    busyIndicatorMainScreen.visible = true
-                    if(event_handler.registration(registScreentextFieldLogin.text,registScreentextFieldPass.text,registScreentextFieldPassRepeat.text,registScreentextFieldEmail.text,registScreentextFieldPhone.text,registScreencomboBoxCitys.currentText)) {
-                        registScreen.visible=false
-                        dialogAndroidTextLabel.text="Вы успешно зарегистрированы"
-                        dialogAndroid.open();
-                        firstScreen.visible = true
-                    }
-                    else {
-                        dialogAndroidTextLabel.text="Вы уже зарегистрированы"
-                        dialogAndroid.open();
-                    }
-                    busyIndicatorMainScreen.visible = false
-                }
-            }
-
-            background: Rectangle {
-                    color: registScreenButtonRegister.down ? "#10387E" : "#337CFD"
-            }
-
-            contentItem: Text {
-                    text: registScreenButtonRegister.text
-                    font: registScreenButtonRegister.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: registScreenButtonRegister.down ? "#FFFFFF" : "#FFFFFF"
-                    horizontalAlignment:Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-            }
+            drag.target: settingScreentextFieldLogin
+            drag.axis: Drag.YAxis
         }
 
         Drawer {
+            id: settingScreenDrawer
             dragMargin: 20
-            height: rootmain.height
-            id: registScreenDrawer
-            width: 0.75 * rootmain.width
+            height: rootMain.height
+            width: 0.75 * rootMain.width
 
-            background: Rectangle {
-                color: "#337CFD"
+            Image {
+                anchors.fill: parent
+                source: "ui/navbarBack.png"
+            }
+            Image {
+                x: parent.width/2 - width/2
+                y: settingScreenDrawerButtonMyStatus.y/2 - height/2 - 10 * parent.height/ 900
+                width: sourceSize.width * 500 / 750
+                height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
+                source: "ui/navbarLogo.png"
+            }
+            Rectangle {
+                y: settingScreenDrawerButtonExit.y + settingScreenDrawerButtonExit.height + 1
+                color: "#87FFFFFF"
+                width: parent.width
+                height:parent.height - y
             }
 
             Button {
-                id: registScreenDrawerButtonExit
+                id: settingScreenDrawerButtonMyStatus
                 x: 0
-                y: 80
-                height: 80
-                text: qsTr("Назад")
+                y: 156 * parent.height/900
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мой статус")
 
-                font.pointSize: 24
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
 
                 anchors.left: parent.left
                 anchors.right: parent.right
 
                 background: Rectangle {
-                        color: registScreenDrawerButtonExit.down ? "#10387E" : "#337CFD"
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: settingScreenDrawerRectangle1
                 }
+
+                Image {
+                    id: settingScreenDrawerImage1
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/status_blue.png"
+                }
+
                 contentItem: Text {
-                        text: registScreenDrawerButtonExit.text
-                        font: registScreenDrawerButtonExit.font
+                        text: settingScreenDrawerButtonMyStatus.text
+                        font: settingScreenDrawerButtonMyStatus.font
                         opacity: enabled ? 1.0 : 0.3
-                        color: registScreenDrawerButtonExit.down ? "#FFFFFF" : "#FFFFFF"
-                        padding: 10
+                        color: settingScreenDrawerButtonMyStatus.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
                         verticalAlignment: Text.AlignVCenter
                         elide: Text.ElideRight
                 }
+
+                onPressed: {
+                    settingScreenDrawerRectangle1.opacity = 0
+                    settingScreenDrawerImage1.source= "ui/icons/status_white.png"
+                }
+
+                onPressedChanged: {
+                    settingScreenDrawerRectangle1.opacity = 1
+                    settingScreenDrawerImage1.source= "ui/icons/status_blue.png"
+                }
+
                 onClicked: {
-                    basicScreen.visible=true
-                    registScreen.visible=false
-                    registScreenDrawer.close()
+                    settingsScreen.visible=false
+                    statusScreen.visible = true
+                    settingScreenDrawer.close()
                 }
             }
 
-            Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            Button {
+                id: settingScreenDrawerButtonMyAddverts
                 x: 0
-                y: registScreenDrawerButtonExit.y + registScreenDrawerButtonExit.height
-                width: parent.width
-                height: 1
-                border.width: 1
+                y: settingScreenDrawerButtonMyStatus.y+settingScreenDrawerButtonMyStatus.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мои объявления")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: settingScreenDrawerRectangle2
+                }
+
+                Image {
+                    id: settingScreenDrawerImage2
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/orders_blue.png"
+                }
+
+                contentItem: Text {
+                        text: settingScreenDrawerButtonMyAddverts.text
+                        font: settingScreenDrawerButtonMyAddverts.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: settingScreenDrawerButtonMyAddverts.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    settingScreenDrawerRectangle2.opacity = 0
+                    settingScreenDrawerImage2.source= "ui/icons/orders_white.png"
+                }
+
+                onPressedChanged: {
+                    settingScreenDrawerRectangle2.opacity = 1
+                    settingScreenDrawerImage2.source= "ui/icons/orders_blue.png"
+                }
+            }
+
+            Button {
+                id: settingScreenDrawerButtonFindAdverts
+                x: 0
+                y: settingScreenDrawerButtonMyAddverts.y+settingScreenDrawerButtonMyAddverts.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Найти объявление")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: settingScreenDrawerRectangle3
+                }
+
+                Image {
+                    id: settingScreenDrawerImage3
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/find_blue.png"
+                }
+
+                contentItem: Text {
+                        text: settingScreenDrawerButtonFindAdverts.text
+                        font: settingScreenDrawerButtonFindAdverts.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: settingScreenDrawerButtonFindAdverts.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    settingScreenDrawerRectangle3.opacity = 0
+                    settingScreenDrawerImage3.source= "ui/icons/find_white.png"
+                }
+
+                onPressedChanged: {
+                    settingScreenDrawerRectangle3.opacity = 1
+                    settingScreenDrawerImage3.source= "ui/icons/find_blue.png"
+                }
+            }
+
+            Button {
+                id: settingScreenDrawerButtonMySettings
+                x: 0
+                y: settingScreenDrawerButtonFindAdverts.y+settingScreenDrawerButtonFindAdverts.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Мои настройки")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: settingScreenDrawerRectangle4
+                }
+
+                Image {
+                    id: settingScreenDrawerImage4
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/config_blue.png"
+                }
+
+                contentItem: Text {
+                        text: settingScreenDrawerButtonMySettings.text
+                        font: settingScreenDrawerButtonMySettings.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: settingScreenDrawerButtonMySettings.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    settingScreenDrawerRectangle4.opacity = 0
+                    settingScreenDrawerImage4.source= "ui/icons/config_white.png"
+                }
+
+                onPressedChanged: {
+                    settingScreenDrawerRectangle4.opacity = 1
+                    settingScreenDrawerImage4.source= "ui/icons/config_blue.png"
+                }
+
+                onClicked: {
+                    settingScreenDrawer.close()
+                }
+            }
+
+            Button {
+                id: settingScreenDrawerButtonExit
+                x: 0
+                y: settingScreenDrawerButtonMySettings.y+settingScreenDrawerButtonMySettings.height+1
+                height: (parent.height > 900)? 77 * parent.height/900: 77
+                text: qsTr("Разлогиниться")
+
+                font.pointSize: 19
+                font.family: sfuiFontLight.name
+
+                anchors.left: parent.left
+                anchors.right: parent.right
+
+                background: Rectangle {
+                    color: "#87FFFFFF"
+                    anchors.fill: parent
+                    id: settingScreenDrawerRectangle5
+                }
+
+                Image {
+                    id: settingScreenDrawerImage5
+                    x: 30
+                    y: parent.height/2 - sourceSize.height/2
+                    source: "ui/icons/exit_blue.png"
+                }
+
+                contentItem: Text {
+                        text: settingScreenDrawerButtonExit.text
+                        font: settingScreenDrawerButtonExit.font
+                        opacity: enabled ? 1.0 : 0.3
+                        color: settingScreenDrawerButtonExit.down ? "#FFFFFF" : "#10387F"
+                        leftPadding: 80
+                        verticalAlignment: Text.AlignVCenter
+                        elide: Text.ElideRight
+                }
+
+                onPressed: {
+                    settingScreenDrawerRectangle5.opacity = 0
+                    settingScreenDrawerImage5.source= "ui/icons/exit_white.png"
+                }
+
+                onPressedChanged: {
+                    settingScreenDrawerRectangle5.opacity = 1
+                    settingScreenDrawerImage5.source= "ui/icons/exit_blue.png"
+                }
+
+                onClicked: {
+                    event_handler.exitMenu()
+                    basicScreen.visible = true
+                    settingScreenDrawer.close()
+                    settingsScreen.visible=false
+                }
+            }
+        }
+
+        TextField {
+            id: settingScreentextFieldLogin
+            y: 100
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            anchors.rightMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
+            placeholderText: qsTr("Имя")
+            text: event_handler.getLogin()
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreentextFieldLogin.y + settingScreentextFieldLogin.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreentextFieldLogin.x - 47
+            y: settingScreentextFieldLogin.y + settingScreentextFieldLogin.height - sourceSize.height + 7 / (parent.height/900)
+            source: "ui/humanIcon.png"
+        }
+
+        TextField {
+            id: settingScreentextFieldFamily
+            y: settingScreentextFieldLogin.y + 100*parent.height/900
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            anchors.rightMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
+            placeholderText: qsTr("Фамилия")
+            text: event_handler.getFamily()
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreentextFieldFamily.y + settingScreentextFieldFamily.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreentextFieldFamily.x - 47
+            y: settingScreentextFieldFamily.y + settingScreentextFieldFamily.height - sourceSize.height + 7 / (parent.height/900)
+            source: "ui/humanIcon.png"
+        }
+
+        TextField {
+            id: settingScreentextFieldEmail
+            y: settingScreentextFieldLogin.y + 200*parent.height/900
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            anchors.rightMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
+            placeholderText: qsTr("E-mail")
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreentextFieldEmail.y + settingScreentextFieldEmail.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreentextFieldEmail.x - 47
+            y: settingScreentextFieldEmail.y + settingScreentextFieldEmail.height - sourceSize.height + 7 / (parent.height/900)
+            source: "ui/phoneIcon.png"
+        }
+
+        TextField {
+            id: settingScreentextFieldPass
+            y: settingScreentextFieldLogin.y + 300*parent.height/900
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            anchors.rightMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
+            placeholderText: qsTr("Пароль")
+            text: event_handler.getPass()
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+            echoMode: TextInput.Password
+
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreentextFieldPass.y + settingScreentextFieldPass.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreentextFieldPass.x - 47
+            y: settingScreentextFieldPass.y + settingScreentextFieldPass.height - sourceSize.height + 7 / (parent.height/900)
+            source: "ui/passIcon.png"
+        }
+
+        TextField {
+            id: settingScreentextFieldPassRepeat
+            y: settingScreentextFieldLogin.y + 400*parent.height/900
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            anchors.rightMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
+            placeholderText: qsTr("Повтор пароля")
+            text: event_handler.getPass()
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+            echoMode: TextInput.Password
+
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreentextFieldPassRepeat.y + settingScreentextFieldPassRepeat.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreentextFieldPassRepeat.x - 47
+            y: settingScreentextFieldPassRepeat.y + settingScreentextFieldPassRepeat.height - sourceSize.height + 7 / (parent.height/900)
+            source: "ui/passIcon.png"
+        }
+
+        TextField {
+            id: settingScreentextFieldPhone
+            y: settingScreentextFieldLogin.y + 500*parent.height/900
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            anchors.rightMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
+            placeholderText: qsTr("Номер мобильного")
+            text: event_handler.getPhone()
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+            validator: DoubleValidator {}
+
+            background: Rectangle {
+                opacity: 0
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreentextFieldPhone.y + settingScreentextFieldPhone.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreentextFieldPhone.x - 47
+            y: settingScreentextFieldPhone.y + settingScreentextFieldPhone.height - sourceSize.height + 7 / (parent.height/900)
+            source: "ui/phoneIcon.png"
+        }
+
+        Button {
+            id: settingScreenButtonRegister
+            y: (parent.height>900)? settingScreentextFieldPhone.y + 86 * parent.height/900: settingScreentextFieldPhone.y + 86
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09* parent.width
+            height: (parent.height>900)? 70*parent.height/900: 70
+            checked: false
+            checkable: false
+            autoRepeat: false
+            highlighted: false
+            autoExclusive: false
+            text: qsTr("Применить изменения")
+
+            font.pointSize: 18
+
+            onClicked: {
+                if(settingScreentextFieldLogin.text.length< 2) {
+                    dialogAndroidTextLabel.text = "Имя короче 2 символов"
+                    dialogAndroid.open();
+                }
+                else
+                if(settingScreentextFieldFamily.text.length<2) {
+                    dialogAndroidTextLabel.text = "Фамилия менее 2 символов"
+                    dialogAndroid.open();
+                }
+                else
+                if(settingScreentextFieldPass.text.length < 5) {
+                    dialogAndroidTextLabel.text = "Пароль короче 5 символов"
+                    dialogAndroid.open();
+                }
+                else
+                if(settingScreentextFieldPhone.text.length<11) {
+                    dialogAndroidTextLabel.text = "Укажите корректный номер"
+                    dialogAndroid.open();
+                }
+                else
+                if(settingScreentextFieldPassRepeat.text!=settingScreentextFieldPass.text) {
+                    dialogAndroidTextLabel.text = "Ваши пароли не совпадают"
+                    dialogAndroid.open();
+                }
+                else {
+                    busyIndicatorMainScreen.visible = true
+                    if(true) {
+                        dialogAndroidTextLabel.text = "Изменения успешно сохранены"
+                        event_handler.setFamily(settingScreentextFieldFamily.text)
+                        event_handler.setPhone(settingScreentextFieldPhone.text)
+                        event_handler.setLogin(settingScreentextFieldLogin.text)
+                        event_handler.setMail(settingScreentextFieldEmail.text)
+                        event_handler.setPass(settingScreentextFieldPass.text)
+                        dialogAndroid.open();
+                        busyIndicatorMainScreen.visible = false
+                    }
+                    else {
+                        dialogAndroidTextLabel.text="Не удалось связаться с сервером"
+                        busyIndicatorMainScreen.visible = false
+                        dialogAndroid.open();
+                    }
+                }
+            }
+
+            background: Rectangle {
+                    color: settingScreenButtonRegister.down ? "#9610387E":"#10387E"
+            }
+
+            contentItem: Text {
+                    text: settingScreenButtonRegister.text
+                    font: settingScreenButtonRegister.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: settingScreenButtonRegister.down ? "#FFFFFF" : "#FFFFFF"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
             }
         }
 
         Image {
-            id: registScreenNavbarMenu
+            id: settingScreenNavbarMenu
             x: 0
             anchors.topMargin: 0
             anchors.top: parent.top
@@ -1484,25 +1739,28 @@ Item {
 
             anchors.left: parent.left
             anchors.right: parent.right
+            height: (parent.height > 900)? sourceSize.height * parent.height/900: sourceSize.height
 
             Button {
-                id: registScreenNavbarButton
+                id: settingScreenNavbarButton
                 x: 20
-                y: 11
-                width: 53
-                height: 40
+                width: 80
+                height: 48
+                y: settingScreenNavbarMenu.height/2 - settingDrawerButton.height / 2
+
                 background: Rectangle {
                     opacity: 0
                 }
 
                 onClicked: {
-                    registScreenDrawer.open()
+                    settingScreenDrawer.open()
                 }
 
                 Image {
+                    id: settingDrawerButton
                     anchors.fill: parent
                     source: "ui/drawerButton.png"
-                    fillMode: Image.Tile
+                    fillMode: Image.PreserveAspectFit
                 }
             }
         }

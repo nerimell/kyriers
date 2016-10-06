@@ -1,0 +1,1273 @@
+body {
+    color: #797979;
+    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+    padding: 0px !important;
+    margin: 0px !important;
+    font-size: 14px;
+}
+
+
+
+input:focus, textarea:focus, input:active, textarea:active, button:focus, button:active {
+outline: 0 !important;
+}
+
+a:hover {
+text-decoration: none;
+}
+
+
+div.verticalWrapper {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+
+div.verticalWrapper::before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle; /* vertical alignment of the inline element */
+    height: 100%;
+}
+
+div.verticalAligner {
+    display: inline-block;
+    vertical-align: middle; /* vertical alignment of the inline element */
+}
+
+div.loginFirst {
+    font-size: 50px;
+    color: #90A4AE !important;
+    margin-bottom: 25px;
+}
+
+.loginFirst i {
+    border: solid 4px #90A4Ae;
+    padding: 15px;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+
+.loginFirst h5 {
+    font-size: 17px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.loginFirst h5 span {
+    display: block;
+    margin-top: 5px;
+    text-transform: lowercase;
+}
+
+#loginForm input[type="text"], #loginForm input[type="email"], #loginForm input[type="password"] {
+    padding-left: 38px;
+}
+
+.absLogin {
+    position: absolute;
+    top: 0;
+    line-height: 36px;
+    left: 28px;
+    color: #b2b2b2;
+    font-size: 17px;
+    z-index: 1;
+}
+
+#loginForm button.btn {
+    background-color: #6e8cd7;
+    border-color: #6e8cd7;
+    width: 100%;
+    border-radius: 4px;
+}
+
+#loginForm button.btn i {
+    margin-left: 7px;
+    font-size: 15px;
+}
+
+
+
+img {
+    width: 100%;
+}
+
+.white-bg {
+    background: #fff;
+}
+
+.p15 {
+    padding: 15px;
+}
+
+.p25 {
+    padding: 25px;
+}
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+a, a:hover, a:focus, a:visited {
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+    width: 100%;
+    position: relative;
+}
+
+a, input {
+    outline: 0 !important;
+    -webkit-outline: 0;
+}
+
+.tran25 {
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    -o-transition: all 0.25s ease;
+}
+
+/* LoginForm */
+
+.fixed_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+    z-index: 2000;
+    text-align: center;
+}
+
+#loginFormWrapper {
+    background-color: #667380;
+}
+
+.fixed_overlay::before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -4px;
+}
+
+.fixed_overlay_central {
+    display: inline-block;
+    text-align: left;
+    vertical-align: middle;
+}
+
+#loginForm {
+    background-color: #fff;
+    box-shadow: 1px 1px 5px rgba(126, 142, 159, 0.1);
+    margin-bottom: 10px;
+    padding: 0;
+    float: left;
+    width: 100%;
+}
+
+#loginForm .header, #loginForm .enterArea {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#loginForm .enterArea {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+#loginForm .enterArea input[type=text], #loginForm .enterArea input[type=password] {
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 7px 4px 7px 35px;
+    font-size: 15px;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.11) inset;
+    border: solid 1px #efefef;
+    position: relative;
+    background: transparent;
+    z-index: 2;
+}
+
+#loginForm .header {
+    color: #97A4B1;
+    padding: 20px;
+    line-height: 30px;
+    font-size: 26px;
+    font-weight: 600;
+    text-align: center;
+    border-bottom: 1px solid #85CE36;
+    position: relative;
+    top: 0;
+    left: 0;
+    background: transparent;
+    display: block;
+}
+
+#loginForm .header i {
+    color: #85CE36;
+    margin-right: 8px;
+    position: relative;
+    top: 1px;
+}
+
+#loginForm .login_wrapper i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: #a9a9a9;
+    z-index: 1;
+}
+
+/* ------------------------------------------------ */
+
+#sidebar-menu li ul {
+    height: auto;
+}
+
+#tabs_settings {
+    list-style-type: none;
+}
+
+#tabs_header li a {
+    padding: 5px 25px;
+    color: #fff;
+    float: left;
+    width: 100%;
+    border-radius: 4px;
+}
+
+#tabs_header li {
+    float: left;
+    margin-right: 3px;
+}
+
+.pdef {
+    padding: 8px 20px;
+}
+
+.bor-bottom {
+    border-bottom: 1px solid #d7dde4;
+}
+
+.input_overlay {
+    float: left;
+    width: 100%;
+    padding-left: 230px;
+    margin-bottom: 10px;
+}
+
+.input_desc {
+    width: 225px;
+    float: left;
+    position: absolute;
+    top: 0;
+    color: #4f5f6f;
+    font-weight: 600;
+}
+
+.submit_form_in_header {
+    position: absolute;
+    top: 8px;
+    right: 20px;
+}
+
+.form-control {
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 1;
+}
+
+.combobox-wrapper {
+    width: 100%;
+    padding-right: 34px;
+    position: relative;
+    display: block;
+}
+
+.combobox-toggle {
+    height: 34px;
+    width: 34px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #6e8cd7;
+    cursor: pointer;
+    color: #fff;
+    line-height: 34px;
+    text-align: center;
+    z-index: 2;
+}
+
+.form-control:focus {
+    border: 1px solid #e0e0e0;
+    background: #FFF;
+    box-shadow: none;
+}
+
+.t-a-r {
+    text-align: right;
+}
+.m0 {
+    margin: 0 !important;
+}
+
+.header_buttons_row {
+    padding: 7px 20px;
+}
+
+.header_buttons_row .btn {
+    margin: 0 7px 0 0;
+}
+
+.dropdown-toggle::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    content: "";
+    border-top: .3em solid;
+    border-right: .3em solid transparent;
+    border-left: .3em solid transparent;
+    float: right;
+    top: 8px;
+    position: relative;
+}
+
+.fll {
+    float: left;
+}
+
+#user_actions {
+    min-width: 160px;
+    text-align: left;
+}
+
+#search_users {
+    float: right;
+}
+
+#search_users .form-inline .input-group {
+    margin-bottom: 0;
+}
+
+.text-xs-right {
+    text-align: right !important;
+}
+
+.item-actions-dropdown.toggled .item-actions-toggle-btn span.inactive {
+    display: none;
+}
+
+.item-actions-dropdown.toggled .item-actions-toggle-btn span.active {
+    display: initial;
+}
+
+.item-actions-dropdown.toggled .item-actions-block {
+    margin-left: 0;
+}
+
+.ajaxAlertModal span.title {
+    text-align: center;
+    width: 100%;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+.ajaxAlertError span.title {
+    text-align: center;
+    width: 100%;
+    line-height: 35px;
+    font-size: 16px;
+}
+
+.ajaxAlertError div.content {
+    text-align: center;
+}
+
+.combobox-toggle:focus, .combobox-toggle:hover {
+    color: #ffffff;
+}
+
+.mt10 {
+    margin-top: 10px;
+}
+
+#goWebSite {
+    float: right;
+    color: #777;
+    margin: 24px 50px;
+}
+
+#goWebSite i {
+    margin-right: 7px;
+}
+
+.fr {
+    float: right;
+}
+
+.error-msg {
+    padding: 100px 30px;
+    text-align: center;
+    font-size: 17px;
+    color: #777;
+}
+
+#addSlide i {
+    margin-right: 7px;
+}
+
+.t-a-c {
+    text-align: center;
+}
+
+#saveSiteConfigs {
+    position: absolute;
+    top: -78px;
+    right: 15px;
+}
+
+#postContentWrapper {
+    margin-top: 35px;
+}
+
+
+
+#pagination {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.pagination .disabled {
+    display: none;
+}
+
+
+.noUsers {
+    text-align: center;
+    display: block;
+    width: 100%;
+    line-height: 15px;
+    margin-top: 55px;
+}
+
+
+.topRightHeadingButton {
+    position: absolute;
+    top: 15px;
+    right: 45px;
+    border-radius: 4px;
+}
+
+.topRightHeadingButton i {
+margin-right: 7px;
+    position: relative;
+    top: 1.5px;
+}
+
+.autoCloseAlert {
+    text-align: center;
+    font-weight: bold;
+    color: #777;
+}
+
+span.alertCentered {
+    padding-top: 5px;
+    width: 100%;
+    display: block;
+}
+
+label.middle {
+    line-height: 29px;
+}
+
+#userAddForm .form-control2 {
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 1;
+}
+
+#addUserSubmitWrapper {
+
+}
+
+#addUserButton {
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+}
+
+#addUserSubmitWrapper {
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+}
+
+div#addUserSubmitWrapper::before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+#uberModal .btn-primary {
+    float: none;
+    margin: 0 0 0 5px;
+}
+
+#uberModal .modal-footer .btn-default {
+    border-color: #adadad;
+    background-color: #fff;
+}
+
+.requiredRed {
+    border-color: rgba(255, 96, 96, 0.44);
+}
+
+.smBtn {
+    border: solid 1px transparent;
+    color: #595959;
+    border-radius: 4px;
+    padding: 1px 5px;
+    background: #e9e9e9;
+    margin-bottom: 0;
+    font-size: 11px;
+    border-color: #c8c8c8;
+}
+
+.noRates {
+    text-align: center;
+    width: 100%;
+    display: block;
+    margin-top: 16px;
+}
+
+.ratesPanel {
+    min-height: 400px;
+}
+
+.tarBtnWrapper {
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+
+.tarBtnWrapper i {
+margin: 0 7px;
+position: relative;
+top: 1px;
+}
+
+.toggleableBtn {
+    border: solid 1px transparent;
+    color: #595959;
+    border-radius: 4px;
+    padding: 1px 5px;
+    background: transparent;
+    margin-bottom: 0;
+    font-size: 14px;
+    border-color: transparent;
+    color: #33b86c;
+    display: none;
+    position: relative;
+    top: 0.5px;
+}
+
+
+.editRateSubmit:focus, .editRateSubmit:active, .editRateSubmit:hover {
+    color: #33b86c;
+}
+
+.toggledTr .toggleableBtn, .toggledTr .toggleableInput {
+    display: initial;
+}
+
+.toggledTr .toggleableBtn, .toggledTr .toggleableInput {
+    display: initial;
+}
+
+.toggledTr .AppLabsSelectProto.toggleableInput.toggled {
+    display: block;
+}
+
+
+
+.table.editable tr:nth-child(2n) .toggleableInput {
+    background-color: #fff;
+}
+.toggleableInput {
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    display: none;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.toggleableInput:focus, .toggleableInput:active {
+    background: #fff;
+
+}
+
+.ratePercent {
+    text-align: center;
+}
+
+.toggledTr .toggledHide {
+    display: none;
+}
+
+#ratesListTable tr {
+    height: 40px;
+}
+
+#uberAccountsListTable .toggleableInput {
+    width: 100%;
+}
+
+.rateName input {
+    width: 100%;
+}
+
+.rateName {
+    width: 220px;
+}
+
+.ratePercent input {
+    width: 35px;
+    padding: 2px 0;
+    text-align: center;
+}
+
+table .t-a-r button {
+    margin-left: 3px;
+}
+
+.ratesPanel .form-group {
+    margin-bottom: 7px;
+}
+
+.transpBtn {
+    border: none;
+    background: transparent;
+    line-height: 1px;
+}
+
+.transpBtn .fa-pencil {
+    position: relative;
+    top: 1px;
+}
+
+.toggledHide {
+    line-height: 25px;
+}
+
+#ServerTime {
+    font-family: cambria;
+    padding-top: 10px;
+}
+
+.ServerTime label {
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+}
+
+.ServerTime .timer {
+    text-align: center;
+    font-size: 13px;
+}
+
+.ServerTime span.icon {
+    font-size: 11px;
+    margin-right: 0;
+}
+
+.ServerTime span.hour {
+    position: relative;
+    right: -2px;
+}
+
+.ServerTime .day {
+    display: none;
+}
+
+.ServerTime span.delimeter {
+    position: relative;
+    top: -0.5px;
+    font-weight: bold;
+}
+
+.ServerTime span.minute {
+    position: relative;
+    left: -1.5px;
+}
+
+.ServerTime span.seconds {
+    display: none;
+}
+
+.form-horizontal.leftLabels .control-label {
+    text-align: left;
+}
+
+.form-horizontal.leftLabels .form-control {
+    text-align: center;
+}
+
+
+.uberAccountsListActions td {
+    vertical-align: middle;
+}
+
+.AjaxPreloadTitle span.main {
+    width: 100%;
+    text-align: center;
+    display: block;
+    font-size: 21px;
+}
+
+.AjaxPreloadTitle span.mini {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 3px;
+}
+
+.scanUberAccount .active {
+    display: none;
+}
+
+.scanUberAccount.scanning .active {
+    display: initial;
+}
+
+.scanUberAccount.scanning .default {
+    display: none;
+}
+
+.scanUberAccount i {
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+button.btn.scanUberAccount.btn-success.scanning {
+    background: #6e8cd7;
+    border-color: #6e8cd7;
+    cursor: default;
+}
+
+.driverStatusIco {
+    font-size: 20px;
+}
+
+.status-ok {
+    color: #33b86c;
+}
+
+.status-wrong {
+    color: #e70000;
+    position: relative;
+    top: 0.5px;
+}
+
+#uberDrivers .t-a-r {
+    width: 20px;
+    padding: 10px 8px;
+}
+
+.CustomSelectMenu {
+    width: 100%;
+    display: block;
+}
+
+.AppLabsSelect {
+    display: none;
+}
+
+.AppLabsSelectProto .currentValue {
+    width: 100%;
+    font-size: 14px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
+    box-shadow: none;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    position: relative;
+    padding-right: 34px;
+
+}
+
+.AppLabsSelectProto {
+    background-color: #fafafa;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    padding: 0;
+    border: none;
+    min-width: 100px;
+}
+
+.AppLabsSelectProto ul {
+    position: absolute;
+    top: 35px;
+    border: solid 1px #eee;
+    border-radius: 2px;
+    background: #fff;
+    width: 100%;
+    left: 0;
+    display: none;
+    z-index: 2;
+}
+
+.AppLabsSelectProto .currentValue::before {
+    content: "\f0d7";
+    display: block;
+    width: 34px;
+    height: 33px;
+    position: absolute;
+    top: -0.5px;
+    right: 0;
+    background: #33b86c;
+    border-radius: 0 2px 2px 0;
+    border: none;
+    color: #fff;
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 33px;
+}
+
+.AppLabsSelectProto ul li {
+    padding: 3px;
+}
+
+.AppLabsSelectProto ul li:hover {
+    background: #f0f3f6;
+    color: #2f353f;
+}
+
+
+.AppLabsSelectProto ul li.current {
+    background: #33b86c !important;
+    color: #fff !important;
+}
+
+
+.AppLabsSelectProto.toggled ul {
+    display: initial;
+}
+
+
+.resultAvatar img {
+    height: 75px;
+    width: 75px;
+}
+
+.resultAvatar {
+    min-height: 85px;
+}
+
+#uberDrivers a {
+    color: #797979;
+}
+
+
+#driverForm span.result input {
+    width: 100%;
+}
+
+.AppLabsSelectProto .delimeter {
+    margin: 0 10px;
+}
+
+#selectReportWrapper {
+    position: absolute;
+    top: 15px;
+    right: 60px;
+    min-width: 250px;
+}
+
+
+.greenFont {
+    color: #33b86c;
+}
+
+#daysRow {
+    width: 100%;
+    display: inline-block;
+    margin: 10px 0;
+    padding: 0 0 10px 0;
+    border: solid 1px #ddd;
+    border-width: 1px 0;
+    margin-bottom: 20px;
+}
+
+#daysRow li {
+    display: block;
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ccc;
+    border-radius: 0;
+    border-width: 1px 0 1px 1px;
+    border-style: solid;
+    padding: 13px 5px;
+    width: 14.28%;
+    margin-top: 10px;
+    cursor: pointer;
+    background: #FFF;
+    color: #555;
+    text-transform: capitalize;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+}
+
+#daysRow li:last-child {
+    border-width: 1px;
+    border-radius: 0 2px 2px 0;
+}
+
+#daysRow li:first-child {
+    border-radius: 2px 0 0 2px;
+}
+
+div#paymentButtons button {
+    color: #fff;
+    background: #33b86c;
+    border-color: #33b86c;
+}
+
+td.creditCard {
+    font-family: monospace;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+#displayFieldsList .div_based_checkbox {
+    float: left;
+}
+
+#displayFieldsList .div_based_checkbox span {
+margin-left: 5px;
+}
+
+#displayFieldsList .cb_wrapper {
+    float: left;
+    margin-right: 25px;
+    margin-bottom: 10px;
+}
+
+.dateRangeTitle {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: georgia;
+}
+
+#dateRangeWrapper .form-control {
+    max-width: 238px;
+    width: 100%;
+}
+
+#dateRangeWrapper label {
+    position: absolute;
+    top: 7px;
+    left: 15px;
+}
+
+
+
+#dateBeforePicker, #dateToPicker {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 50px;
+}
+
+#getStatsWrapper {
+    position: relative;
+    width: 100%;
+    padding-left: 50px;
+}
+
+button#getStatsByDateRange {
+    width: 238px;
+    max-width: 100%;
+    margin-bottom: 30px;
+}
+
+.reportDate {
+    margin-left: 45px;
+    font-size: 14px;
+    font-family: segoe ui;
+
+}
+
+
+.saveTheDriver {
+ width: 100%;
+}
+
+
+.mh900 {
+min-height: 900px;
+}
+
+
+#reportSelectWrapper {
+    position: absolute;
+    width: 400px;
+    max-width: 100%;
+    top: 15px;
+    right: 60px;
+}
+
+
+#payPartModal .form-group {
+    display: inline-block;
+    width: 100%;
+}
+
+#payPartErrorText {
+    padding: 15px;
+    color: red;
+    text-align: center;
+    border: solid 1px #eee;
+    margin: 15px;
+    font-family: cambria;
+    display: none;
+}
+
+button#PayEveryThingToSelected {
+    width: 400px;
+    float: right;
+    margin-right: 15px;
+}
+
+#WeekDays li {
+    width: 12.5%;
+    float: left;
+    text-align: center;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    padding: 15px 5px;
+    height: 68px;
+    border-color: #ddd;
+    cursor: pointer;
+    position: relative;
+}
+
+#WeekDays li:first-child {
+    border-width: 0 1px 0 1px;
+}
+
+#WeekDays li:first-child .title {
+    margin-top: 8px;
+}
+
+#WeekDays li.current::before {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    border-top: 35px solid transparent;
+    border-right: 0px solid #fff;
+    border-bottom: 35px solid transparent;
+    border-left: 39px solid #ddd;
+    right: auto;
+    left: 0;
+}
+
+#WeekDays li.current::after {
+content: " ";
+    display: block;
+    position: absolute;
+    right: auto;
+    left: 0;
+    top: 0;
+    border-top: 35px solid transparent;
+    border-right: 0px solid #fbfbfb;
+    border-bottom: 35px solid transparent;
+    border-left: 35px solid #fbfbfb;
+}
+
+#WeekDays li span {
+    position: relative;
+    z-index: 1;
+}
+
+#WeekDays ul {
+    width: 100%;
+    display: inline-block;
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #ddd;
+}
+
+#WeekDays {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+#WeekDays li .title {
+    font-size: 13px;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+    font-family: cambria;
+}
+
+#WeekDays li .date {
+    font-family: Segoe ui;
+    font-size: 12px;
+}
+
+#WeekDays li::before {
+
+}
+
+.weekTab {
+    display: none;
+}
+
+#totalWeekStats {
+    display: table-row-group;
+}
+
+#DailyStats {
+    min-height: 400px;
+}
+
+#TotalStats {
+min-height: 500px;
+}
+
+#TotalStats .noStats {
+    line-height: 400px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+#findDrivers {
+    margin-top: 30px;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+#AnalyticsButtonRow button::before {
+    content: "\f00c";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+    transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    margin-right: 7px;
+}
+
+#AnalyticsButtonRow button.current::before {
+    opacity: 1;
+}
+
+/* purple-form */
+
+.purple-form .AppLabsSelectProto .currentValue::before {
+  background: #6e8cd7;
+}
+
+
+
+.form-title {
+    margin-bottom: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: solid 1px #ddd;
+    padding-bottom: 12px;
+}
+
+
+.field_desc {
+    font-style: italic;
+    line-height: 34px;
+}
+

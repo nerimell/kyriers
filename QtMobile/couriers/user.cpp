@@ -14,7 +14,7 @@ string User::getSsid(){
     return ssid;
 }
 
-int User::getNumber() {
+string User::getNumber() {
     return number;
 }
 
@@ -28,6 +28,10 @@ void User::setId(int usid) {
 
 string User::getUserName() {
     return userName;
+}
+
+string User::getLastName() {
+    return lastName;
 }
 
 string User::getResponse() {
@@ -50,12 +54,16 @@ void User::setSsid(string ssid) {
     this->ssid = ssid;
 }
 
-void User::setNumber(int number) {
+void User::setNumber(string number) {
     this->number = number;
 }
 
 void User::setUserName(string userName) {
     this->userName = userName;
+}
+
+void User::setLastName(string lastName) {
+    this->lastName = lastName;
 }
 
 void User::setPassword(string password) {

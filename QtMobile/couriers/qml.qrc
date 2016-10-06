@@ -1,16 +1,38 @@
 <RCC>
     <qresource prefix="/">
+        <file>fonts/Comfortaa-Light.ttf</file>
+        <file>fonts/SFUIText-Regular.otf</file>
+        <file>ui/backButton.png</file>
         <file>ui/background1.png</file>
         <file>ui/background2.png</file>
+        <file>ui/background3.png</file>
+        <file>ui/clearButton.png</file>
         <file>ui/drawerButton.png</file>
+        <file>ui/humanIcon.png</file>
         <file>ui/mainlogo.png</file>
+        <file>ui/navbarBack.png</file>
         <file>ui/navbarMenu.png</file>
         <file>ui/passIcon.png</file>
         <file>ui/phoneIcon.png</file>
+        <file>basic.qml</file>
         <file>loads.qml</file>
-        <file>login.qml</file>
         <file>main.qml</file>
         <file>Page1Form.ui.qml</file>
         <file>piner.qml</file>
+        <file>regist.qml</file>
+        <file>login.qml</file>
+        <file>fonts/SF_UI_TEXt_Light.ttf</file>
+        <file>ui/background4.png</file>
+        <file>ui/icons/config_blue.png</file>
+        <file>ui/icons/config_white.png</file>
+        <file>ui/icons/exit_blue.png</file>
+        <file>ui/icons/exit_white.png</file>
+        <file>ui/icons/find_blue.png</file>
+        <file>ui/icons/find_white.png</file>
+        <file>ui/icons/orders_blue.png</file>
+        <file>ui/icons/orders_white.png</file>
+        <file>ui/icons/status_blue.png</file>
+        <file>ui/icons/status_white.png</file>
+        <file>ui/navbarLogo.png</file>
     </qresource>
 </RCC>

@@ -8,12 +8,13 @@ class User
 {
 private:
     int id;
-    int number;
 
-    string pin;
+    string pin = "";
     string mail;
+    string number;
     string ssid= "";
     string userName;
+    string lastName;
     string password;
     string response;
 
@@ -26,7 +27,7 @@ public:
 
     string getPin();
 
-    int getNumber();
+    string getNumber();
 
     string getSsid();
 
@@ -34,11 +35,13 @@ public:
 
     void setPin(string);
 
-    void setNumber(int);
+    void setNumber(string);
 
     string getResponse();
 
     string getUserName();
+
+    string getLastName();
 
     string getPassword();
 
@@ -49,6 +52,8 @@ public:
     void setPassword(string);
 
     void setUserName(string);
+
+    void setLastName(string);
 
     void setResponse(string);
 };

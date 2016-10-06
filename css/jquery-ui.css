@@ -129,9 +129,12 @@
 }
 
 .ui-menu .ui-menu-item {
-    padding: 3px 20px;
     color: #333;
     cursor: pointer;
+    line-height: 30px;
+    font-size: 13px;
+    padding: 3px 15px;
+    border-bottom: solid 1px #ddd;
 }
 
 .ui-menu .ui-menu-item-wrapper {

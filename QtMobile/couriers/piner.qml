@@ -4,48 +4,63 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Controls 2.0
 
 Item {
-    id: pinMenu
+    id: rootPin
     visible: true
 
+    Timer {
+        id: pinerScreenTimer
+        interval:2000;
+        onTriggered:checkWiFiConnection()
+    }
+
+    Component.onCompleted: {
+        if(event_handler.isPined())
+        if(!event_handler.pinConnected())
+            pinerScreenTimer.start()
+    }
+
+    function checkWiFiConnection(){
+        if(!event_handler.pinConnected())
+        {
+            dialogAndroidTextLabel.text = "Нет доступа к интернету"
+            dialogAndroid.open();
+        }
+    }
 
     //--------------------------------------------------dialogAndroid----------------------------------------------
     Dialog {
         id: dialogAndroid
 
-        /* */
-        width: pinMenu.width-40 // Задаём ширину диалога, работает на десктопе, но не на Android
-        height:pinMenu.height/2 // Задаём высоту диалога, работает на декстопе, но не на Android
-        /* */
-
         // Создаём содержимое диалогового окна
         contentItem: Rectangle {
-            color: "#f7f7f7"     // Задаём цвет
-            width: pinMenu.width-40 // Устанавливаем ширину, необходимо для Android - устройства
-            height:pinMenu.height/2 // Устанавливаем высоту, необходимо для Android - устройства
+            color: "#f7f7f7"
+            width: rootPin.width-80
+            height: rootPin.height/3
 
             // Область для сообщения диалогового окна
             Rectangle {
+                color: "#f7f7f7"
                 anchors.top: parent.top
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidDividerHorizontal.top
-                color: "#f7f7f7"//Задаём цвет области
 
                 Label {
                     id: dialogAndroidTextLabel
 
+                    color: "#000000"
+                    font.bold: true
                     font.pointSize: 20
-
-                    color: "#34aadc"
-                    anchors.centerIn: parent//Помещаем сообщение в центр области отобраэжения
+                    font.family: sfuiFont.name
+                    anchors.centerIn: parent// put сообщение в центр области отобраэжения
                 }
             }
 
             // Создаём горизонтальный разделитель с Rectangle
             Rectangle {
                 id: dialogAndroidDividerHorizontal
-                color: "#d7d7d7"
-                height: 2 // Устанавливаем ширину в два пикселя
+                color: "#808080"
+                height: 2 // Устанавливаем ширину в 2 пикселя
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidrow.top
@@ -57,8 +72,8 @@ Item {
              */
             Row {
                 id: dialogAndroidrow
-                height: 50
-                // А также прибиваем строку к низу диалогового окна
+                height: 100
+                // А также прибиваем строку к низу у диалогового окна
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
@@ -66,14 +81,13 @@ Item {
                 Button {
                     id: dialogAndroiddialogButtonCancel
 
-                    // Растягиваем кнопку по высоте строки
+                    // Растянем кнопку по высоте строки
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    //Задаём ширину кнопки на половину строки минус 1 пиксел
-                    width: parent.width / 2 - 1
+
+                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
 
                     contentItem: Text {
-
                         font.pointSize: 24
 
                         color: "#34aadc"
@@ -82,58 +96,59 @@ Item {
                         horizontalAlignment: Text.AlignHCenter
                     }
 
-                    // Стилизуем кнопку
                     background: Rectangle {
-                        border.width: 0
-                        color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
+                    border.width: 0
+                    color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
                     }
 
-                    onClicked: dialogAndroid.close()// По нажатию кнопки закрываем диалог
+                    //onClicked: dialogAndroid.close()// По нажатию кнопки закрыть диалог
                 }
 
-                // Создаём разделитель между кнопками шириной в 2 пикселя
+                //Создаю разделитель между кнопками шириной в 2 пикселя
                 Rectangle {
                     id: dialogAndroidDividerVertical
                     width: 2
+                    color: "#808080"
                     // Растягиваем разделитель по высоте объекта строки
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    color: "#d7d7d7" // Задаём цвет разделителя
                 }
 
                 Button {
                     id: dialogAndroidDialogButtonOk
 
-                    // Растягиваем кнопку по высоте строки
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    //Задаём ширину кнопки на половину строки минус 1 пиксел
-                    width: parent.width / 2 - 1
+                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
+                    //width: parent.width// если необходима только одна кнопочка на экран
 
                     contentItem: Text {
-
+                        font.bold: true
                         font.pointSize: 24
 
                         color: "#34aadc"
-                        text: qsTr("Ок")
+                        text: qsTr("Хорошо")
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
                     }
 
-                    // Стилизуем кнопку
                     background: Rectangle {
                         border.width: 0
-                        color: dialogAndroidDialogButtonOk.pressed ? "#d7d7d7" : "#f7f7f7"
+                        color:dialogAndroidDialogButtonOk.pressed? "#d7d7d7" : "#f7f7f7"
                     }
 
                     onClicked: {
-                        pinSquare1.color="#10387E"
-                        pinSquare2.color="#10387E"
-                        pinSquare3.color="#10387E"
-                        pinSquare4.color="#10387E"
+                        if(dialogAndroidTextLabel.text == "Вы исчерпали лимит попыток")
+                            loader.source="qrc:/basic.qml"
+                        if(dialogAndroidTextLabel.text == "Нет доступа к интернету")
+                            pinerScreenTimer.start()
+                        pinSquare1.color="#FFFFFF"
+                        pinSquare2.color="#FFFFFF"
+                        pinSquare3.color="#FFFFFF"
+                        pinSquare4.color="#FFFFFF"
                         event_handler.clearPin()
                         dialogAndroid.close()
-                    }// По нажатию кнопки закрываем диалог
+                    }
                 }
             }
         }
@@ -145,121 +160,156 @@ Item {
     Item {
         visible: false
         anchors.fill: parent
-        id: busyIndicatorMainScreen
+        id: busyIndicatorPinerScreen
 
-        RowLayout {
-            anchors.fill: parent
-            id: busyIndicatorRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
+        Image {
+            x: parent.width/2 - width/2
+            y: (parent.width<parent.height)?parent.height/2-height/2:0
+            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
+            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
+            source: "ui/background4.png"
         }
 
         BusyIndicator {
-            id: busyIndicator
-            width: busyIndicatorRowLayout.width  /2
-            height: busyIndicatorRowLayout.height/2
-            x: busyIndicatorRowLayout.width/2 - busyIndicator.width  /2
-            y: busyIndicatorRowLayout.height/2 - busyIndicator.height/2
+            width: parent.width  /2
+            height: parent.height/2
+            x: parent.width/2 -width /2
+            y: parent.height/2-height/2
         }
     }
     //-------------------------------------------------------------------------------------------------------------
 
     Item {
-        visible:true
+        visible: true
         id: pinScreen
         anchors.fill: parent
 
-        RowLayout {
+        Rectangle {
+            color: "#5DA7EF"
             anchors.fill: parent
-            id: mainScreenRowLayout
-
-            Image {
-                anchors.fill: parent
-                source: "ui/background1.png"
-            }
         }
 
         Image {
-            id: firstScreenNavbarMenu
-            x: 0
-            anchors.topMargin: 0
-            anchors.top: parent.top
-            source: "ui/navbarMenu.png"
-
-            anchors.left: parent.left
-            anchors.right: parent.right
+            id: imagelogo
+            x: parent.width/2-imagelogo.width/2
+            y: 0.1*pinScreen.height
+            width: (parent.width<600)? 365 * parent.width/500: 365 * 600/500
+            height: (parent.width<600)? 164 * parent.width/500: 164 * 600/500
+            source: "ui/mainlogo.png"
         }
 
+        Text {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: parent.width / 2 - 100
+            anchors.rightMargin: parent.width/ 2 - 100
+
+            font.pointSize: 14
+            font.family: sfuiFont.name
+            color: "#FFFFFF"
+            y: 0.4*parent.height
+            horizontalAlignment: Text.AlignHCenter
+
+            text: "Введите код"
+        }
 
         RowLayout {
             id: rowLayout0
+            spacing: 80
 
             anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.topMargin: 0.2 * parent.height
-            anchors.leftMargin: parent.width / 2 - 5*pinSquare1.width / 2 + gridLayout1.columnSpacing
-            anchors.rightMargin: parent.width/ 2 - 5*pinSquare1.width / 2
+            anchors.topMargin: 0.48 * parent.height
+            x: parent.width / 2 - (pinSquare1.width + spacing) - spacing + pinSquare1.width
 
             Rectangle {
                 id: pinSquare1
-                color: "#10387E"
-                width: 80
-                height: 80
-                radius: 80
+                color: "#FFFFFF"
+                width: 20
+                height: 20
+                radius: 20
+                Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+                    id: underlineCircle
+                    x: pinSquare1.x - 25
+                    y: pinSquare1.y + pinSquare1.height + 20
+                    width: pinSquare1.width + 50
+                    height: 1
+                    border.color: "#FFFFFF"
+                    border.width: 1
+                }
             }
 
             Rectangle {
                 id: pinSquare2
-                color: "#10387E"
-                width: 80
-                height: 80
-                radius: 80
+                color: "#FFFFFF"
+                width: 20
+                height: 20
+                radius: 20
+                Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+                    x: pinSquare2.x - (pinSquare1.width + rowLayout0.spacing) - 25
+                    y: pinSquare2.y + pinSquare2.height + 20
+                    width: underlineCircle.width
+                    height: 1
+                    border.color: "#FFFFFF"
+                    border.width: 1
+                }
             }
 
             Rectangle {
                 id: pinSquare3
-                color: "#10387E"
-                width: 80
-                height: 80
-                radius: 80
+                color: "#FFFFFF"
+                width: 20
+                height: 20
+                radius: 20
+                Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+                    x: pinSquare3.x - 2*(pinSquare1.width + rowLayout0.spacing) - 25
+                    y: pinSquare3.y + pinSquare3.height + 20
+                    width: underlineCircle.width
+                    height: 1
+                    border.color: "#FFFFFF"
+                    border.width: 1
+                }
             }
 
             Rectangle {
                 id: pinSquare4
-                color: "#10387E"
-                width: 80
-                height: 80
-                radius: 80
+                color: "#FFFFFF"
+                width: 20
+                height: 20
+                radius: 20
+                Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+                    x: pinSquare4.x - 3*(pinSquare1.width + rowLayout0.spacing) - 25
+                    y: pinSquare4.y + pinSquare4.height + 20
+                    width: underlineCircle.width
+                    height: 1
+                    border.color: "#FFFFFF"
+                    border.width: 1
+                }
             }
         }
 
         Grid {
             id: gridLayout1
             columns: 3
-            rowSpacing: 5
-            columnSpacing: 5
-            height: parent.height/2
+            rowSpacing: 0
+            columnSpacing: 0
+            height: parent.height/2.5
 
-            width: 400
+            width: 500
             x: parent.width/2-gridLayout1.width/2
 
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 0.09 * parent.height
 
             Button {
                 id: button1
                 text: qsTr("1")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button1.down ? "#10387E" : "#337CFD"
+                    color: button1.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button1.text
@@ -269,36 +319,54 @@ Item {
                     color: button1.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -306,13 +374,14 @@ Item {
             Button {
                 id: button2
                 text: qsTr("2")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button2.down ? "#10387E" : "#337CFD"
+                    color: button2.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button2.text
@@ -322,36 +391,54 @@ Item {
                     color: button2.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -359,13 +446,14 @@ Item {
             Button {
                 id: button3
                 text: qsTr("3")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button3.down ? "#10387E" : "#337CFD"
+                    color: button3.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button3.text
@@ -375,36 +463,54 @@ Item {
                     color: button3.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -412,13 +518,14 @@ Item {
             Button {
                 id: button4
                 text: qsTr("4")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button4.down ? "#10387E" : "#337CFD"
+                    color: button4.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button4.text
@@ -428,36 +535,54 @@ Item {
                     color: button4.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -465,13 +590,14 @@ Item {
             Button {
                 id: button5
                 text: qsTr("5")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button5.down ? "#10387E" : "#337CFD"
+                    color: button5.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button5.text
@@ -481,36 +607,54 @@ Item {
                     color: button5.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -518,13 +662,14 @@ Item {
             Button {
                 id: button6
                 text: qsTr("6")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button6.down ? "#10387E" : "#337CFD"
+                    color: button6.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button6.text
@@ -534,36 +679,54 @@ Item {
                     color: button6.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -571,13 +734,14 @@ Item {
             Button {
                 id: button7
                 text: qsTr("7")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button7.down ? "#10387E" : "#337CFD"
+                    color: button7.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button7.text
@@ -587,36 +751,54 @@ Item {
                     color: button7.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -624,13 +806,14 @@ Item {
             Button {
                 id: button8
                 text: qsTr("8")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button8.down ? "#10387E" : "#337CFD"
+                    color: button8.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button8.text
@@ -640,36 +823,54 @@ Item {
                     color: button8.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
@@ -677,13 +878,14 @@ Item {
             Button {
                 id: button9
                 text: qsTr("9")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button9.down ? "#10387E" : "#337CFD"
+                    color: button9.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button9.text
@@ -693,74 +895,78 @@ Item {
                     color: button9.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
 
             Button {
                 id: button10
-                text: qsTr("Домой")
-                font.pointSize: 24
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                background: Rectangle {color: "#5DA7EF"}
 
-                background: Rectangle {
-                    color: button10.down ? "#10387E" : "#337CFD"
-                }
-                contentItem: Text {
-                    text: button10.text
-                    font: button10.font
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    color: button10.down ? "#FFFFFF" : "#FFFFFF"
-                }
-
-                onClicked: {
-                    loader.source="qrc:/login.qml"
-                }
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
             }
 
             Button {
                 id: button11
                 text: qsTr("0")
-                font.pointSize: 44
+                font.pointSize: 34
+                font.family: comfortFont.name
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button11.down ? "#10387E" : "#337CFD"
+                    color: button11.down ? "#10387E" : "#5DA7EF"
                 }
                 contentItem: Text {
                     text: button11.text
@@ -770,64 +976,175 @@ Item {
                     color: button11.down ? "#FFFFFF" : "#FFFFFF"
                 }
                 onClicked: {
-                    event_handler.setMyPin(text)
-                    switch(event_handler.getMyPinLength()) {
-                    case -1:
-                        pinSquare4.color="#337CFD"
-                        pinScreen.visible = false
-                        busyIndicatorMainScreen.visible = true
-                        if(event_handler.network_login()) {
-                            loader.source = "qrc:/main.qml"
+                    if(!pinerScreenTimer.running) {
+                        event_handler.setMyPin(text)
+                        switch(event_handler.pinLength()) {
+                        case -1:
+                            pinSquare4.color="#FF0000"
+                            pinScreen.visible = false
+                            busyIndicatorPinerScreen.visible = true
+                            if(event_handler.network_login()) {
+                                event_handler.registrationPin(event_handler.getMyPin(),event_handler.getPhone(),event_handler.getPass())
+                                loader.source = "qrc:/main.qml"
+                            }
+                            else {
+                                dialogAndroidTextLabel.text="Нет доступа к сети"
+                                pinScreen.visible = true
+                                dialogAndroid.open();
+                            }
+                            busyIndicatorPinerScreen.visible = false
+                            break
+                        case 1:
+                            pinSquare1.color="#FF0000"
+                            break
+                        case 2:
+                            pinSquare2.color="#FF0000"
+                            break
+                        case 3:
+                            pinSquare3.color="#FF0000"
+                            break
+                        case 4:
+                            pinSquare4.color="#FF0000"
+                            if(event_handler.isPined()) {
+                                event_handler.pinIncr()
+                                if(event_handler.getPinInput()<5)
+                                    dialogAndroidTextLabel.text = "Введен не верный пин"
+                                else
+                                    dialogAndroidTextLabel.text = "Вы исчерпали лимит попыток"
+                                dialogAndroid.open();
+                            }
+                            else {
+                                if(event_handler.getMePin()=="") {
+                                    event_handler.setPin(event_handler.getMyPin())
+                                    dialogAndroidTextLabel.text = "Введите пин повторно"
+                                }
+                                else
+                                    dialogAndroidTextLabel.text = "Пин-коды не совпали!"
+                                dialogAndroid.open();
+                            }
+                            break
                         }
-                        else {
-                            dialogAndroidTextLabel.text="Нет доступа к сети"
-                            pinScreen.visible = true
-                            dialogAndroid.open();
-                        }
-                        busyIndicatorMainScreen.visible = false
-                        break
-                    case 1:
-                        pinSquare1.color="#337CFD"
-                        break
-                    case 2:
-                        pinSquare2.color="#337CFD"
-                        break
-                    case 3:
-                        pinSquare3.color="#337CFD"
-                        break
-                    case 4:
-                        pinSquare4.color="#337CFD"
-                        dialogAndroidTextLabel.text = "Введен не верный пин"
-                        dialogAndroid.open();
-                        break
                     }
                 }
             }
 
             Button {
                 id: button12
-                text: qsTr("Сбросить")
-                font.pointSize: 24
 
-                height:gridLayout1.height/4-gridLayout1.rowSpacing
-                width:gridLayout1.width/3-gridLayout1.columnSpacing
+                height: gridLayout1.height/4-gridLayout1.rowSpacing
+                width: gridLayout1.width/3-gridLayout1.columnSpacing
 
                 background: Rectangle {
-                    color: button12.down ? "#10387E" : "#337CFD"
+                    color: button12.down ? "#10387E" : "#5DA7EF"
                 }
-                contentItem: Text {
-                    text: button12.text
-                    font: button12.font
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
-                    color: button12.down ? "#FFFFFF" : "#FFFFFF"
+                Image {
+                    width: 46
+                    height: 32
+                    x: parent.width/2-width/2
+                    y: parent.height/2-height/2
+                    source: "ui/clearButton.png"
                 }
                 onClicked: {
                     event_handler.clearPin()
-                    pinSquare1.color="#10387E"
-                    pinSquare2.color="#10387E"
-                    pinSquare3.color="#10387E"
-                    pinSquare4.color="#10387E"
+                    pinSquare1.color="#FFFFFF"
+                    pinSquare2.color="#FFFFFF"
+                    pinSquare3.color="#FFFFFF"
+                    pinSquare4.color="#FFFFFF"
+                }
+            }
+        }
+
+        //---------------------------------Горизонтальные полосы---------------------------------
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: 0
+            y: parent.height - gridLayout1.height
+            width: parent.width
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: parent.width/2- gridLayout1.width/2
+            y: parent.height - gridLayout1.height + button1.height
+            width: 500
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: parent.width/2- gridLayout1.width/2
+            y: parent.height - gridLayout1.height + 2*button1.height
+            width: 500
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: parent.width/2- gridLayout1.width/2
+            y: parent.height - gridLayout1.height + 3*button1.height
+            width: 500
+            height: 1
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+        //--------------------------------------------------------------------------------------/
+
+
+        //---------------------------------Вертикальные полосы-----------------------------------
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: parent.width/2- gridLayout1.width/2 + button1.width
+            y: parent.height - gridLayout1.height
+            width: 1
+            height: gridLayout1.height
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            x: parent.width/2- gridLayout1.width/2 + 2*button1.width
+            y: parent.height - gridLayout1.height
+            width: 1
+            height: gridLayout1.height
+            border.color: "#FFFFFF"
+            border.width: 1
+        }
+        //--------------------------------------------------------------------------------------/
+
+        Button {
+            id: pinerScreenBackButton
+            width: 100
+            height: 42 * pinScreen.height/900
+            anchors.leftMargin: 20
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.topMargin: 25 * parent.height/900
+
+            Image {
+                fillMode: Image.PreserveAspectFit
+                source: "ui/backButton.png"
+                width: 23
+                height:42 * pinScreen.height/900
+            }
+
+            background: Rectangle {
+                opacity: 0
+            }
+
+            onClicked: {
+                if(event_handler.isPined())
+                    loader.source = "qrc:/basic.qml"
+                else {
+                    if(event_handler.getMePin()=="")
+                        dialogAndroidTextLabel.text = "Придумайте свой пин-код"
+                    else {
+                        event_handler.clearPin()
+                        event_handler.cleanMePin()
+                        pinSquare1.color="#FFFFFF"
+                        pinSquare2.color="#FFFFFF"
+                        pinSquare3.color="#FFFFFF"
+                        pinSquare4.color="#FFFFFF"
+                        dialogAndroidTextLabel.text = "Первый пин-код сброшен!"
+                    }
+                    dialogAndroid.open();
                 }
             }
         }

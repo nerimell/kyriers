@@ -13,14 +13,63 @@
 
 
 // Main
+Route::get('/', 'DefaultController@index');
+Route::get('/calculate', 'CalcController@calculatorPage');
 
-Route::post('/auth/AppAuth', 'AuthController@appAuth');
-Route::get('/auth/AppAuth', 'AuthController@appAuth');
-Route::get('/auth/checker', 'AuthController@appChecker');
 
-// Users
 
-Route::get('app/submitNewPost', 'AppControllers\PostController@submitNewPost');
-Route::post('app/submitNewPost', 'AppControllers\PostController@submitNewPost');
 
+
+
+
+
+
+
+
+
+Route::get('/my/settings', 'UserActionsController@settings');
+
+
+
+
+
+// Auth
 Route::Auth();
+// AppAuth
+Route::post('/auth/AppAuth', 'AppControllers\AppAuthController@appAuth');
+Route::get('/auth/checker', 'AppControllers\AppAuthController@appChecker');
+Route::post('/auth/appRegistration', 'AppControllers\AppAuthController@appRegistration');
+Route::get('/auth/appLogout', 'AppControllers\AppAuthController@appLogout');
+// WebAuth
+Route::post('/auth/sendRegistration', 'AuthController@sendRegistration');
+Route::post('/auth/sendAuthorization', 'AuthController@sendAuthorization');
+
+
+
+
+
+
+
+
+
+
+// Admin
+Route::get('/control-panel', 'AdminController@dashboard');
+
+Route::get('/control-panel/globalConfigs', 'AdminController@globalConfigs');
+Route::post('/control-panel/globalConfigs', 'AdminController@globalConfigsSave');
+
+Route::get('/control-panel/sliderConfigs', 'AdminController@sliderConfigs');
+Route::get('/control-panel/analytics', 'AdminController@dashboard');
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/404', 'DefaultController@FOFError');

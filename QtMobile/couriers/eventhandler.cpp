@@ -8,45 +8,179 @@ bool EventHandler::isPined() {
     return isPin;
 }
 
-int EventHandler::getMyPinLength() {
-    if(mypin!=user.getPin())
+void EventHandler::pinIncr() {
+    pinInput++;
+}
+
+int EventHandler::pinLength() {
+    if(mypin != user.getPin())
         return mypin.length();
     return -1;
 }
 
+int EventHandler::getPinInput() {
+    return pinInput;
+}
+
+QString EventHandler::getMyPin() {
+    return QString(mypin.c_str());
+}
+
+void EventHandler::cleanMePin () {
+    isPin= false;
+    user.setPin("");
+}
+
+void EventHandler::setPin(QString mypin) {
+    user.setPin(mypin.toStdString());
+}
+
 void EventHandler::setMyPin(QString pin) {
-    mypin+= pin.toStdString();
+    mypin += pin.toStdString();
+}
+
+void EventHandler::setMail(QString mail) {
+    user.setMail(mail.toStdString());
 }
 
 void EventHandler::clearPin(){mypin = "";}
+
+QString EventHandler::getMePin() {
+    return QString(user.getPin().c_str());
+}
+
+void EventHandler::setPhone(QString phone) {
+    user.setNumber(phone.toStdString());
+}
+
+void EventHandler::setLogin(QString login) {
+    user.setUserName(login.toStdString());
+}
+
+void EventHandler::setPass(QString mypass) {
+    user.setPassword(mypass.toStdString());
+}
+
+QString EventHandler::getPhone() {
+    return QString(user.getNumber().c_str());
+}
+
+void EventHandler::setFamily(QString family) {
+    user.setLastName(family.toStdString());
+}
+
+QString EventHandler::getFamily(){
+    return QString(user.getLastName().c_str());
+}
+
+QString EventHandler::getLogin() {
+    return QString(user.getUserName().c_str());
+}
+
+QString EventHandler::getPass () {
+    return QString(user.getPassword().c_str());
+}
 
 EventHandler::EventHandler(QObject *parent) : QObject(parent) {
 }
 
 void EventHandler::savingToFile(QString phone,QString mypass) {
-    QFile file("couriers.txt");
+    QFile file("couriers.bin");
     if (file.open(QIODevice::WriteOnly)) {
-       file.write(QString("phone=" + phone + ";password=" + mypass + ";pin=1234").toStdString().c_str());
+       file.write(QString("phone=" + phone + ";password=" + mypass).toStdString().c_str());
     }
     file.close();
 }
 
-bool EventHandler::registration(QString login, QString pass1, QString pass2, QString email, QString phone, QString city) {
+bool EventHandler::pinConnected()
+{
+    QFile file("couriers.bin");
+    QString phone = "", pas = "";
+    file.open(QIODevice::ReadOnly);
+    QString memberString = file.readAll();
+
+    if (memberString.size() !=  0)
+    {
+        QStringList keyValPairs=memberString.split(";");
+        foreach (QString encodedPair, keyValPairs)
+        {
+            QStringList keyVal = encodedPair.split("=");
+            if (keyVal[0]=="phone")
+            user.setNumber((phone=keyVal.at(1)).toStdString());
+            else if (keyVal[0]=="password")
+            user.setPassword((pas=keyVal.at(1)).toStdString());
+        }
+    }
+    file.close();
+
+    string response = getMePin(phone,pas).toStdString();
+
+    if(response.length()> 0) {
+        user.setPin(response);
+        return true;
+    }
+    return false;
+}
+
+QString EventHandler::getMePin(QString login, QString pass1) {
+    string name = login.toStdString();
+    string pass = pass1.toStdString();
+    QUrl qUrl = domain+"auth/appGetPin";
+    QByteArray requestString=("phone=" + name+ "&password=" + pass).c_str();
+
+    httpPost.setUrl(&qUrl);
+    user.setResponse(httpPost.sendPost(&requestString).toStdString());
+
+    string response = user.getResponse();
+
+    qDebug() << "getMePin " << response.c_str();
+
+    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
+    QJsonObject itemObject= itemDoc.object();
+    return itemObject["pin_code"].toString();
+}
+
+bool EventHandler::registrationPin(QString pin, QString login, QString pass1) {
+    string ipin = pin.toStdString();
+    string name = login.toStdString();
+    string pass = pass1.toStdString();
+    QUrl qUrl=domain+"auth/appRegPin";
+    QByteArray requestString = ("pin_code_one=" + ipin + "&pin_code_two=" + ipin + "&phone=" + name+ "&password=" + pass).c_str();
+
+    httpPost.setUrl(&qUrl);
+    user.setResponse(httpPost.sendPost(&requestString).toStdString());
+
+    string response = user.getResponse();
+
+    // qDebug() << response.c_str();
+
+    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
+    QJsonObject itemObject = itemDoc.object();
+    if (itemObject["result"].toBool())
+        return true;
+    return false;
+}
+
+bool EventHandler::registration(QString login, QString family, QString pass1, QString pass2, QString email, QString phone, QString city) {
     string name = login.toStdString();
     string icity = city.toStdString();
-    string iphone=phone.toStdString();
-    string iemail=email.toStdString();
+    string iphone = phone.toStdString();
+    string iemail = email.toStdString();
+    string famname=family.toStdString();
     QUrl qUrl = domain+"auth/appRegistration";
     string password_one = pass1.toStdString();
     string password_two = pass2.toStdString();
 
-    QByteArray
-    requestString = ("phone=" + iphone + "&email=" + iemail + "&name=" + name + "&password_one=" + password_one + "&password_two=" + password_two + "&city=" + icity).c_str();
+    QByteArray requestString = ("phone=" + iphone + "&last_name=" + famname + "&email=" + iemail + "&name=" + name + "&password_one=" + password_one + "&password_two=" + password_two + "&city=" + icity).c_str();
 
     httpPost.setUrl(&qUrl);
-    QString str = httpPost.sendPost(&requestString);
+    user.setResponse(httpPost.sendPost(&requestString).toStdString());
 
-    QJsonDocument itemDoc = QJsonDocument::fromJson(str.toStdString().c_str());
+    string response = user.getResponse();
+
+    qDebug() << "Registration " << response.c_str();
+
+    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
     QJsonObject itemObject = itemDoc.object();
     if (itemObject["result"].toBool()) {
         user.setSsid(httpPost.sessID);
@@ -65,30 +199,36 @@ bool EventHandler::network_login(QString login, QString pass) {
     httpPost.setUrl(&qUrl);
     user.setResponse(httpPost.sendPost(&requestString).toStdString());
 
-    // qDebug() << user.getResponse().c_str();
+    string response = user.getResponse();
 
-    QJsonDocument itemDoc= QJsonDocument::fromJson(user.getResponse().c_str());
+    qDebug() << "Login With Parameter " << response.c_str();
+
+    if(response.length()>0) {
+    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
     QJsonObject itemObject = itemDoc.object();
     if (itemObject["result"].toBool()) {
         user.setSsid(httpPost.sessID);
         return true;
     }
+    }
     return false;
 }
 
 bool EventHandler::network_login() {
-    QUrl qUrl = domain+ "auth/AppAuth";
+    QUrl qUrl = domain + "auth/AppAuth";
+    string userphone = user.getNumber();
     string password = user.getPassword();
-    string username = user.getUserName();
 
-    QByteArray requestString = ("phone=" + username + "&password=" + password).c_str();
+    QByteArray requestString = ("phone=" + userphone + "&password=" + password).c_str();
 
     httpPost.setUrl(&qUrl);
     user.setResponse(httpPost.sendPost(&requestString).toStdString());
 
-    // qDebug() << user.getResponse().c_str();
+    string response = user.getResponse();
 
-    QJsonDocument itemDoc= QJsonDocument::fromJson(user.getResponse().c_str());
+    qDebug() << "Login Without Params " << response.c_str();
+
+    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
     QJsonObject itemObject = itemDoc.object();
     if (itemObject["result"].toBool()) {
         user.setSsid(httpPost.sessID);

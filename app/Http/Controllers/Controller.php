@@ -8,6 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 use Auth;
+use App\MainModel;
 
 class Controller extends BaseController
 {
@@ -15,7 +16,10 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        //$this->middleware('auth');
+        $cities = MainModel::getCities();
+        $userData = Auth::user();
+        Controller::setGlobalConfigs();
+        \View::share(compact('cities', 'userData'));
     }
 
     public static function getConfigs()
@@ -30,4 +34,6 @@ class Controller extends BaseController
         \View::share(compact('SiteConfigs'));
 
     }
+
+
 }
