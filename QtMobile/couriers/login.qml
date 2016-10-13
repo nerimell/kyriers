@@ -15,7 +15,7 @@ Item {
         contentItem: Rectangle {
             color: "#f7f7f7"
             width: rootlogin.width-80
-            height: rootlogin.height/3
+            height: rootlogin.height/2.5
 
             // Область для сообщения диалогового окна
             Rectangle {
@@ -31,7 +31,8 @@ Item {
                     color: "#000000"
                     font.bold: true
                     font.pointSize: 20
-                    font.family: sfuiFont.name
+                    font.family: sfuiFontLight.name
+                    horizontalAlignment: Text.AlignHCenter
                     anchors.centerIn: parent// put сообщение в центр области отобраэжения
                 }
             }
@@ -40,7 +41,7 @@ Item {
             Rectangle {
                 id: dialogAndroidDividerHorizontal
                 color: "#808080"
-                height: 2 // Устанавливаем ширину в 2 пикселя
+                height: 1 // Устанавливаем ширину в 1 пиксель
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidrow.top
@@ -52,12 +53,13 @@ Item {
              */
             Row {
                 id: dialogAndroidrow
-                height: 100
+                height: (rootlogin.height<900)?100 * rootlogin.height/900: 100
                 // А также прибиваем строку к низу у диалогового окна
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
 
+                /*
                 Button {
                     id: dialogAndroiddialogButtonCancel
 
@@ -78,7 +80,7 @@ Item {
 
                     background: Rectangle {
                     border.width: 0
-                    color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
+                        color:dialogAndroiddialogButtonCancel.pressed? "#d7d7d7":"#f7f7f7"
                     }
 
                     //onClicked: dialogAndroid.close()// По нажатию кнопки закрыть диалог
@@ -93,14 +95,15 @@ Item {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                 }
+                */
 
                 Button {
                     id: dialogAndroidDialogButtonOk
 
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
-                    //width: parent.width// если необходима только одна кнопочка на экран
+                    //width: parent.width/ 2-1// ширину на половину строки минус 1 pixel
+                    width: parent.width // если необходима только одна кнопочка на экран
 
                     contentItem: Text {
                         font.bold: true
@@ -138,7 +141,7 @@ Item {
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background4.png"
+            source: "ui/background/background4.png"
         }
 
         BusyIndicator {
@@ -157,17 +160,26 @@ Item {
         id: loginScreen
         anchors.fill: parent
 
+        MouseArea {
+            id: mouseArea1
+            drag.minimumY: (parent.height<900)? parent.height - 900: 0.22 * parent.height
+            drag.maximumY: 0.22 * parent.height
+            anchors.fill: parent
+            drag.target: mainScreenTextFieldLogin
+            drag.axis: Drag.YAxis
+        }
+
         Image {
             x: parent.width/2 - width/2
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background2.png"
+            source: "ui/background/background2.png"
         }
 
         Text {
             color: "#FFFFFF"
-            font.pointSize: (parent.width < 600 && parent.height> 0)? 17 * parent.height/900: 17
+            font.pointSize: 17
             font.family: sfuiFont.name
             horizontalAlignment: Text.AlignHCenter
 
@@ -182,12 +194,12 @@ Item {
 
         Button {
             id: mainScreenButtonLogin
-            y: 0.67 * parent.height
+            y:mainScreencheckBoxRememberMe.y+210*parent.height/900
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.leftMargin: 0.09 * parent.width
             anchors.rightMargin: 0.09* parent.width
-            height: (parent.height>900)? 70*parent.height/900: 70
+            height: (parent.height> 900)? 70*parent.height/900: 70
             checked: false
             checkable: false
             autoRepeat: false
@@ -210,7 +222,7 @@ Item {
                 else {
                     loginScreen.visible = false
                     busyIndicatorLoginScreen.visible = true
-                    if(event_handler.network_login(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text)) {
+                    if(event_handler.networkLogin(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text)) {
                         if(mainScreencheckBoxRememberMe.checked)
                         event_handler.savingToFile(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text);
                         loader.source = "qrc:/main.qml"
@@ -241,7 +253,7 @@ Item {
 
         TextField {
             id: mainScreenTextFieldLogin
-            y: 0.22 * loginScreen.height
+            y: 0.22 * parent.height
 
             anchors.left: parent.left
             anchors.right: parent.right
@@ -249,6 +261,7 @@ Item {
             anchors.rightMargin: 0.09 * parent.width
             height: (parent.height > 900)? 44 * (parent.height/900): 44
             placeholderText: qsTr("Номер мобильного")
+            inputMethodHints: Qt.ImhFormattedNumbersOnly
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -271,13 +284,13 @@ Item {
         }
         Image {
             x: mainScreenTextFieldLogin.x - 47
-            y: mainScreenTextFieldLogin.y + mainScreenTextFieldLogin.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/phoneIcon.png"
+            y: (parent.height>900)?mainScreenTextFieldLogin.y + mainScreenTextFieldLogin.height - sourceSize.height + 7 / (parent.height/900):mainScreenTextFieldLogin.y+mainScreenTextFieldLogin.height-sourceSize.height + 7
+            source: "ui/screensIcons/phoneIcon.png"
         }
 
         TextField {
             id: mainScreenTextFieldPass
-            y: (parent.height > 900)? mainScreenTextFieldLogin.y+100*parent.height/900: mainScreenTextFieldLogin.y + 100
+            y: (parent.height > 900)? mainScreenTextFieldLogin.y+ 100*parent.height/900: mainScreenTextFieldLogin.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.leftMargin: 0.09 * parent.width + 50
@@ -306,13 +319,13 @@ Item {
         }
         Image {
             x: mainScreenTextFieldPass.x - 47
-            y: mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/passIcon.png"
+            y: (parent.height>900)?mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + 7 / (parent.height/900):mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + 7
+            source: "ui/screensIcons/passIcon.png"
         }
 
         CheckBox {
             id: mainScreencheckBoxRememberMe
-            y: mainScreenTextFieldPass.y+ 120 * parent.height/900
+            y: (parent.height > 900)? mainScreenTextFieldPass.y+ 100*parent.height/900: mainScreenTextFieldPass.y + 100
             height: (parent.height > 900)? 48 * (parent.height/900): 48
             anchors.left: parent.left
             anchors.leftMargin: 0.09 * parent.width
@@ -354,7 +367,7 @@ Item {
 
         Button {
             id: mainScreenLabelForgotPass
-            y: (parent.height>900)? mainScreenButtonLogin.y + 90 * parent.height/900: mainScreenButtonLogin.y + 90
+            y: (parent.height > 900)? mainScreenButtonLogin.y + 90 * parent.height/900: mainScreenButtonLogin.y + 90
             text: qsTr("Забыли пароль?")
 
             font.pointSize: 16
@@ -382,18 +395,18 @@ Item {
 
         Button {
             id: mainScreenBackButton
-            width: 100
-            height: 42 * loginScreen.height/900
+            width: (parent.width>500)?100*parent.width/500:100
+            height: 42
+            anchors.topMargin: 25
             anchors.leftMargin: 20
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.topMargin: 25 * loginScreen.height/900
 
             Image {
                 fillMode: Image.PreserveAspectFit
-                source: "ui/backButton.png"
+                source: "ui/buttons/backButton.png"
                 width: 23
-                height:42*loginScreen.height/900
+                height:42
             }
 
             background: Rectangle {
@@ -401,8 +414,19 @@ Item {
             }
 
             onClicked: {
-                loader.source = "qrc:/basic.qml"
+                loader.source = "qrc:/regist.qml"
             }
+        }
+        Text {
+            color: "#FFFFFF"
+            font.pointSize: 14
+            font.family: sfuiFont.name
+            horizontalAlignment: Text.AlignHCenter
+
+            text: "Регистрация"
+
+            y: mainScreenBackButton.y + mainScreenBackButton.height/2 - font.pointSize/2 -7 * parent.height/900
+            x: mainScreenBackButton.x + 30
         }
     }
     //-------------------------------------------------------------------------------------------------------------

@@ -17,7 +17,7 @@ Item {
             y: (parent.width<parent.height)? parent.height/2-height/2: 0
             height: (parent.width<parent.height)? parent.height:sourceSize.height*(width/sourceSize.width)
             width:  (parent.width<parent.height)? sourceSize.width*(parent.height/sourceSize.height): parent.width
-            source: "ui/background1.png"
+            source: "ui/background/background1.png"
         }
 
         Image {
@@ -52,14 +52,14 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/navbarBack.png"
+                source: "ui/navbarMenu/navbarBack.png"
             }
             Image {
                 x: parent.width/2 - width/2
                 y: basicScreenDrawerButtonExit.y/2- height/2 - 10 * parent.height/900
                 width: sourceSize.width * 500 / 750
                 height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
-                source: "ui/navbarLogo.png"
+                source: "ui/navbarMenu/navbarLogo.png"
             }
             Rectangle {
                 y: basicScreenDrawerButtonExit.y + basicScreenDrawerButtonExit.height + 1
@@ -91,7 +91,7 @@ Item {
                     id: basicScreenDrawerImage1
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/exit_blue.png"
+                    source: "ui/navbarIcons/exit_blue.png"
                 }
 
                 contentItem: Text {
@@ -106,12 +106,12 @@ Item {
 
                 onPressed: {
                     basicScreenDrawerRectangle1.opacity = 0
-                    basicScreenDrawerImage1.source= "ui/icons/exit_white.png"
+                    basicScreenDrawerImage1.source= "ui/navbarIcons/exit_white.png"
                 }
 
                 onPressedChanged: {
                     basicScreenDrawerRectangle1.opacity = 1
-                    basicScreenDrawerImage1.source= "ui/icons/exit_blue.png"
+                    basicScreenDrawerImage1.source= "ui/navbarIcons/exit_blue.png"
                 }
 
                 onClicked: Qt.quit()

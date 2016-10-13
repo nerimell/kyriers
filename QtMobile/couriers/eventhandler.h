@@ -23,13 +23,17 @@ public:
 signals:
 
 public slots:
-    bool registration(QString, QString, QString, QString, QString, QString, QString);
+    bool getUsersInfo();
     bool registrationPin(QString, QString, QString);
-    bool network_login(QString,QString);
+    bool updateUsersInfo(QString, QString, QString, QString, QString, QString);
+    bool registration(QString, QString, QString, QString, QString, QString, QString);
+    bool networkLogin(QString, QString);
     void savingToFile(QString, QString);
-    QString getMePin (QString, QString);
+    QString getMePins(QString, QString);
 
+    bool sendStatus(int);
     bool pinConnected();
+    int getUserStatus();
     int pinLength();
     void exitMenu();
     void clearPin();
@@ -42,13 +46,13 @@ public slots:
     void setPass(QString);
     void setMail(QString);
     void setPin(QString);
-    bool network_login();
+    bool networkLogin();
+    void pinIncrement();
     int getPinInput();
     void cleanMePin();
-    void pinIncr();
 
     QString getFamily();
-    QString getMePin();
+    QString getMePins();
     QString getMyPin();
     QString getPhone();
     QString getLogin();

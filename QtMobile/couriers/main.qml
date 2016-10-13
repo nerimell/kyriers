@@ -17,7 +17,7 @@ Item {
         contentItem: Rectangle {
             color: "#f7f7f7"
             width: rootMain.width-80
-            height: rootMain.height/3
+            height: rootMain.height/2.5
 
             // Область для сообщения диалогового окна
             Rectangle {
@@ -33,7 +33,8 @@ Item {
                     color: "#000000"
                     font.bold: true
                     font.pointSize: 20
-                    font.family: sfuiFont.name
+                    font.family: sfuiFontLight.name
+                    horizontalAlignment: Text.AlignHCenter
                     anchors.centerIn: parent// put сообщение в центр области отобраэжения
                 }
             }
@@ -42,7 +43,7 @@ Item {
             Rectangle {
                 id: dialogAndroidDividerHorizontal
                 color: "#808080"
-                height: 2 // Устанавливаем ширину в 2 пикселя
+                height: 1 // Устанавливаем ширину в 1 пиксель
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidrow.top
@@ -54,12 +55,13 @@ Item {
              */
             Row {
                 id: dialogAndroidrow
-                height: 100
+                height: (rootMain.height<900)?100 * rootMain.height/900: 100
                 // А также прибиваем строку к низу у диалогового окна
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
 
+                /*
                 Button {
                     id: dialogAndroiddialogButtonCancel
 
@@ -80,7 +82,7 @@ Item {
 
                     background: Rectangle {
                     border.width: 0
-                    color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
+                        color:dialogAndroiddialogButtonCancel.pressed? "#d7d7d7":"#f7f7f7"
                     }
 
                     //onClicked: dialogAndroid.close()// По нажатию кнопки закрыть диалог
@@ -95,14 +97,15 @@ Item {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                 }
+                */
 
                 Button {
                     id: dialogAndroidDialogButtonOk
 
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
-                    //width: parent.width// если необходима только одна кнопочка на экран
+                    //width: parent.width/ 2-1// ширину на половину строки минус 1 pixel
+                    width: parent.width // если необходима только одна кнопочка на экран
 
                     contentItem: Text {
                         font.bold: true
@@ -140,7 +143,7 @@ Item {
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background4.png"
+            source: "ui/background/background4.png"
         }
 
         BusyIndicator {
@@ -164,7 +167,7 @@ Item {
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)? parent.height:sourceSize.height*(width/sourceSize.width)
             width:  (parent.width<parent.height)? sourceSize.width*(parent.height/sourceSize.height): parent.width
-            source: "ui/background1.png"
+            source: "ui/background/background1.png"
         }
 
         Image {
@@ -199,14 +202,14 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/navbarBack.png"
+                source: "ui/navbarMenu/navbarBack.png"
             }
             Image {
                 x: parent.width/2 - width/2
                 y: basicScreenDrawerButtonExit.y/2- height/2 - 10 * parent.height/900
                 width: sourceSize.width * 500 / 750
                 height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
-                source: "ui/navbarLogo.png"
+                source: "ui/navbarMenu/navbarLogo.png"
             }
             Rectangle {
                 y: basicScreenDrawerButtonExit.y + basicScreenDrawerButtonExit.height + 1
@@ -238,7 +241,7 @@ Item {
                     id: basicScreenDrawerImage1
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/exit_blue.png"
+                    source: "ui/navbarIcons/exit_blue.png"
                 }
 
                 contentItem: Text {
@@ -253,12 +256,12 @@ Item {
 
                 onPressed: {
                     basicScreenDrawerRectangle1.opacity = 0
-                    basicScreenDrawerImage1.source= "ui/icons/exit_white.png"
+                    basicScreenDrawerImage1.source= "ui/navbarIcons/exit_white.png"
                 }
 
                 onPressedChanged: {
                     basicScreenDrawerRectangle1.opacity = 1
-                    basicScreenDrawerImage1.source= "ui/icons/exit_blue.png"
+                    basicScreenDrawerImage1.source= "ui/navbarIcons/exit_blue.png"
                 }
 
                 onClicked: Qt.quit()
@@ -351,7 +354,7 @@ Item {
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background4.png"
+            source: "ui/background/background4.png"
         }
 
         Drawer {
@@ -362,14 +365,14 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/navbarBack.png"
+                source: "ui/navbarMenu/navbarBack.png"
             }
             Image {
                 x: parent.width/2 - width/2
                 y: firstScreenDrawerButtonMyStatus.y/2- height/2 - 10 * parent.height/900
                 width: sourceSize.width * 500 / 750
                 height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
-                source: "ui/navbarLogo.png"
+                source: "ui/navbarMenu/navbarLogo.png"
             }
             Rectangle {
                 y: firstScreenDrawerButtonExit.y + firstScreenDrawerButtonExit.height + 1
@@ -401,7 +404,7 @@ Item {
                     id: firstScreenDrawerImage1
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/status_blue.png"
+                    source: "ui/navbarIcons/status_blue.png"
                 }
 
                 contentItem: Text {
@@ -416,12 +419,12 @@ Item {
 
                 onPressed: {
                     firstScreenDrawerRectangle1.opacity = 0
-                    firstScreenDrawerImage1.source= "ui/icons/status_white.png"
+                    firstScreenDrawerImage1.source= "ui/navbarIcons/status_white.png"
                 }
 
                 onPressedChanged: {
                     firstScreenDrawerRectangle1.opacity = 1
-                    firstScreenDrawerImage1.source= "ui/icons/status_blue.png"
+                    firstScreenDrawerImage1.source= "ui/navbarIcons/status_blue.png"
                 }
 
                 onClicked: {
@@ -454,7 +457,7 @@ Item {
                     id: firstScreenDrawerImage2
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/orders_blue.png"
+                    source: "ui/navbarIcons/orders_blue.png"
                 }
 
                 contentItem: Text {
@@ -469,12 +472,12 @@ Item {
 
                 onPressed: {
                     firstScreenDrawerRectangle2.opacity = 0
-                    firstScreenDrawerImage2.source= "ui/icons/orders_white.png"
+                    firstScreenDrawerImage2.source= "ui/navbarIcons/orders_white.png"
                 }
 
                 onPressedChanged: {
                     firstScreenDrawerRectangle2.opacity = 1
-                    firstScreenDrawerImage2.source= "ui/icons/orders_blue.png"
+                    firstScreenDrawerImage2.source= "ui/navbarIcons/orders_blue.png"
                 }
             }
 
@@ -501,7 +504,7 @@ Item {
                     id: firstScreenDrawerImage3
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/find_blue.png"
+                    source: "ui/navbarIcons/find_blue.png"
                 }
 
                 contentItem: Text {
@@ -516,12 +519,12 @@ Item {
 
                 onPressed: {
                     firstScreenDrawerRectangle3.opacity = 0
-                    firstScreenDrawerImage3.source= "ui/icons/find_white.png"
+                    firstScreenDrawerImage3.source= "ui/navbarIcons/find_white.png"
                 }
 
                 onPressedChanged: {
                     firstScreenDrawerRectangle3.opacity = 1
-                    firstScreenDrawerImage3.source= "ui/icons/find_blue.png"
+                    firstScreenDrawerImage3.source= "ui/navbarIcons/find_blue.png"
                 }
             }
 
@@ -548,7 +551,7 @@ Item {
                     id: firstScreenDrawerImage4
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/config_blue.png"
+                    source: "ui/navbarIcons/config_blue.png"
                 }
 
                 contentItem: Text {
@@ -563,12 +566,12 @@ Item {
 
                 onPressed: {
                     firstScreenDrawerRectangle4.opacity = 0
-                    firstScreenDrawerImage4.source= "ui/icons/config_white.png"
+                    firstScreenDrawerImage4.source= "ui/navbarIcons/config_white.png"
                 }
 
                 onPressedChanged: {
                     firstScreenDrawerRectangle4.opacity = 1
-                    firstScreenDrawerImage4.source= "ui/icons/config_blue.png"
+                    firstScreenDrawerImage4.source= "ui/navbarIcons/config_blue.png"
                 }
 
                 onClicked: {
@@ -601,7 +604,7 @@ Item {
                     id: firstScreenDrawerImage5
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/exit_blue.png"
+                    source: "ui/navbarIcons/exit_blue.png"
                 }
 
                 contentItem: Text {
@@ -616,12 +619,12 @@ Item {
 
                 onPressed: {
                     firstScreenDrawerRectangle5.opacity = 0
-                    firstScreenDrawerImage5.source= "ui/icons/exit_white.png"
+                    firstScreenDrawerImage5.source= "ui/navbarIcons/exit_white.png"
                 }
 
                 onPressedChanged: {
                     firstScreenDrawerRectangle5.opacity = 1
-                    firstScreenDrawerImage5.source= "ui/icons/exit_blue.png"
+                    firstScreenDrawerImage5.source= "ui/navbarIcons/exit_blue.png"
                 }
 
                 onClicked: {
@@ -638,7 +641,7 @@ Item {
             x: 0
             anchors.topMargin: 0
             anchors.top: parent.top
-            source: "ui/navbarMenu.png"
+            source: "ui/navbarMenu/navbarMenu.png"
 
             anchors.left: parent.left
             anchors.right: parent.right
@@ -662,7 +665,7 @@ Item {
                 Image {
                     id: firstDrawerButton
                     anchors.fill: parent
-                    source: "ui/drawerButton.png"
+                    source: "ui/buttons/hamButton.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }
@@ -677,19 +680,52 @@ Item {
         id: statusScreen
         anchors.fill: parent
 
+        Component.onCompleted: {
+            switch(event_handler.getUserStatus()) {
+            case 1:
+                statusScreenSwitchBusy.checked = true
+                statusScreenSwitchFreeText.color= "#A8A8A8"
+                statusScreenSwitchBusyText.color= "#FFFFFF"
+                statusScreenSwitchepartedText.color= "#A8A8A8"
+                statusScreenSwitchDoOrderText.color= "#A8A8A8"
+                break
+            case 2:
+                statusScreenSwitchFree.checked = true
+                statusScreenSwitchFreeText.color= "#FFFFFF"
+                statusScreenSwitchBusyText.color= "#A8A8A8"
+                statusScreenSwitchepartedText.color= "#A8A8A8"
+                statusScreenSwitchDoOrderText.color= "#A8A8A8"
+                break
+            case 3:
+                statusScreenSwitchDeparted.checked = true
+                statusScreenSwitchFreeText.color= "#A8A8A8"
+                statusScreenSwitchBusyText.color= "#A8A8A8"
+                statusScreenSwitchepartedText.color= "#FFFFFF"
+                statusScreenSwitchDoOrderText.color= "#A8A8A8"
+                break
+            case 4:
+                statusScreenSwitchDoOrder.checked = true
+                statusScreenSwitchFreeText.color= "#A8A8A8"
+                statusScreenSwitchBusyText.color= "#A8A8A8"
+                statusScreenSwitchepartedText.color= "#A8A8A8"
+                statusScreenSwitchDoOrderText.color= "#FFFFFF"
+                break
+            }
+        }
+
         Image {
             x: parent.width/2 - width/2
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background4.png"
+            source: "ui/background/background4.png"
         }
 
         MouseArea {
-            drag.minimumY: -20
-            drag.maximumY: 111
-            anchors.fill: parent
+            drag.minimumY: (parent.height<900)? parent.height - 900: 131
             drag.target: statusScreenSwitchBusy
+            drag.maximumY: 131
+            anchors.fill: parent
             drag.axis: Drag.YAxis
         }
 
@@ -701,14 +737,14 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/navbarBack.png"
+                source: "ui/navbarMenu/navbarBack.png"
             }
             Image {
                 x: parent.width/2 - width/2
                 y: statusScreenDrawerButtonMyStatus.y/2 - height/2 - 10 * parent.height/900
                 width: sourceSize.width * 500 / 750
                 height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
-                source: "ui/navbarLogo.png"
+                source: "ui/navbarMenu/navbarLogo.png"
             }
             Rectangle {
                 y: statusScreenDrawerButtonExit.y + statusScreenDrawerButtonExit.height + 1
@@ -740,7 +776,7 @@ Item {
                     id: statusScreenDrawerImage1
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/status_blue.png"
+                    source: "ui/navbarIcons/status_blue.png"
                 }
 
                 contentItem: Text {
@@ -755,12 +791,12 @@ Item {
 
                 onPressed: {
                     statusScreenDrawerRectangle1.opacity = 0
-                    statusScreenDrawerImage1.source= "ui/icons/status_white.png"
+                    statusScreenDrawerImage1.source= "ui/navbarIcons/status_white.png"
                 }
 
                 onPressedChanged: {
                     statusScreenDrawerRectangle1.opacity = 1
-                    statusScreenDrawerImage1.source= "ui/icons/status_blue.png"
+                    statusScreenDrawerImage1.source= "ui/navbarIcons/status_blue.png"
                 }
 
                 onClicked: {
@@ -791,7 +827,7 @@ Item {
                     id: statusScreenDrawerImage2
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/orders_blue.png"
+                    source: "ui/navbarIcons/orders_blue.png"
                 }
 
                 contentItem: Text {
@@ -806,12 +842,12 @@ Item {
 
                 onPressed: {
                     statusScreenDrawerRectangle2.opacity = 0
-                    statusScreenDrawerImage2.source= "ui/icons/orders_white.png"
+                    statusScreenDrawerImage2.source= "ui/navbarIcons/orders_white.png"
                 }
 
                 onPressedChanged: {
                     statusScreenDrawerRectangle2.opacity = 1
-                    statusScreenDrawerImage2.source= "ui/icons/orders_blue.png"
+                    statusScreenDrawerImage2.source= "ui/navbarIcons/orders_blue.png"
                 }
             }
 
@@ -838,7 +874,7 @@ Item {
                     id: statusScreenDrawerImage3
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/find_blue.png"
+                    source: "ui/navbarIcons/find_blue.png"
                 }
 
                 contentItem: Text {
@@ -853,12 +889,12 @@ Item {
 
                 onPressed: {
                     statusScreenDrawerRectangle3.opacity = 0
-                    statusScreenDrawerImage3.source= "ui/icons/find_white.png"
+                    statusScreenDrawerImage3.source= "ui/navbarIcons/find_white.png"
                 }
 
                 onPressedChanged: {
                     statusScreenDrawerRectangle3.opacity = 1
-                    statusScreenDrawerImage3.source= "ui/icons/find_blue.png"
+                    statusScreenDrawerImage3.source= "ui/navbarIcons/find_blue.png"
                 }
             }
 
@@ -885,7 +921,7 @@ Item {
                     id: statusScreenDrawerImage4
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/config_blue.png"
+                    source: "ui/navbarIcons/config_blue.png"
                 }
 
                 contentItem: Text {
@@ -900,12 +936,12 @@ Item {
 
                 onPressed: {
                     statusScreenDrawerRectangle4.opacity = 0
-                    statusScreenDrawerImage4.source= "ui/icons/config_white.png"
+                    statusScreenDrawerImage4.source= "ui/navbarIcons/config_white.png"
                 }
 
                 onPressedChanged: {
                     statusScreenDrawerRectangle4.opacity = 1
-                    statusScreenDrawerImage4.source= "ui/icons/config_blue.png"
+                    statusScreenDrawerImage4.source= "ui/navbarIcons/config_blue.png"
                 }
 
                 onClicked: {
@@ -938,7 +974,7 @@ Item {
                     id: statusScreenDrawerImage5
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/exit_blue.png"
+                    source: "ui/navbarIcons/exit_blue.png"
                 }
 
                 contentItem: Text {
@@ -953,12 +989,12 @@ Item {
 
                 onPressed: {
                     statusScreenDrawerRectangle5.opacity = 0
-                    statusScreenDrawerImage5.source= "ui/icons/exit_white.png"
+                    statusScreenDrawerImage5.source= "ui/navbarIcons/exit_white.png"
                 }
 
                 onPressedChanged: {
                     statusScreenDrawerRectangle5.opacity = 1
-                    statusScreenDrawerImage5.source= "ui/icons/exit_blue.png"
+                    statusScreenDrawerImage5.source= "ui/navbarIcons/exit_blue.png"
                 }
 
                 onClicked: {
@@ -973,16 +1009,20 @@ Item {
         Switch {
             id: statusScreenSwitchBusy
             x: 40
-            y: 111
+            y: 131
 
             onClicked: {
                 if(statusScreenSwitchBusy.checked) {
+                    event_handler.sendStatus(1)
                 statusScreenSwitchFreeText.color= "#A8A8A8"
                 statusScreenSwitchBusyText.color= "#FFFFFF"
                 statusScreenSwitchepartedText.color= "#A8A8A8"
                 statusScreenSwitchDoOrderText.color= "#A8A8A8"
                 }
-                else statusScreenSwitchBusyText.color="#A8A8A8"
+                else {
+                    event_handler.sendStatus(0)
+                    statusScreenSwitchBusyText.color="#A8A8A8"
+                }
                 statusScreenSwitchFree.checked=false
                 statusScreenSwitchDoOrder.checked=false
                 statusScreenSwitchDeparted.checked=false
@@ -991,7 +1031,7 @@ Item {
         Text {
             id: statusScreenSwitchBusyText
             color: "#A8A8A8"
-            font.pointSize: 40
+            font.pointSize: 30
             text: qsTr("Занят")
             y: statusScreenSwitchBusy.y - 15
             x: statusScreenSwitchBusy.x + 80
@@ -1012,12 +1052,16 @@ Item {
 
             onClicked: {
                 if(statusScreenSwitchFree.checked) {
+                    event_handler.sendStatus(2)
                 statusScreenSwitchFreeText.color= "#FFFFFF"
                 statusScreenSwitchBusyText.color= "#A8A8A8"
                 statusScreenSwitchepartedText.color= "#A8A8A8"
                 statusScreenSwitchDoOrderText.color= "#A8A8A8"
                 }
-                else statusScreenSwitchFreeText.color="#A8A8A8"
+                else {
+                    event_handler.sendStatus(0)
+                    statusScreenSwitchFreeText.color="#A8A8A8"
+                }
                 statusScreenSwitchBusy.checked=false
                 statusScreenSwitchDoOrder.checked=false
                 statusScreenSwitchDeparted.checked=false
@@ -1026,7 +1070,7 @@ Item {
         Text {
             id: statusScreenSwitchFreeText
             color: "#A8A8A8"
-            font.pointSize: 40
+            font.pointSize: 30
             text: qsTr("Свободен")
             y: statusScreenSwitchFree.y - 15
             x: statusScreenSwitchFree.x + 80
@@ -1047,12 +1091,16 @@ Item {
 
             onClicked: {
                 if(statusScreenSwitchDeparted.checked) {
+                    event_handler.sendStatus(3)
                 statusScreenSwitchFreeText.color= "#A8A8A8"
                 statusScreenSwitchBusyText.color= "#A8A8A8"
                 statusScreenSwitchepartedText.color= "#FFFFFF"
                 statusScreenSwitchDoOrderText.color= "#A8A8A8"
                 }
-                else statusScreenSwitchepartedText.color="#A8A8A8"
+                else {
+                    event_handler.sendStatus(0)
+                    statusScreenSwitchepartedText.color="#A8A8A8"
+                }
                 statusScreenSwitchBusy.checked=false
                 statusScreenSwitchFree.checked=false
                 statusScreenSwitchDoOrder.checked=false
@@ -1061,7 +1109,7 @@ Item {
         Text {
             id: statusScreenSwitchepartedText
             color: "#A8A8A8"
-            font.pointSize: 40
+            font.pointSize: 30
             text: qsTr("Отошел")
             y: statusScreenSwitchDeparted.y - 15
             x: statusScreenSwitchDeparted.x + 80
@@ -1082,12 +1130,16 @@ Item {
 
             onClicked: {
                 if(statusScreenSwitchDoOrder.checked) {
+                    event_handler.sendStatus(4)
                 statusScreenSwitchFreeText.color= "#A8A8A8"
                 statusScreenSwitchBusyText.color= "#A8A8A8"
                 statusScreenSwitchepartedText.color= "#A8A8A8"
                 statusScreenSwitchDoOrderText.color= "#FFFFFF"
                 }
-                else statusScreenSwitchDoOrderText.color="#A8A8A8"
+                else {
+                    event_handler.sendStatus(0)
+                    statusScreenSwitchDoOrderText.color="#A8A8A8"
+                }
                 statusScreenSwitchBusy.checked=false
                 statusScreenSwitchFree.checked=false
                 statusScreenSwitchDeparted.checked=false
@@ -1096,14 +1148,14 @@ Item {
         Text {
             id: statusScreenSwitchDoOrderText
             color: "#A8A8A8"
-            font.pointSize: 40
+            font.pointSize: 30
             text: qsTr("Выполняю\nзаказ\nID = 5497")
             y: statusScreenSwitchDoOrder.y - 15
             x: statusScreenSwitchDoOrder.x + 80
         }
         Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
             x: 0
-            y: statusScreenSwitchDoOrder.y + 190
+            y: statusScreenSwitchDoOrder.y + 200
             width: parent.width
             height: 1
             border.color: "#FFFFFF"
@@ -1115,7 +1167,7 @@ Item {
             x: 0
             anchors.topMargin: 0
             anchors.top: parent.top
-            source: "ui/navbarMenu.png"
+            source: "ui/navbarMenu/navbarMenu.png"
 
             anchors.left: parent.left
             anchors.right: parent.right
@@ -1139,7 +1191,7 @@ Item {
                 Image {
                     id: statusDrawerButton
                     anchors.fill: parent
-                    source: "ui/drawerButton.png"
+                    source: "ui/buttons/hamButton.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }
@@ -1154,17 +1206,26 @@ Item {
         id: settingsScreen
         anchors.fill: parent
 
+        Component.onCompleted: {
+            event_handler.getUsersInfo()
+            settingScreentextFieldPass.text = event_handler.getPass()
+            settingScreentextFieldPhone.text = event_handler.getPhone()
+            settingScreentextFieldLogin.text = event_handler.getLogin()
+            settingScreentextFieldFamily.text = event_handler.getFamily()
+            settingScreentextFieldPassRepeat.text = event_handler.getPass()
+        }
+
         Image {
             x: parent.width/2 - width/2
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background4.png"
+            source: "ui/background/background4.png"
         }
 
         MouseArea {
-            drag.minimumY: -20
-            drag.maximumY: 100
+            drag.minimumY: (parent.height<900)? parent.height - 900: 120
+            drag.maximumY: 120
             anchors.fill: parent
             drag.target: settingScreentextFieldLogin
             drag.axis: Drag.YAxis
@@ -1178,14 +1239,14 @@ Item {
 
             Image {
                 anchors.fill: parent
-                source: "ui/navbarBack.png"
+                source: "ui/navbarMenu/navbarBack.png"
             }
             Image {
                 x: parent.width/2 - width/2
                 y: settingScreenDrawerButtonMyStatus.y/2 - height/2 - 10 * parent.height/ 900
                 width: sourceSize.width * 500 / 750
                 height: (parent.height<900)? sourceSize.height* (parent.height+100)/1334: sourceSize.height*900/1334
-                source: "ui/navbarLogo.png"
+                source: "ui/navbarMenu/navbarLogo.png"
             }
             Rectangle {
                 y: settingScreenDrawerButtonExit.y + settingScreenDrawerButtonExit.height + 1
@@ -1217,7 +1278,7 @@ Item {
                     id: settingScreenDrawerImage1
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/status_blue.png"
+                    source: "ui/navbarIcons/status_blue.png"
                 }
 
                 contentItem: Text {
@@ -1232,12 +1293,12 @@ Item {
 
                 onPressed: {
                     settingScreenDrawerRectangle1.opacity = 0
-                    settingScreenDrawerImage1.source= "ui/icons/status_white.png"
+                    settingScreenDrawerImage1.source= "ui/navbarIcons/status_white.png"
                 }
 
                 onPressedChanged: {
                     settingScreenDrawerRectangle1.opacity = 1
-                    settingScreenDrawerImage1.source= "ui/icons/status_blue.png"
+                    settingScreenDrawerImage1.source= "ui/navbarIcons/status_blue.png"
                 }
 
                 onClicked: {
@@ -1270,7 +1331,7 @@ Item {
                     id: settingScreenDrawerImage2
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/orders_blue.png"
+                    source: "ui/navbarIcons/orders_blue.png"
                 }
 
                 contentItem: Text {
@@ -1285,12 +1346,12 @@ Item {
 
                 onPressed: {
                     settingScreenDrawerRectangle2.opacity = 0
-                    settingScreenDrawerImage2.source= "ui/icons/orders_white.png"
+                    settingScreenDrawerImage2.source= "ui/navbarIcons/orders_white.png"
                 }
 
                 onPressedChanged: {
                     settingScreenDrawerRectangle2.opacity = 1
-                    settingScreenDrawerImage2.source= "ui/icons/orders_blue.png"
+                    settingScreenDrawerImage2.source= "ui/navbarIcons/orders_blue.png"
                 }
             }
 
@@ -1317,7 +1378,7 @@ Item {
                     id: settingScreenDrawerImage3
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/find_blue.png"
+                    source: "ui/navbarIcons/find_blue.png"
                 }
 
                 contentItem: Text {
@@ -1332,12 +1393,12 @@ Item {
 
                 onPressed: {
                     settingScreenDrawerRectangle3.opacity = 0
-                    settingScreenDrawerImage3.source= "ui/icons/find_white.png"
+                    settingScreenDrawerImage3.source= "ui/navbarIcons/find_white.png"
                 }
 
                 onPressedChanged: {
                     settingScreenDrawerRectangle3.opacity = 1
-                    settingScreenDrawerImage3.source= "ui/icons/find_blue.png"
+                    settingScreenDrawerImage3.source= "ui/navbarIcons/find_blue.png"
                 }
             }
 
@@ -1364,7 +1425,7 @@ Item {
                     id: settingScreenDrawerImage4
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/config_blue.png"
+                    source: "ui/navbarIcons/config_blue.png"
                 }
 
                 contentItem: Text {
@@ -1379,12 +1440,12 @@ Item {
 
                 onPressed: {
                     settingScreenDrawerRectangle4.opacity = 0
-                    settingScreenDrawerImage4.source= "ui/icons/config_white.png"
+                    settingScreenDrawerImage4.source= "ui/navbarIcons/config_white.png"
                 }
 
                 onPressedChanged: {
                     settingScreenDrawerRectangle4.opacity = 1
-                    settingScreenDrawerImage4.source= "ui/icons/config_blue.png"
+                    settingScreenDrawerImage4.source= "ui/navbarIcons/config_blue.png"
                 }
 
                 onClicked: {
@@ -1415,7 +1476,7 @@ Item {
                     id: settingScreenDrawerImage5
                     x: 30
                     y: parent.height/2 - sourceSize.height/2
-                    source: "ui/icons/exit_blue.png"
+                    source: "ui/navbarIcons/exit_blue.png"
                 }
 
                 contentItem: Text {
@@ -1430,12 +1491,12 @@ Item {
 
                 onPressed: {
                     settingScreenDrawerRectangle5.opacity = 0
-                    settingScreenDrawerImage5.source= "ui/icons/exit_white.png"
+                    settingScreenDrawerImage5.source= "ui/navbarIcons/exit_white.png"
                 }
 
                 onPressedChanged: {
                     settingScreenDrawerRectangle5.opacity = 1
-                    settingScreenDrawerImage5.source= "ui/icons/exit_blue.png"
+                    settingScreenDrawerImage5.source= "ui/navbarIcons/exit_blue.png"
                 }
 
                 onClicked: {
@@ -1449,14 +1510,13 @@ Item {
 
         TextField {
             id: settingScreentextFieldLogin
-            y: 100
+            y: 120
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
+            placeholderText: qsTr("Имя")
             anchors.rightMargin: 0.09 * parent.width
             anchors.leftMargin: 0.09 * parent.width + 50
-            placeholderText: qsTr("Имя")
-            text: event_handler.getLogin()
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -1477,20 +1537,19 @@ Item {
         }
         Image {
             x: settingScreentextFieldLogin.x - 47
-            y: settingScreentextFieldLogin.y + settingScreentextFieldLogin.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/humanIcon.png"
+            y: (parent.height>900)?settingScreentextFieldLogin.y + settingScreentextFieldLogin.height - sourceSize.height + 7 / (parent.height/900):settingScreentextFieldLogin.y + settingScreentextFieldLogin.height - sourceSize.height + 7
+            source: "ui/screensIcons/humanIcon.png"
         }
 
         TextField {
             id: settingScreentextFieldFamily
-            y: settingScreentextFieldLogin.y + 100*parent.height/900
+            y: (parent.height>900)? settingScreentextFieldLogin.y + 100 *parent.height/900: settingScreentextFieldLogin.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
+            placeholderText: qsTr("Фамилия")
             anchors.rightMargin: 0.09 * parent.width
             anchors.leftMargin: 0.09 * parent.width + 50
-            placeholderText: qsTr("Фамилия")
-            text: event_handler.getFamily()
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -1511,53 +1570,19 @@ Item {
         }
         Image {
             x: settingScreentextFieldFamily.x - 47
-            y: settingScreentextFieldFamily.y + settingScreentextFieldFamily.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/humanIcon.png"
-        }
-
-        TextField {
-            id: settingScreentextFieldEmail
-            y: settingScreentextFieldLogin.y + 200*parent.height/900
-            anchors.left: parent.left
-            anchors.right: parent.right
-            height: (parent.height > 900)? 44 * (parent.height/900): 44
-            anchors.rightMargin: 0.09 * parent.width
-            anchors.leftMargin: 0.09 * parent.width + 50
-            placeholderText: qsTr("E-mail")
-
-            color: "#FFFFFF"
-            font.pointSize: 18
-
-            background: Rectangle {
-                opacity: 0
-            }
-        }
-        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width
-            anchors.rightMargin: 0.09 * parent.width
-            y: settingScreentextFieldEmail.y + settingScreentextFieldEmail.height + 20
-            height: 1
-            border.width: 1
-            border.color: "#FFFFFF"
-        }
-        Image {
-            x: settingScreentextFieldEmail.x - 47
-            y: settingScreentextFieldEmail.y + settingScreentextFieldEmail.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/phoneIcon.png"
+            y: (parent.height>900)?settingScreentextFieldFamily.y + settingScreentextFieldFamily.height - sourceSize.height + 7 / (parent.height/900):settingScreentextFieldFamily.y+settingScreentextFieldFamily.height-sourceSize.height + 7
+            source: "ui/screensIcons/humanIcon.png"
         }
 
         TextField {
             id: settingScreentextFieldPass
-            y: settingScreentextFieldLogin.y + 300*parent.height/900
+            y: (parent.height>900)? settingScreentextFieldFamily.y + 100*parent.height/900: settingScreentextFieldFamily.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
+            placeholderText: qsTr("Пароль")
             anchors.rightMargin: 0.09 * parent.width
             anchors.leftMargin: 0.09 * parent.width + 50
-            placeholderText: qsTr("Пароль")
-            text: event_handler.getPass()
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -1579,20 +1604,19 @@ Item {
         }
         Image {
             x: settingScreentextFieldPass.x - 47
-            y: settingScreentextFieldPass.y + settingScreentextFieldPass.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/passIcon.png"
+            y: (parent.height>900)? settingScreentextFieldPass.y + settingScreentextFieldPass.height - sourceSize.height + 7 / (parent.height / 900): settingScreentextFieldPass.y + settingScreentextFieldPass.height - sourceSize.height + 7
+            source: "ui/screensIcons/passIcon.png"
         }
 
         TextField {
             id: settingScreentextFieldPassRepeat
-            y: settingScreentextFieldLogin.y + 400*parent.height/900
+            y: (parent.height>900)? settingScreentextFieldPass.y + 100 *parent.height/900: settingScreentextFieldPass.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
+            placeholderText: qsTr("Повтор пароля")
             anchors.rightMargin: 0.09 * parent.width
             anchors.leftMargin: 0.09 * parent.width + 50
-            placeholderText: qsTr("Повтор пароля")
-            text: event_handler.getPass()
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -1614,20 +1638,19 @@ Item {
         }
         Image {
             x: settingScreentextFieldPassRepeat.x - 47
-            y: settingScreentextFieldPassRepeat.y + settingScreentextFieldPassRepeat.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/passIcon.png"
+            y: (parent.height>900)?settingScreentextFieldPassRepeat.y+settingScreentextFieldPassRepeat.height-sourceSize.height+7/(parent.height/900):settingScreentextFieldPassRepeat.y+settingScreentextFieldPassRepeat.height-sourceSize.height+7
+            source: "ui/screensIcons/passIcon.png"
         }
 
         TextField {
             id: settingScreentextFieldPhone
-            y: settingScreentextFieldLogin.y + 500*parent.height/900
+            y: (parent.height>900)? settingScreentextFieldPassRepeat.y + 100 *parent.height/900: settingScreentextFieldPassRepeat.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
             anchors.rightMargin: 0.09 * parent.width
-            anchors.leftMargin: 0.09 * parent.width + 50
             placeholderText: qsTr("Номер мобильного")
-            text: event_handler.getPhone()
+            anchors.leftMargin: 0.09 * parent.width + 50
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -1649,13 +1672,111 @@ Item {
         }
         Image {
             x: settingScreentextFieldPhone.x - 47
-            y: settingScreentextFieldPhone.y + settingScreentextFieldPhone.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/phoneIcon.png"
+            y: (parent.height > 900)? settingScreentextFieldPhone.y + settingScreentextFieldPhone.height - sourceSize.height + 7 / (parent.height / 900): settingScreentextFieldPhone.y + settingScreentextFieldPhone.height - sourceSize.height + 7
+            source: "ui/screensIcons/phoneIcon.png"
+        }
+
+        ComboBox {
+            id: settingScreencomboBoxCitys
+            y: (parent.height>900)? settingScreentextFieldPhone.y + 102 *parent.height/900: settingScreentextFieldPhone.y + 102
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height>900)? 44 * parent.height/900: 44
+            anchors.leftMargin: 0.09 * parent.width + 50
+            anchors.rightMargin: 0.09 * parent.width
+            font.pointSize: 24
+
+            background: Rectangle {
+                opacity: 0
+            }
+
+            contentItem: Text {
+                font: settingScreencomboBoxCitys.font
+                opacity: 0
+                verticalAlignment: Text.AlignVCenter
+                leftPadding: settingScreencomboBoxCitys.indicator.width + settingScreencomboBoxCitys.spacing
+            }
+
+            model: [
+                "Волоколамск",
+                "Петербург",
+                "Москва"
+            ]
+
+            onActivated: {
+                settingScreenComboBoxCitysField.text=textAt(currentIndex)
+                popup.close()
+            }
+
+            indicator: Canvas {
+                x: settingScreencomboBoxCitys.width - width - settingScreencomboBoxCitys.rightPadding
+                y: settingScreencomboBoxCitys.topPadding + (settingScreencomboBoxCitys.availableHeight - height) / 2
+                width: 20
+                height: 12
+                contextType: "2d"
+
+                Connections {
+                    target: settingScreencomboBoxCitys
+                }
+
+                onPaint: {
+                    context.reset();
+                    context.moveTo(0, 0);
+                    context.lineTo(width, 0);
+                    context.lineTo(width/ 2, height);
+                    context.closePath();
+                    context.fillStyle = "#FFFFFF";
+                    context.fill();
+                }
+            }
+
+            /* onAccepted: {model.edit=text} */
+        }
+        TextField {
+            id: settingScreenComboBoxCitysField
+            y: (parent.height>900)? settingScreentextFieldPhone.y + 100 *parent.height/900: settingScreentextFieldPhone.y + 100
+            anchors.left: parent.left
+            anchors.right: parent.right
+            height: (parent.height>900)? 44 * parent.height/900: 44
+            anchors.leftMargin: 0.09 * parent.width + 50
+            anchors.rightMargin: 0.09 * parent.width + 45
+            placeholderText: qsTr("Город")
+
+            color: "#FFFFFF"
+            font.pointSize: 18
+
+            background: Rectangle {
+                opacity: 0
+            }
+
+            onEditingFinished: {
+                settingScreencomboBoxCitys.popup.close()
+            }
+
+            onTextChanged: {
+                settingScreencomboBoxCitys.popup.open()
+                settingScreencomboBoxCitys.currentIndex = settingScreencomboBoxCitys.find(text,Qt.MatchContains)
+            }
+        }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: settingScreenComboBoxCitysField.y + settingScreenComboBoxCitysField.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: settingScreenComboBoxCitysField.x - 47
+            y: (parent.height>900)?settingScreenComboBoxCitysField.y +settingScreenComboBoxCitysField.height-sourceSize.height+7/(parent.height/900): settingScreenComboBoxCitysField.y+settingScreenComboBoxCitysField.height-sourceSize.height + 7
+            source: "ui/screensIcons/homeIcon.png"
         }
 
         Button {
             id: settingScreenButtonRegister
-            y: (parent.height>900)? settingScreentextFieldPhone.y + 86 * parent.height/900: settingScreentextFieldPhone.y + 86
+            y: (parent.height>900)? settingScreencomboBoxCitys.y + 100*parent.height/900: settingScreencomboBoxCitys.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.leftMargin: 0.09 * parent.width
@@ -1697,7 +1818,7 @@ Item {
                 }
                 else {
                     busyIndicatorMainScreen.visible = true
-                    if(true) {
+                    if(event_handler.updateUsersInfo(settingScreentextFieldLogin.text,settingScreentextFieldFamily.text,settingScreentextFieldPass.text,settingScreentextFieldPassRepeat.text,settingScreentextFieldPhone.text,settingScreencomboBoxCitys.currentText)) {
                         dialogAndroidTextLabel.text = "Изменения успешно сохранены"
                         event_handler.setFamily(settingScreentextFieldFamily.text)
                         event_handler.setPhone(settingScreentextFieldPhone.text)
@@ -1735,7 +1856,7 @@ Item {
             x: 0
             anchors.topMargin: 0
             anchors.top: parent.top
-            source: "ui/navbarMenu.png"
+            source: "ui/navbarMenu/navbarMenu.png"
 
             anchors.left: parent.left
             anchors.right: parent.right
@@ -1759,7 +1880,7 @@ Item {
                 Image {
                     id: settingDrawerButton
                     anchors.fill: parent
-                    source: "ui/drawerButton.png"
+                    source: "ui/buttons/hamButton.png"
                     fillMode: Image.PreserveAspectFit
                 }
             }

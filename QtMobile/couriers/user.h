@@ -8,10 +8,12 @@ class User
 {
 private:
     int id;
+    int city;
+    int status;
 
-    string pin = "";
     string mail;
     string number;
+    string pin = "";
     string ssid= "";
     string userName;
     string lastName;
@@ -23,15 +25,23 @@ public:
 
     int getId();
 
+    int getCity();
+
+    int getStatus();
+
     void setId(int);
 
     string getPin();
 
-    string getNumber();
-
     string getSsid();
 
     string getMail();
+
+    void setCity(int);
+
+    string getNumber();
+
+    void setStatus(int);
 
     void setPin(string);
 

@@ -15,7 +15,7 @@ Item {
         contentItem: Rectangle {
             color: "#f7f7f7"
             width: rootRegist.width-80
-            height: rootRegist.height/3
+            height: rootRegist.height/2.5
 
             // Область для сообщения диалогового окна
             Rectangle {
@@ -31,7 +31,8 @@ Item {
                     color: "#000000"
                     font.bold: true
                     font.pointSize: 20
-                    font.family: sfuiFont.name
+                    font.family: sfuiFontLight.name
+                    horizontalAlignment: Text.AlignHCenter
                     anchors.centerIn: parent// put сообщение в центр области отобраэжения
                 }
             }
@@ -40,7 +41,7 @@ Item {
             Rectangle {
                 id: dialogAndroidDividerHorizontal
                 color: "#808080"
-                height: 2 // Устанавливаем ширину в 2 пикселя
+                height: 1 // Устанавливаем ширину в 1 пиксель
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: dialogAndroidrow.top
@@ -52,12 +53,13 @@ Item {
              */
             Row {
                 id: dialogAndroidrow
-                height: 100
+                height: (rootRegist.height<900)?100 * rootRegist.height/900: 100
                 // А также прибиваем строку к низу у диалогового окна
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
 
+                /*
                 Button {
                     id: dialogAndroiddialogButtonCancel
 
@@ -78,7 +80,7 @@ Item {
 
                     background: Rectangle {
                     border.width: 0
-                    color:dialogAndroiddialogButtonCancel.pressed?"#d7d7d7":"#f7f7f7"
+                        color:dialogAndroiddialogButtonCancel.pressed? "#d7d7d7":"#f7f7f7"
                     }
 
                     //onClicked: dialogAndroid.close()// По нажатию кнопки закрыть диалог
@@ -93,14 +95,15 @@ Item {
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
                 }
+                */
 
                 Button {
                     id: dialogAndroidDialogButtonOk
 
                     anchors.top: parent.top
                     anchors.bottom: parent.bottom
-                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
-                    //width: parent.width// если необходима только одна кнопочка на экран
+                    //width: parent.width/ 2-1// ширину на половину строки минус 1 pixel
+                    width: parent.width // если необходима только одна кнопочка на экран
 
                     contentItem: Text {
                         font.bold: true
@@ -143,7 +146,7 @@ Item {
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background4.png"
+            source: "ui/background/background4.png"
         }
 
         BusyIndicator {
@@ -164,11 +167,11 @@ Item {
 
         MouseArea {
             id: mouseArea1
-            drag.minimumY: -20
+            drag.minimumY: (parent.height<900)? parent.height - 900: 100
             drag.maximumY: 100
             anchors.fill: parent
-            drag.target: registScreentextFieldLogin
             drag.axis: Drag.YAxis
+            drag.target: registScreentextFieldLogin
         }
 
         Image {
@@ -176,12 +179,12 @@ Item {
             y: (parent.width<parent.height)?parent.height/2-height/2:0
             height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
             width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background3.png"
+            source: "ui/background/background3.png"
         }
 
         Text {
             color: "#FFFFFF"
-            font.pointSize: (parent.width < 600 && parent.height> 0)? 17 * parent.height/900: 17
+            font.pointSize: 17
             font.family: sfuiFont.name
             horizontalAlignment: Text.AlignHCenter
 
@@ -199,10 +202,10 @@ Item {
             y: 100
             anchors.left: parent.left
             anchors.right: parent.right
-            height: (parent.height > 900)? 44 * (parent.height/900): 44
+            placeholderText: qsTr("Имя")
             anchors.rightMargin: 0.09 * parent.width
             anchors.leftMargin: 0.09 * parent.width + 50
-            placeholderText: qsTr("Имя")
+            height: (parent.height > 900)? 44 * (parent.height/900): 44
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -223,13 +226,13 @@ Item {
         }
         Image {
             x: registScreentextFieldLogin.x - 47
-            y: registScreentextFieldLogin.y + registScreentextFieldLogin.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/humanIcon.png"
+            y: (parent.height>900)?registScreentextFieldLogin.y + registScreentextFieldLogin.height - sourceSize.height + 7 / (parent.height/900): registScreentextFieldLogin.y + registScreentextFieldLogin.height - sourceSize.height + 7
+            source: "ui/screensIcons/humanIcon.png"
         }
 
         TextField {
             id: registScreentextFieldFamily
-            y: registScreentextFieldLogin.y + 100*parent.height/900
+            y: (parent.height>900)? registScreentextFieldLogin.y + 100 *parent.height/900: registScreentextFieldLogin.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
@@ -256,13 +259,13 @@ Item {
         }
         Image {
             x: registScreentextFieldFamily.x - 47
-            y: registScreentextFieldFamily.y + registScreentextFieldFamily.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/humanIcon.png"
+            y: (parent.height>900)?registScreentextFieldFamily.y + registScreentextFieldFamily.height - sourceSize.height + 7 / (parent.height/900): registScreentextFieldFamily.y+registScreentextFieldFamily.height-sourceSize.height + 7
+            source: "ui/screensIcons/humanIcon.png"
         }
 
         TextField {
             id: registScreentextFieldEmail
-            y: registScreentextFieldLogin.y + 200*parent.height/900
+            y: (parent.height>900)? registScreentextFieldFamily.y + 100 *parent.height/900: registScreentextFieldFamily.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
@@ -289,13 +292,13 @@ Item {
         }
         Image {
             x: registScreentextFieldEmail.x - 47
-            y: registScreentextFieldEmail.y + registScreentextFieldEmail.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/phoneIcon.png"
+            y: (parent.height>900)?registScreentextFieldEmail.y + registScreentextFieldEmail.height - sourceSize.height + 7 / (parent.height/900): registScreentextFieldEmail.y + registScreentextFieldEmail.height - sourceSize.height + 7
+            source: "ui/screensIcons/phoneIcon.png"
         }
 
         TextField {
             id: registScreentextFieldPass
-            y: registScreentextFieldLogin.y + 300*parent.height/900
+            y: (parent.height>900)? registScreentextFieldEmail.y + 100 *parent.height/900: registScreentextFieldEmail.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
@@ -323,13 +326,13 @@ Item {
         }
         Image {
             x: registScreentextFieldPass.x - 47
-            y: registScreentextFieldPass.y + registScreentextFieldPass.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/passIcon.png"
+            y: (parent.height> 900)? registScreentextFieldPass.y + registScreentextFieldPass.height - sourceSize.height + 7 / (parent.height / 900): registScreentextFieldPass.y + registScreentextFieldPass.height - sourceSize.height + 7
+            source: "ui/screensIcons/passIcon.png"
         }
 
         TextField {
             id: registScreentextFieldPassRepeat
-            y: registScreentextFieldLogin.y + 400*parent.height/900
+            y: (parent.height>900)? registScreentextFieldPass.y + 100 *parent.height/900: registScreentextFieldPass.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
@@ -357,19 +360,20 @@ Item {
         }
         Image {
             x: registScreentextFieldPassRepeat.x - 47
-            y: registScreentextFieldPassRepeat.y + registScreentextFieldPassRepeat.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/passIcon.png"
+            y: (parent.height>900)?registScreentextFieldPassRepeat.y+registScreentextFieldPassRepeat.height-sourceSize.height+7/(parent.height/900):registScreentextFieldPassRepeat.y+registScreentextFieldPassRepeat.height-sourceSize.height+7
+            source: "ui/screensIcons/passIcon.png"
         }
 
         TextField {
             id: registScreentextFieldPhone
-            y: registScreentextFieldLogin.y + 500*parent.height/900
+            y: (parent.height>900)? registScreentextFieldPassRepeat.y + 100 *parent.height/900: registScreentextFieldPassRepeat.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height > 900)? 44 * (parent.height/900): 44
             anchors.rightMargin: 0.09 * parent.width
             anchors.leftMargin: 0.09 * parent.width + 50
             placeholderText: qsTr("Номер мобильного")
+            inputMethodHints: Qt.ImhFormattedNumbersOnly
 
             color: "#FFFFFF"
             font.pointSize: 18
@@ -391,19 +395,30 @@ Item {
         }
         Image {
             x: registScreentextFieldPhone.x - 47
-            y: registScreentextFieldPhone.y + registScreentextFieldPhone.height - sourceSize.height + 7 / (parent.height/900)
-            source: "ui/phoneIcon.png"
+            y: (parent.height > 900)? registScreentextFieldPhone.y + registScreentextFieldPhone.height - sourceSize.height + 7 / (parent.height / 900): registScreentextFieldPhone.y + registScreentextFieldPhone.height - sourceSize.height + 7
+            source: "ui/screensIcons/phoneIcon.png"
         }
 
         ComboBox {
             id: registScreencomboBoxCitys
-            y: (parent.height>900)? registScreentextFieldPhone.y + 86 *parent.height/900: registScreentextFieldPhone.y + 86
+            y: (parent.height>900)? registScreentextFieldPhone.y + 102 *parent.height/900: registScreentextFieldPhone.y + 102
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height>900)? 44 * parent.height/900: 44
-            anchors.leftMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
             anchors.rightMargin: 0.09 * parent.width
             font.pointSize: 24
+
+            background: Rectangle {
+                opacity: 0
+            }
+
+            contentItem: Text {
+                font: registScreencomboBoxCitys.font
+                opacity: 0
+                verticalAlignment: Text.AlignVCenter
+                leftPadding: registScreencomboBoxCitys.indicator.width + registScreencomboBoxCitys.spacing
+            }
 
             model: [
                 "Волоколамск",
@@ -431,9 +446,9 @@ Item {
                     context.reset();
                     context.moveTo(0, 0);
                     context.lineTo(width, 0);
-                    context.lineTo(width / 2, height);
+                    context.lineTo(width/ 2, height);
                     context.closePath();
-                    context.fillStyle = registScreencomboBoxCitys.pressed ? "#10387E" : "#10387E";
+                    context.fillStyle = "#FFFFFF";
                     context.fill();
                 }
             }
@@ -442,19 +457,19 @@ Item {
         }
         TextField {
             id: registScreenComboBoxCitysField
-            y: (parent.height>900)? registScreentextFieldPhone.y + 86 *parent.height/900: registScreentextFieldPhone.y + 86
+            y: (parent.height>900)? registScreentextFieldPhone.y + 100 *parent.height/900: registScreentextFieldPhone.y + 100
             anchors.left: parent.left
             anchors.right: parent.right
             height: (parent.height>900)? 44 * parent.height/900: 44
-            anchors.leftMargin: 0.09 * parent.width
+            anchors.leftMargin: 0.09 * parent.width + 50
             anchors.rightMargin: 0.09 * parent.width + 45
             placeholderText: qsTr("Город")
 
-            color: "#000000"
+            color: "#FFFFFF"
             font.pointSize: 18
 
             background: Rectangle {
-                color: "#FFFFFF"
+                opacity: 0
             }
 
             onEditingFinished: {
@@ -466,10 +481,25 @@ Item {
                 registScreencomboBoxCitys.currentIndex = registScreencomboBoxCitys.find(text,Qt.MatchContains)
             }
         }
+        Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.leftMargin: 0.09 * parent.width
+            anchors.rightMargin: 0.09 * parent.width
+            y: registScreenComboBoxCitysField.y + registScreenComboBoxCitysField.height + 20
+            height: 1
+            border.width: 1
+            border.color: "#FFFFFF"
+        }
+        Image {
+            x: registScreenComboBoxCitysField.x - 47
+            y: (parent.height>900)?registScreenComboBoxCitysField.y + registScreenComboBoxCitysField.height - sourceSize.height+7/(parent.height/900):registScreenComboBoxCitysField.y+registScreenComboBoxCitysField.height-sourceSize.height+7
+            source: "ui/screensIcons/homeIcon.png"
+        }
 
         Button {
             id: registScreenButtonRegister
-            y: (parent.height>900)? registScreencomboBoxCitys.y + 56*parent.height/900: registScreencomboBoxCitys.y + 56
+            y: (parent.height>900)? registScreencomboBoxCitys.y + 100*parent.height/900: registScreencomboBoxCitys.y + 100
 
             anchors.left: parent.left
             anchors.right: parent.right
@@ -556,27 +586,27 @@ Item {
             model: ListModel {
                 ListElement {
                     placeholder: qsTr("Придумай логин")
-                    sourceimg: "ui/phoneIcon.png"
+                    sourceimg: "ui/screensIcons/phoneIcon.png"
                 }
 
                 ListElement {
                     placeholder: qsTr("Придумай пароль")
-                    sourceimg: "ui/passIcon.png"
+                    sourceimg: "ui/screensIcons/passIcon.png"
                 }
 
                 ListElement {
                     placeholder: qsTr("Повторите пароль")
-                    sourceimg: "ui/passIcon.png"
+                    sourceimg: "ui/screensIcons/passIcon.png"
                 }
 
                 ListElement {
                     placeholder: qsTr("Введите свой EMail")
-                    sourceimg: "ui/phoneIcon.png"
+                    sourceimg: "ui/screensIcons/phoneIcon.png"
                 }
 
                 ListElement {
                     placeholder: qsTr("+7-XXX-XXX-XX-XX")
-                    sourceimg: "ui/phoneIcon.png"
+                    sourceimg: "ui/screensIcons/phoneIcon.png"
                 }
             }
             delegate: Item {
@@ -616,18 +646,17 @@ Item {
 
         Button {
             id: mainScreenBackButton
-            width: 100
-            height: 42 * registScreen.height/ 900
+            width: (parent.width>500)?100*parent.width/500:100
+            height: 42
+            anchors.topMargin: 25
             anchors.leftMargin: 20
             anchors.top: parent.top
             anchors.left: parent.left
-            anchors.topMargin: 25 * registScreen.height/ 900
-
             Image {
                 fillMode: Image.PreserveAspectFit
-                source: "ui/backButton.png"
+                source: "ui/buttons/backButton.png"
                 width: 23
-                height:42*registScreen.height/900
+                height:42
             }
 
             background: Rectangle {
@@ -635,8 +664,19 @@ Item {
             }
 
             onClicked: {
-                loader.source = "qrc:/basic.qml"
+                loader.source = "qrc:/login.qml"
             }
+        }
+        Text {
+            color: "#FFFFFF"
+            font.pointSize: 14
+            font.family: sfuiFont.name
+            horizontalAlignment: Text.AlignHCenter
+
+            text: "Вход"
+
+            y: mainScreenBackButton.y + mainScreenBackButton.height/2 - font.pointSize/2 -7 * parent.height/900
+            x: mainScreenBackButton.x + 30
         }
     }
     //-------------------------------------------------------------------------------------------------------------
