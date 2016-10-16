@@ -3,9 +3,9 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls 2.0
 import "CourierStyle" as CourierStyle
 
-//--------------------------------------------------registScreen.qml-------------------------------------------
+//--------------------------------------------------settingScreen.qml-------------------------------------------
 Item {
-    id: registScreen
+    id: settingScreen
     anchors.fill: parent
 
     MouseArea {
@@ -13,8 +13,17 @@ Item {
         anchors.fill: parent
         drag.axis: Drag.YAxis
         drag.maximumY: facade.toPx(100)
-        drag.target: registScreentextFieldLogin
+        drag.target: settingScreentextFieldLogin
         drag.minimumY: (parent.height<900)? parent.height - 900: 100
+    }
+
+    Component.onCompleted: {
+        event_handler.getUsersInfo()
+        settingScreentextFieldPass.text = event_handler.getPass()
+        settingScreentextFieldPhone.text = event_handler.getPhone()
+        settingScreentextFieldLogin.text = event_handler.getLogin()
+        settingScreentextFieldFamily.text = event_handler.getFamily()
+        settingScreentextFieldPassRepeat.text = event_handler.getPass()
     }
 
     Image {
@@ -22,7 +31,7 @@ Item {
     y: (parent.width < parent.height)?parent.height/2-height/2:0
     height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
     width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-    source: "ui/background/background3.png"
+    source: "ui/background/background4.png"
     }
 
     Text {
@@ -41,7 +50,7 @@ Item {
     }
 
     TextField {
-        id: registScreentextFieldLogin
+        id: settingScreentextFieldLogin
         y: facade.toPx(100)
         anchors.left: parent.left
         anchors.right: parent.right
@@ -63,19 +72,19 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 0.09 * parent.width
         anchors.rightMargin: 0.09 * parent.width
-        y: registScreentextFieldLogin.y + registScreentextFieldLogin.height + facade.toPx(20)
+        y: settingScreentextFieldLogin.y + settingScreentextFieldLogin.height + facade.toPx(20)
         height: 1
         border.width: 1
     }
     Image {
-        x: registScreentextFieldLogin.x - facade.toPx(57)
-        y: (parent.height>900)?registScreentextFieldLogin.y + registScreentextFieldLogin.height - sourceSize.height + facade.toPx(7): registScreentextFieldLogin.y + registScreentextFieldLogin.height - sourceSize.height + 7
+        x: settingScreentextFieldLogin.x - facade.toPx(57)
+        y: (parent.height>900)?settingScreentextFieldLogin.y + settingScreentextFieldLogin.height - sourceSize.height + facade.toPx(7): settingScreentextFieldLogin.y + settingScreentextFieldLogin.height - sourceSize.height + 7
         source: "ui/screensIcons/humanIcon.png"
     }
 
     TextField {
-        id: registScreentextFieldFamily
-        y: (parent.height>900)? registScreentextFieldLogin.y + facade.toPx(100): registScreentextFieldLogin.y + 100
+        id: settingScreentextFieldFamily
+        y: (parent.height>900)? settingScreentextFieldLogin.y + facade.toPx(100): settingScreentextFieldLogin.y + 100
         anchors.left: parent.left
         anchors.right: parent.right
         height: (parent.height > 900)? facade.toPx(44): 44
@@ -95,53 +104,20 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 0.09 * parent.width
         anchors.rightMargin: 0.09 * parent.width
-        y: registScreentextFieldFamily.y + registScreentextFieldFamily.height + facade.toPx(20)
+        y: settingScreentextFieldFamily.y + settingScreentextFieldFamily.height + facade.toPx(20)
         height: 1
         border.width: 1
         border.color: "#FFFFFF"
     }
     Image {
-        x: registScreentextFieldFamily.x - facade.toPx(57)
-        y: (parent.height>900)?registScreentextFieldFamily.y + registScreentextFieldFamily.height - sourceSize.height + facade.toPx(7): registScreentextFieldFamily.y+registScreentextFieldFamily.height-sourceSize.height + 7
+        x: settingScreentextFieldFamily.x - facade.toPx(57)
+        y: (parent.height>900)?settingScreentextFieldFamily.y + settingScreentextFieldFamily.height - sourceSize.height + facade.toPx(7): settingScreentextFieldFamily.y+settingScreentextFieldFamily.height-sourceSize.height + 7
         source: "ui/screensIcons/humanIcon.png"
     }
 
     TextField {
-        id: registScreentextFieldEmail
-        y: (parent.height>900)? registScreentextFieldFamily.y + facade.toPx(100): registScreentextFieldFamily.y + 100
-        anchors.left: parent.left
-        anchors.right: parent.right
-        height: (parent.height > 900)? facade.toPx(44): 44
-        anchors.rightMargin: 0.09 * parent.width
-        anchors.leftMargin: 0.09 * parent.width + facade.toPx(60)
-        placeholderText: qsTr("E-mail")
-
-        color: "#FFFFFF"
-        font.pointSize: facade.toPx(18)
-
-        background: Rectangle {
-            opacity: 0
-        }
-    }
-    Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.leftMargin: 0.09 * parent.width
-        anchors.rightMargin: 0.09 * parent.width
-        y: registScreentextFieldEmail.y + registScreentextFieldEmail.height + facade.toPx(20)
-        height: 1
-        border.width: 1
-        border.color: "#FFFFFF"
-    }
-    Image {
-        x: registScreentextFieldEmail.x - facade.toPx(57)
-        y: (parent.height>900)?registScreentextFieldEmail.y + registScreentextFieldEmail.height - sourceSize.height + facade.toPx(7): registScreentextFieldEmail.y + registScreentextFieldEmail.height - sourceSize.height + 7
-        source: "ui/screensIcons/phoneIcon.png"
-    }
-
-    TextField {
-        id: registScreentextFieldPass
-        y: (parent.height>900)? registScreentextFieldEmail.y + facade.toPx(100): registScreentextFieldEmail.y + 100
+        id: settingScreentextFieldPass
+        y: (parent.height>900)? settingScreentextFieldFamily.y + facade.toPx(100): settingScreentextFieldFamily.y + 100
         anchors.left: parent.left
         anchors.right: parent.right
         height: (parent.height > 900)? facade.toPx(44): 44
@@ -162,20 +138,20 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 0.09 * parent.width
         anchors.rightMargin: 0.09 * parent.width
-        y: registScreentextFieldPass.y + registScreentextFieldPass.height + facade.toPx(20)
+        y: settingScreentextFieldPass.y + settingScreentextFieldPass.height + facade.toPx(20)
         height: 1
         border.width: 1
         border.color: "#FFFFFF"
     }
     Image {
-        x: registScreentextFieldPass.x - facade.toPx(57)
-        y: (parent.height> 900)? registScreentextFieldPass.y + registScreentextFieldPass.height - sourceSize.height + facade.toPx(7): registScreentextFieldPass.y + registScreentextFieldPass.height - sourceSize.height + 7
+        x: settingScreentextFieldPass.x - facade.toPx(57)
+        y: (parent.height> 900)? settingScreentextFieldPass.y + settingScreentextFieldPass.height - sourceSize.height + facade.toPx(7): settingScreentextFieldPass.y + settingScreentextFieldPass.height - sourceSize.height + 7
         source: "ui/screensIcons/passIcon.png"
     }
 
     TextField {
-        id: registScreentextFieldPassRepeat
-        y: (parent.height>900)? registScreentextFieldPass.y + facade.toPx(100): registScreentextFieldPass.y + 100
+        id: settingScreentextFieldPassRepeat
+        y: (parent.height>900)? settingScreentextFieldPass.y + facade.toPx(100): settingScreentextFieldPass.y + 100
         anchors.left: parent.left
         anchors.right: parent.right
         height: (parent.height > 900)? facade.toPx(44): 44
@@ -196,20 +172,20 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 0.09 * parent.width
         anchors.rightMargin: 0.09 * parent.width
-        y: registScreentextFieldPassRepeat.y + registScreentextFieldPassRepeat.height + facade.toPx(20)
+        y: settingScreentextFieldPassRepeat.y + settingScreentextFieldPassRepeat.height + facade.toPx(20)
         height: 1
         border.width: 1
         border.color: "#FFFFFF"
     }
     Image {
-        x: registScreentextFieldPassRepeat.x - facade.toPx(57)
-        y: (parent.height>900)?registScreentextFieldPassRepeat.y+registScreentextFieldPassRepeat.height-sourceSize.height+facade.toPx(7):registScreentextFieldPassRepeat.y+registScreentextFieldPassRepeat.height-sourceSize.height+7
+        x: settingScreentextFieldPassRepeat.x - facade.toPx(57)
+        y: (parent.height>900)?settingScreentextFieldPassRepeat.y+settingScreentextFieldPassRepeat.height-sourceSize.height+facade.toPx(7):settingScreentextFieldPassRepeat.y+settingScreentextFieldPassRepeat.height-sourceSize.height+7
         source: "ui/screensIcons/passIcon.png"
     }
 
     TextField {
-        id: registScreentextFieldPhone
-        y: (parent.height>900)? registScreentextFieldPassRepeat.y + facade.toPx(100): registScreentextFieldPassRepeat.y + 100
+        id: settingScreentextFieldPhone
+        y: (parent.height>900)? settingScreentextFieldPassRepeat.y + facade.toPx(100): settingScreentextFieldPassRepeat.y + 100
         anchors.left: parent.left
         anchors.right: parent.right
         height: (parent.height > 900)? facade.toPx(44): 44
@@ -235,20 +211,20 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 0.09 * parent.width
         anchors.rightMargin: 0.09 * parent.width
-        y: registScreentextFieldPhone.y + registScreentextFieldPhone.height + facade.toPx(20)
+        y: settingScreentextFieldPhone.y + settingScreentextFieldPhone.height + facade.toPx(20)
         height: 1
         border.width: 1
         border.color: "#FFFFFF"
     }
     Image {
-        x: registScreentextFieldPhone.x - facade.toPx(57)
-        y: (parent.height > 900)? registScreentextFieldPhone.y + registScreentextFieldPhone.height - sourceSize.height + facade.toPx(7): registScreentextFieldPhone.y + registScreentextFieldPhone.height - sourceSize.height + 7
+        x: settingScreentextFieldPhone.x - facade.toPx(57)
+        y: (parent.height > 900)? settingScreentextFieldPhone.y + settingScreentextFieldPhone.height - sourceSize.height + facade.toPx(7): settingScreentextFieldPhone.y + settingScreentextFieldPhone.height - sourceSize.height + 7
         source: "ui/screensIcons/phoneIcon.png"
     }
 
     ComboBox {
-        id: registScreencomboBoxCitys
-        y: (parent.height>900)? registScreentextFieldPhone.y + facade.toPx(102): registScreentextFieldPhone.y + 102
+        id: settingScreencomboBoxCitys
+        y: (parent.height>900)? settingScreentextFieldPhone.y + facade.toPx(102): settingScreentextFieldPhone.y + 102
         anchors.left: parent.left
         anchors.right: parent.right
         height: (parent.height>900)? facade.toPx(44): 44
@@ -262,10 +238,10 @@ Item {
         font.pointSize: facade.toPx(24)
 
         contentItem: Text {
-            font: registScreencomboBoxCitys.font
+            font: settingScreencomboBoxCitys.font
             opacity: 0
             verticalAlignment: Text.AlignVCenter
-            leftPadding: registScreencomboBoxCitys.indicator.width + registScreencomboBoxCitys.spacing
+            leftPadding: settingScreencomboBoxCitys.indicator.width + settingScreencomboBoxCitys.spacing
         }
 
         model: [
@@ -275,19 +251,19 @@ Item {
         ]
 
         onActivated: {
-            registScreenComboBoxCitysField.text=textAt(currentIndex)
+            settingScreenComboBoxCitysField.text=textAt(currentIndex)
             popup.close()
         }
 
         indicator: Canvas {
-            x: registScreencomboBoxCitys.width - width - registScreencomboBoxCitys.rightPadding
-            y: registScreencomboBoxCitys.topPadding + (registScreencomboBoxCitys.availableHeight - height) / 2
+            x: settingScreencomboBoxCitys.width - width - settingScreencomboBoxCitys.rightPadding
+            y: settingScreencomboBoxCitys.topPadding + (settingScreencomboBoxCitys.availableHeight - height) / 2
             width: 20
             height: 12
             contextType: "2d"
 
             Connections {
-                target: registScreencomboBoxCitys
+                target: settingScreencomboBoxCitys
             }
 
             onPaint: {
@@ -304,8 +280,8 @@ Item {
         /* onAccepted: {model.edit=text} */
     }
     TextField {
-        id: registScreenComboBoxCitysField
-        y: (parent.height>900)? registScreentextFieldPhone.y + facade.toPx(100): registScreentextFieldPhone.y + 100
+        id: settingScreenComboBoxCitysField
+        y: (parent.height>900)? settingScreentextFieldPhone.y + facade.toPx(100): settingScreentextFieldPhone.y + 100
         anchors.left: parent.left
         anchors.right: parent.right
         height: (parent.height>900)? facade.toPx(44): 44
@@ -321,12 +297,12 @@ Item {
         }
 
         onEditingFinished: {
-            registScreencomboBoxCitys.popup.close()
+            settingScreencomboBoxCitys.popup.close()
         }
 
         onTextChanged: {
-            registScreencomboBoxCitys.popup.open()
-            registScreencomboBoxCitys.currentIndex = registScreencomboBoxCitys.find(text,Qt.MatchContains)
+            settingScreencomboBoxCitys.popup.open()
+            settingScreencomboBoxCitys.currentIndex = settingScreencomboBoxCitys.find(text,Qt.MatchContains)
         }
     }
     Rectangle {// ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
@@ -334,20 +310,20 @@ Item {
         anchors.right: parent.right
         anchors.leftMargin: 0.09 * parent.width
         anchors.rightMargin: 0.09 * parent.width
-        y: registScreenComboBoxCitysField.y + registScreenComboBoxCitysField.height + facade.toPx(20)
+        y: settingScreenComboBoxCitysField.y + settingScreenComboBoxCitysField.height + facade.toPx(20)
         height: 1
         border.width: 1
         border.color: "#FFFFFF"
     }
     Image {
-        x: registScreenComboBoxCitysField.x - facade.toPx(57)
-        y: (parent.height>900)?registScreenComboBoxCitysField.y + registScreenComboBoxCitysField.height - sourceSize.height+facade.toPx(7):registScreenComboBoxCitysField.y+registScreenComboBoxCitysField.height-sourceSize.height+7
+        x: settingScreenComboBoxCitysField.x - facade.toPx(57)
+        y: (parent.height>900)?settingScreenComboBoxCitysField.y + settingScreenComboBoxCitysField.height - sourceSize.height+facade.toPx(7):settingScreenComboBoxCitysField.y+settingScreenComboBoxCitysField.height-sourceSize.height+7
         source: "ui/screensIcons/homeIcon.png"
     }
 
     Button {
-        id: registScreenButtonRegister
-        y: (parent.height>900)? registScreencomboBoxCitys.y + facade.toPx(100): registScreencomboBoxCitys.y + 100
+        id: settingScreenButtonRegister
+        y: (parent.height>900)? settingScreencomboBoxCitys.y + facade.toPx(100): settingScreencomboBoxCitys.y + 100
 
         anchors.left: parent.left
         anchors.right: parent.right
@@ -364,38 +340,38 @@ Item {
         font.pointSize: facade.toPx(18)
 
         onClicked: {
-            if(registScreentextFieldLogin.text.length< 2) {
+            if(settingScreentextFieldLogin.text.length< 2) {
                 dialogAndroid.text = "Имя короче 2 символов"
                 dialogAndroid.visible=true;
             }
             else
-            if(registScreentextFieldFamily.text.length<2) {
+            if(settingScreentextFieldFamily.text.length<2) {
                 dialogAndroid.text = "Фамилия менее 2 символов"
                 dialogAndroid.visible=true;
             }
             else
-            if(registScreentextFieldPass.text.length < 5) {
+            if(settingScreentextFieldPass.text.length < 5) {
                 dialogAndroid.text = "Пароль короче 5 символов"
                 dialogAndroid.visible=true;
             }
             else
-            if(registScreentextFieldPhone.text.length<11) {
+            if(settingScreentextFieldPhone.text.length<11) {
                 dialogAndroid.text = "Укажите корректный номер"
                 dialogAndroid.visible=true;
             }
             else
-            if(registScreentextFieldPassRepeat.text!=registScreentextFieldPass.text) {
+            if(settingScreentextFieldPassRepeat.text!=settingScreentextFieldPass.text) {
                 dialogAndroid.text = "Ваши пароли не совпадают"
                 dialogAndroid.visible=true;
             }
             else {
                 busyIndicatorScreen.visible = true
-                if(event_handler.registration(registScreentextFieldLogin.text,registScreentextFieldFamily.text,registScreentextFieldPass.text,registScreentextFieldPassRepeat.text,registScreentextFieldEmail.text,registScreentextFieldPhone.text,registScreencomboBoxCitys.currentText)) {
-                    event_handler.setFamily(registScreentextFieldFamily.text)
-                    event_handler.setPhone(registScreentextFieldPhone.text)
-                    event_handler.setLogin(registScreentextFieldLogin.text)
-                    event_handler.setMail(registScreentextFieldEmail.text)
-                    event_handler.setPass(registScreentextFieldPass.text)
+                if(event_handler.settingration(settingScreentextFieldLogin.text,settingScreentextFieldFamily.text,settingScreentextFieldPass.text,settingScreentextFieldPassRepeat.text,settingScreentextFieldEmail.text,settingScreentextFieldPhone.text,settingScreencomboBoxCitys.currentText)) {
+                    event_handler.setFamily(settingScreentextFieldFamily.text)
+                    event_handler.setPhone(settingScreentextFieldPhone.text)
+                    event_handler.setLogin(settingScreentextFieldLogin.text)
+                    event_handler.setMail(settingScreentextFieldEmail.text)
+                    event_handler.setPass(settingScreentextFieldPass.text)
                     busyIndicatorScreen.visible = false
                     loader.source = "qrc:/main.qml"
                 }
@@ -409,14 +385,14 @@ Item {
 
         background: Rectangle {
                 radius: 20
-                color: registScreenButtonRegister.down?"#960f133d":"#760f133d"
+                color: settingScreenButtonRegister.down?"#960f133d":"#760f133d"
         }
 
         contentItem: Text {
-                text: registScreenButtonRegister.text
-                font: registScreenButtonRegister.font
+                text: settingScreenButtonRegister.text
+                font: settingScreenButtonRegister.font
                 opacity: enabled ? 1.0 : 0.3
-                color: registScreenButtonRegister.down ? "#FFFFFF" : "#FFFFFF"
+                color: settingScreenButtonRegister.down ? "#FFFFFF" : "#FFFFFF"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
@@ -468,3 +444,4 @@ Item {
     }
 }
 //-------------------------------------------------------------------------------------------------------------
+

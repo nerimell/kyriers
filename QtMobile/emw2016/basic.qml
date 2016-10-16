@@ -4,13 +4,13 @@ import QtQuick.Controls 2.0
 
 Item {
     id: rootBasic
-    visible: true
+    anchors.fill: parent
 
     Timer {
         id: basicScreenTimer
         running: true
-        interval:1000;
-        onTriggered:loader.source = "qrc:/login.qml"
+        interval:2000;
+        onTriggered:loader.source="qrc:/login.qml"
     }
 
     //--------------------------------------------------basicScreen.qml--------------------------------------------
@@ -31,8 +31,8 @@ Item {
             id: imagelogo
             x: parent.width/2- imagelogo.width/2
             y: 0.5*basicScreen.height - height/2
-            width: (parent.width<620)? sourceSize.width/1.5 * parent.width/500: sourceSize.width/1.5 * 620/500
-            height: (parent.width<620)? sourceSize.height/1.5 * parent.width/500: sourceSize.height/1.5 * 620/500
+            width: sourceSize.width/1.5 * parent.width/500
+            height: sourceSize.height/1.5 * parent.width/500
             source: "ui/mainlogo.png"
         }
     }

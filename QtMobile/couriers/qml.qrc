@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
+        <file>CourierStyle/BusyIndicator.qml</file>
+        <file>CourierStyle/DialogWindow.qml</file>
+        <file>CourierStyle/NavigateDrawer.qml</file>
         <file>fonts/Comfortaa-Light.ttf</file>
         <file>fonts/SF_UI_TEXt_Light.ttf</file>
         <file>fonts/SFUIText-Regular.otf</file>
@@ -32,8 +35,7 @@
         <file>loads.qml</file>
         <file>login.qml</file>
         <file>main.qml</file>
-        <file>Page1Form.ui.qml</file>
-        <file>piner.qml</file>
         <file>regist.qml</file>
+        <file>settings.qml</file>
     </qresource>
 </RCC>

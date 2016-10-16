@@ -17,13 +17,15 @@ public:
     QString domain = "http://couriers.app-labs.ru/";
 
     int pinInput = 0;
+    /*
     int linecount = 0;// for textArea in chat
     int lengthTArea=0;// for textArea in chat
     int symbolsArea=1;// for textArea in chat
-    bool isPin= false;
-    string mypin = "";
     bool backArea= false;// for textArea chat
     bool rekursia= false;// for textArea chat
+    */
+    bool isPin= false;
+    string mypin = "";
 
 signals:
 
@@ -36,8 +38,6 @@ public slots:
     void savingToFile(QString, QString);
     QString getMePins(QString, QString);
 
-    void setBackArea(bool);// for textArea in chat
-    void setRekursia(bool);// for textArea in chat
     bool sendStatus(int);
     bool pinConnected();
     int getUserStatus();
@@ -46,13 +46,19 @@ public slots:
     void clearPin();
     bool isPined();
 
+    /*
+    void setBackArea(bool);// for textArea in chat
+    void setRekursia(bool);// for textArea in chat
     int lineCount(int); // for textArea in chat
+    int charsTextArea(int);// for textArea chat
     int charTextAreaLength(int);// for textArea
+    bool isBackArea();// for textArea in chat
+    bool isRekursia();// for textArea in chat
+    */
     void setFamily(QString);
     void setMyPin(QString);
     void setPhone(QString);
     void setLogin(QString);
-    int charsTextArea(int);
     void setPass(QString);
     void setMail(QString);
     void setPin(QString);
@@ -60,8 +66,6 @@ public slots:
     void pinIncrement();
     int getPinInput();
     void cleanMePin();
-    bool isBackArea();// for textArea in chat
-    bool isRekursia();// for textArea in chat
 
     QString getFamily();
     QString getMePins();

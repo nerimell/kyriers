@@ -1,433 +1,290 @@
 import QtQuick 2.7
 import QtQuick.Layouts 1.0
-import QtQuick.Dialogs 1.2
 import QtQuick.Controls 2.0
+import "CourierStyle" as CourierStyle
 
+//--------------------------------------------------loginScreen.qml---------------------------------------------
 Item {
-    id: rootlogin
-    visible: true
+    id: loginScreen
+    anchors.fill: parent
 
-    //--------------------------------------------------dialogAndroid----------------------------------------------
-    Dialog {
-        id: dialogAndroid
-
-        // Создаём содержимое диалогового окна
-        contentItem: Rectangle {
-            color: "#f7f7f7"
-            width: rootlogin.width-80
-            height: rootlogin.height/2.5
-
-            // Область для сообщения диалогового окна
-            Rectangle {
-                color: "#f7f7f7"
-                anchors.top: parent.top
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: dialogAndroidDividerHorizontal.top
-
-                Label {
-                    id: dialogAndroidTextLabel
-
-                    color: "#000000"
-                    font.bold: true
-                    font.pointSize: 20
-                    font.family: sfuiFontLight.name
-                    horizontalAlignment: Text.AlignHCenter
-                    anchors.centerIn: parent// put сообщение в центр области отобраэжения
-                }
-            }
-
-            // Создаём горизонтальный разделитель с Rectangle
-            Rectangle {
-                id: dialogAndroidDividerHorizontal
-                color: "#808080"
-                height: 1 // Устанавливаем ширину в 1 пиксель
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: dialogAndroidrow.top
-            }
-
-            /* Создаём подложку для кнопок в виде объекта Строки
-             * В данном объекте для child не работают нек-е параметры
-             * anchors, кроме параметров anchors.top и anchors.bottom
-             */
-            Row {
-                id: dialogAndroidrow
-                height: (rootlogin.height<900)?100 * rootlogin.height/900: 100
-                // А также прибиваем строку к низу у диалогового окна
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.bottom: parent.bottom
-
-                /*
-                Button {
-                    id: dialogAndroiddialogButtonCancel
-
-                    // Растянем кнопку по высоте строки
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-
-                    width: parent.width / 2 - 1// ширину на половину строки минус 1 pixel
-
-                    contentItem: Text {
-                        font.pointSize: 24
-
-                        color: "#34aadc"
-                        text: qsTr("Отмена")
-                        verticalAlignment: Text.AlignVCenter
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    background: Rectangle {
-                    border.width: 0
-                        color:dialogAndroiddialogButtonCancel.pressed? "#d7d7d7":"#f7f7f7"
-                    }
-
-                    //onClicked: dialogAndroid.close()// По нажатию кнопки закрыть диалог
-                }
-
-                //Создаю разделитель между кнопками шириной в 2 пикселя
-                Rectangle {
-                    id: dialogAndroidDividerVertical
-                    width: 2
-                    color: "#808080"
-                    // Растягиваем разделитель по высоте объекта строки
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                }
-                */
-
-                Button {
-                    id: dialogAndroidDialogButtonOk
-
-                    anchors.top: parent.top
-                    anchors.bottom: parent.bottom
-                    //width: parent.width/ 2-1// ширину на половину строки минус 1 pixel
-                    width: parent.width // если необходима только одна кнопочка на экран
-
-                    contentItem: Text {
-                        font.bold: true
-                        font.pointSize: 24
-
-                        color: "#34aadc"
-                        text: qsTr("Хорошо")
-                        verticalAlignment: Text.AlignVCenter
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    background: Rectangle {
-                        border.width: 0
-                        color:dialogAndroidDialogButtonOk.pressed?"#d7d7d7":"#f7f7f7"
-                    }
-
-                    onClicked: {
-                        dialogAndroid.close()
-                    }
-                }
-            }
-        }
-    }
-    //-------------------------------------------------------------------------------------------------------------
-
-
-    //--------------------------------------------------busyIndicator----------------------------------------------
-    Item {
-        visible: false
+    MouseArea {
+        id: mouseArea1
+        drag.minimumY: (parent.height<900)? parent.height - 900: 0.22 * parent.height
+        drag.maximumY: 0.22 * parent.height
         anchors.fill: parent
-        id: busyIndicatorLoginScreen
-
-        Image {
-            x: parent.width/2 - width/2
-            y: (parent.width<parent.height)?parent.height/2-height/2:0
-            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
-            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background/background4.png"
-        }
-
-        BusyIndicator {
-            width: parent.width  /2
-            height: parent.height/2
-            x: parent.width/2 -width /2
-            y: parent.height/2-height/2
-        }
+        drag.target: mainScreenTextFieldLogin
+        drag.axis: Drag.YAxis
     }
-    //-------------------------------------------------------------------------------------------------------------
 
+    Image {
+        x: parent.width/2 - width/2
+        y: (parent.width<parent.height)?parent.height/2-height/2:0
+        height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
+        width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
+        source: "ui/background/background2.png"
+    }
 
-    //--------------------------------------------------loginScreen.qml---------------------------------------------
-    Item {
-        visible: true
-        id: loginScreen
-        anchors.fill: parent
+    Text {
+        color: "#FFFFFF"
+        font.family: sfuiFont.name
+        font.pointSize: facade.toPx(17)
+        horizontalAlignment: Text.AlignHCenter
 
-        MouseArea {
-            id: mouseArea1
-            drag.minimumY: (parent.height<900)? parent.height - 900: 0.22 * parent.height
-            drag.maximumY: 0.22 * parent.height
-            anchors.fill: parent
-            drag.target: mainScreenTextFieldLogin
-            drag.axis: Drag.YAxis
-        }
+        y: mainScreenBackButton.y + mainScreenBackButton.height/2 - font.pointSize/2 -facade.toPx(7)
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: parent.width /2 - facade.toPx(50)
+        anchors.rightMargin: parent.width/2 - facade.toPx(50)
 
-        Image {
-            x: parent.width/2 - width/2
-            y: (parent.width<parent.height)?parent.height/2-height/2:0
-            height: (parent.width<parent.height)?parent.height:sourceSize.height*(width/sourceSize.width)
-            width: (parent.width<parent.height)?sourceSize.width*(parent.height/sourceSize.height):parent.width
-            source: "ui/background/background2.png"
-        }
+        text: "Войти"
+    }
 
-        Text {
-            color: "#FFFFFF"
-            font.pointSize: 17
-            font.family: sfuiFont.name
-            horizontalAlignment: Text.AlignHCenter
+    Button {
+        id: mainScreenButtonLogin
+        y:mainScreenSwitchRememberMe.y+facade.toPx(210)
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 0.09 * parent.width
+        anchors.rightMargin: 0.09* parent.width
+        height: (parent.height> 900)? facade.toPx(70): 70
+        checked: false
+        checkable: false
+        autoRepeat: false
+        highlighted: false
+        text: qsTr("Вход")
+        autoExclusive: false
 
-            y: mainScreenBackButton.y + mainScreenBackButton.height/2 - font.pointSize/2 -7 * parent.height/900
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: parent.width /2 - 50
-            anchors.rightMargin: parent.width/2 - 50
+        font.pointSize:  facade.toPx(14)
 
-            text: "Войти"
-        }
-
-        Button {
-            id: mainScreenButtonLogin
-            y:mainScreencheckBoxRememberMe.y+210*parent.height/900
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width
-            anchors.rightMargin: 0.09* parent.width
-            height: (parent.height> 900)? 70*parent.height/900: 70
-            checked: false
-            checkable: false
-            autoRepeat: false
-            highlighted: false
-            text: qsTr("Вход")
-            autoExclusive: false
-
-            font.pointSize: 14
-
-            onClicked: {
-                if(mainScreenTextFieldLogin.text.length<11) {
-                    dialogAndroidTextLabel.text = "Укажите корректный номер"
-                    dialogAndroid.open();
-                }
-                else
-                if(mainScreenTextFieldPass.text.length < 5) {
-                    dialogAndroidTextLabel.text = "Пароль короче 5 символов"
-                    dialogAndroid.open();
+        onClicked: {
+            if(mainScreenTextFieldLogin.text.length<11) {
+                dialogAndroid.text = "Укажите корректный номер"
+                dialogAndroid.visible=true;
+            }
+            else
+            if(mainScreenTextFieldPass.text.length < 5) {
+                dialogAndroid.text = "Пароль короче 5 символов"
+                dialogAndroid.visible=true;
+            }
+            else {
+                loader.source = "qrc:/main.qml"
+                busyIndicatorScreen.visible= true
+                if(event_handler.networkLogin(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text)) {
+                    if(mainScreenSwitchRememberMe.checked)
+                    event_handler.savingToFile(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text);
+                    //loader.source = "qrc:/main.qml"
                 }
                 else {
-                    loginScreen.visible = false
-                    busyIndicatorLoginScreen.visible = true
-                    if(event_handler.networkLogin(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text)) {
-                        if(mainScreencheckBoxRememberMe.checked)
-                        event_handler.savingToFile(mainScreenTextFieldLogin.text, mainScreenTextFieldPass.text);
-                        loader.source = "qrc:/main.qml"
-                    }
-                    else {
-                        dialogAndroidTextLabel.text = "Вы не зарегистрированы"
-                        loginScreen.visible = true
-                        dialogAndroid.open();
-                    }
-                    busyIndicatorLoginScreen.visible = false
+                    dialogAndroid.text = "Вы не зарегистрированы"
+                    dialogAndroid.visible = true;
                 }
-            }
-
-            background: Rectangle {
-                    color: mainScreenButtonLogin.down ? "#9610387E": "#10387E"
-            }
-
-            contentItem: Text {
-                    text: mainScreenButtonLogin.text
-                    font: mainScreenButtonLogin.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: mainScreenButtonLogin.down ? "#FFFFFF" : "#FFFFFF"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
+                busyIndicatorScreen.visible=false
             }
         }
 
-        TextField {
-            id: mainScreenTextFieldLogin
-            y: 0.22 * parent.height
-
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width + 50
-            anchors.rightMargin: 0.09 * parent.width
-            height: (parent.height > 900)? 44 * (parent.height/900): 44
-            placeholderText: qsTr("Номер мобильного")
-            inputMethodHints: Qt.ImhFormattedNumbersOnly
-
-            color: "#FFFFFF"
-            font.pointSize: 18
-            validator: DoubleValidator {}
-            verticalAlignment: Text.AlignVCenter
-
-            background: Rectangle {
-                opacity: 0
-            }
-        }
-        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width
-            anchors.rightMargin: 0.09 * parent.width
-            y: mainScreenTextFieldLogin.y + mainScreenTextFieldLogin.height + 20
-            height: 1
-            border.width: 1
-            border.color: "#FFFFFF"
-        }
-        Image {
-            x: mainScreenTextFieldLogin.x - 47
-            y: (parent.height>900)?mainScreenTextFieldLogin.y + mainScreenTextFieldLogin.height - sourceSize.height + 7 / (parent.height/900):mainScreenTextFieldLogin.y+mainScreenTextFieldLogin.height-sourceSize.height + 7
-            source: "ui/screensIcons/phoneIcon.png"
+        background: Rectangle {
+                radius: 20
+                color: mainScreenButtonLogin.down ? "#9610387E": "#10387E"
         }
 
-        TextField {
-            id: mainScreenTextFieldPass
-            y: (parent.height > 900)? mainScreenTextFieldLogin.y+ 100*parent.height/900: mainScreenTextFieldLogin.y + 100
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width + 50
-            anchors.rightMargin: 0.09 * parent.width
-            height: (parent.height > 900)? 44 * (parent.height/900): 44
-            placeholderText: qsTr("Введите пароль")
-
-            color: "#FFFFFF"
-            font.pointSize: 18
-            echoMode: TextInput.Password
-            verticalAlignment: Text.AlignVCenter
-
-            background: Rectangle {
-                opacity: 0
-            }
-        }
-        Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width
-            anchors.rightMargin: 0.09 * parent.width
-            y: mainScreenTextFieldPass.y + mainScreenTextFieldPass.height + 20
-            height: 1
-            border.width: 1
-            border.color: "#FFFFFF"
-        }
-        Image {
-            x: mainScreenTextFieldPass.x - 47
-            y: (parent.height>900)?mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + 7 / (parent.height/900):mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + 7
-            source: "ui/screensIcons/passIcon.png"
-        }
-
-        CheckBox {
-            id: mainScreencheckBoxRememberMe
-            y: (parent.height > 900)? mainScreenTextFieldPass.y+ 100*parent.height/900: mainScreenTextFieldPass.y + 100
-            height: (parent.height > 900)? 48 * (parent.height/900): 48
-            anchors.left: parent.left
-            anchors.leftMargin: 0.09 * parent.width
-
-            font.pointSize: 18
-            text: qsTr("Запомнить меня")
-
-            spacing: 15
-            leftPadding: 0
-
-            indicator: Rectangle {
-                    implicitWidth: 26
-                    implicitHeight: 26
-                    x: mainScreencheckBoxRememberMe.leftPadding
-                    y: parent.height / 2 - height / 2
-                    radius: 3
-                    border.color:mainScreencheckBoxRememberMe.down?"#10387E" : "#337CFD"
-
-                    Rectangle {
-                        width: 18
-                        height: 18
-                        x: 4
-                        y: 4
-                        radius: 2
-                        color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#337CFD"
-                        visible: mainScreencheckBoxRememberMe.checked
-                    }
-                }
-
-            contentItem: Text {
-                    text: mainScreencheckBoxRememberMe.text
-                    font: mainScreencheckBoxRememberMe.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: mainScreencheckBoxRememberMe.down ? "#10387E" : "#FFFFFF"
-                    verticalAlignment: Text.AlignVCenter
-                    leftPadding: mainScreencheckBoxRememberMe.indicator.width + mainScreencheckBoxRememberMe.spacing
-                }
-        }
-
-        Button {
-            id: mainScreenLabelForgotPass
-            y: (parent.height > 900)? mainScreenButtonLogin.y + 90 * parent.height/900: mainScreenButtonLogin.y + 90
-            text: qsTr("Забыли пароль?")
-
-            font.pointSize: 16
-
-            //font.underline: true
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.leftMargin: 0.09 * parent.width
-            anchors.rightMargin: 0.09 * parent.width
-
-            background: Rectangle {
-                opacity: 0
-            }
-            contentItem: Text {
-                text: mainScreenLabelForgotPass.text
-                font: mainScreenLabelForgotPass.font
+        contentItem: Text {
+                text: mainScreenButtonLogin.text
+                font: mainScreenButtonLogin.font
                 opacity: enabled ? 1.0 : 0.3
-                color: mainScreenLabelForgotPass.down ? "#10387E" : "#FFFFFF"
-                padding: -8
+                color: mainScreenButtonLogin.down ? "#FFFFFF" : "#FFFFFF"
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 elide: Text.ElideRight
-            }
-        }
-
-        Button {
-            id: mainScreenBackButton
-            width: (parent.width>500)?100*parent.width/500:100
-            height: 42
-            anchors.topMargin: 25
-            anchors.leftMargin: 20
-            anchors.top: parent.top
-            anchors.left: parent.left
-
-            Image {
-                fillMode: Image.PreserveAspectFit
-                source: "ui/buttons/backButton.png"
-                width: 23
-                height:42
-            }
-
-            background: Rectangle {
-                opacity: 0
-            }
-
-            onClicked: {
-                loader.source = "qrc:/regist.qml"
-            }
-        }
-        Text {
-            color: "#FFFFFF"
-            font.pointSize: 14
-            font.family: sfuiFont.name
-            horizontalAlignment: Text.AlignHCenter
-
-            text: "Регистрация"
-
-            y: mainScreenBackButton.y + mainScreenBackButton.height/2 - font.pointSize/2 -7 * parent.height/900
-            x: mainScreenBackButton.x + 30
         }
     }
-    //-------------------------------------------------------------------------------------------------------------
+
+    TextField {
+        id: mainScreenTextFieldLogin
+        height: (parent.height > 900)? facade.toPx(44): 44
+
+        y: 0.22 * parent.height
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.rightMargin: 0.09 * parent.width
+        placeholderText: qsTr("Номер мобильного")
+        inputMethodHints: Qt.ImhFormattedNumbersOnly
+        anchors.leftMargin: 0.09 * parent.width + facade.toPx(50)
+
+        color: "#FFFFFF"
+        validator: DoubleValidator {}
+        font.pointSize: facade.toPx(18)
+        verticalAlignment: Text.AlignVCenter
+
+        onFocusChanged: {
+            if(text.length== 0)
+            text = "+7"
+        }
+        background: Rectangle {
+            opacity: 0
+        }
+    }
+    Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 0.09 * parent.width
+        anchors.rightMargin: 0.09 * parent.width
+        y: mainScreenTextFieldLogin.y + mainScreenTextFieldLogin.height + facade.toPx(20)
+        height: 1
+        border.width: 1
+        border.color: "#FFFFFF"
+    }
+    Image {
+        x: mainScreenTextFieldLogin.x - facade.toPx(47)
+        y: (parent.height>900)?mainScreenTextFieldLogin.y + mainScreenTextFieldLogin.height - sourceSize.height + facade.toPx(7):mainScreenTextFieldLogin.y+mainScreenTextFieldLogin.height-sourceSize.height + 7
+        source: "ui/screensIcons/phoneIcon.png"
+    }
+
+    TextField {
+        id: mainScreenTextFieldPass
+        height: (parent.height > 900)? facade.toPx(44): 44
+        anchors.left: parent.left
+        anchors.right: parent.right
+        placeholderText: qsTr("Введите пароль")
+        anchors.rightMargin:0.09 * parent.width
+        anchors.leftMargin: 0.09 * parent.width + facade.toPx(50)
+        y: (parent.height > 900)? mainScreenTextFieldLogin.y+ facade.toPx(100): mainScreenTextFieldLogin.y + 100
+
+        background: Rectangle { opacity: 0 }
+
+        color: "#FFFFFF"
+        echoMode: TextInput.Password
+        font.pointSize: facade.toPx(18)
+        verticalAlignment: Text.AlignVCenter
+
+    }
+    Rectangle { // ебаное нижнее подчеркивание. Ага, оно делается вот блять так!
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 0.09 * parent.width
+        anchors.rightMargin: 0.09 * parent.width
+        y: mainScreenTextFieldPass.y + mainScreenTextFieldPass.height + facade.toPx(20)
+        height: 1
+        border.width: 1
+        border.color: "#FFFFFF"
+    }
+    Image {
+        x: mainScreenTextFieldPass.x - facade.toPx(47)
+        y: (parent.height>900)?mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + facade.toPx(7):mainScreenTextFieldPass.y + mainScreenTextFieldPass.height - sourceSize.height + 7
+        source: "ui/screensIcons/passIcon.png"
+    }
+
+    Switch {
+        id: mainScreenSwitchRememberMe
+        y: (parent.height > 900)? mainScreenTextFieldPass.y+ facade.toPx(100): mainScreenTextFieldPass.y + 100
+        anchors.left: parent.left
+        anchors.leftMargin: 0.09 * parent.width
+        height: (parent.height > 900)? facade.toPx(48): 48
+
+        leftPadding: 0
+        spacing: facade.toPx(15)
+
+        text: qsTr("Запомнить меня")
+        font.pointSize: facade.toPx(18)
+
+        indicator: Rectangle {
+            radius: facade.toPx(15)
+            implicitWidth: facade.toPx(80)
+            implicitHeight: facade.toPx(42)
+            x: mainScreenSwitchRememberMe.leftPadding
+            y: parent.height / 2 - height / 2
+            color:mainScreenSwitchRememberMe.checked?"#337CFD" : "#FFFFFF"
+
+            Rectangle {
+                x: mainScreenSwitchRememberMe.checked ? parent.width - (width + (parent.height-height)/2): (parent.height-height)/2
+                anchors.verticalCenter: parent.verticalCenter
+                width: mainScreenSwitchRememberMe.height/1.8
+                height: mainScreenSwitchRememberMe.height/1.8
+                radius: width / 2
+                color: mainScreenSwitchRememberMe.down ? "#10387E" : (mainScreenSwitchRememberMe.checked ? "#FFFFFF" : "#337CFD")
+            }
+        }
+
+        contentItem: Text {
+            text: mainScreenSwitchRememberMe.text
+            font: mainScreenSwitchRememberMe.font
+            opacity: enabled ? 1.0 : 0.3
+            color: mainScreenSwitchRememberMe.down ? "#FFFFFF" : (mainScreenSwitchRememberMe.checked ? "#FFFFFF" : "#BDB5B5")
+            verticalAlignment: Text.AlignVCenter
+            leftPadding: mainScreenSwitchRememberMe.indicator.width + mainScreenSwitchRememberMe.spacing
+        }
+    }
+
+    Button {
+        id: mainScreenLabelForgotPass
+        y: (parent.height > 900)? mainScreenButtonLogin.y + facade.toPx(90): mainScreenButtonLogin.y + 90
+        text: qsTr("Забыли пароль?")
+
+        font.pointSize: facade.toPx(16)
+
+        //font.underline: true
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 0.09 * parent.width
+        anchors.rightMargin: 0.09 * parent.width
+
+        background: Rectangle {
+            opacity: 0
+        }
+        contentItem: Text {
+            text: mainScreenLabelForgotPass.text
+            font: mainScreenLabelForgotPass.font
+            opacity: enabled ? 1.0 : 0.3
+            color: mainScreenLabelForgotPass.down ? "#10387E" : "#FFFFFF"
+            padding: -8
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            elide: Text.ElideRight
+        }
+    }
+
+    Button {
+        id: mainScreenBackButton
+        width: (parent.width>500)?100*parent.width/500:100
+        height: facade.toPx(42)
+        anchors.topMargin: facade.toPx(25)
+        anchors.leftMargin: facade.toPx(20)
+        anchors.top: parent.top
+        anchors.left: parent.left
+
+        Image {
+            fillMode: Image.PreserveAspectFit
+            source: "ui/buttons/backButton.png"
+            width: facade.toPx(23)
+            height:facade.toPx(42)
+        }
+
+        background: Rectangle {
+            opacity: 0
+        }
+
+        onClicked: {
+            loader.source = "qrc:/regist.qml"
+        }
+    }
+    Text {
+        color: "#FFFFFF"
+        font.family: sfuiFont.name
+        font.pointSize: facade.toPx(14)
+        horizontalAlignment: Text.AlignHCenter
+
+        text: "Рег."
+
+        y: mainScreenBackButton.y + mainScreenBackButton.height/2 - font.pointSize/2 -facade.toPx(5)
+        x: mainScreenBackButton.x + facade.toPx(30)
+    }
+
+    CourierStyle.BusyIndicator {
+        id: busyIndicatorScreen
+    }
+
+    CourierStyle.DialogWindow {
+        id: dialogAndroid
+    }
 }
+//-------------------------------------------------------------------------------------------------------------

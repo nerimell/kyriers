@@ -8,26 +8,34 @@ ApplicationWindow {
     visible: true
     title: qsTr("EMW_2016")
 
+    QtObject {
+        id: facade
+        function toPx(dp) {
+            return dp*(loader.dpi/160)* 1.3;
+        }
+    }
+
     Loader {
-        anchors.fill: parent
         id: loader
+        property real dpi
+        objectName: "loader"
+        anchors.fill: parent
+        property int drawerCurrentIndex: -1
+
+        QtObject {
+            id: privated
+            property var openMenu: null
+            property var visitedPagesList:[]
+        }
         source: event_handler.isPined()? "qrc:/piner.qml":"qrc:/basic.qml"
     }
 
     FontLoader {
-        id: sfuiFont
-        source: "qrc:/fonts/SFUIText-Regular.otf"
-    }
-    FontLoader {
-        id: sfuiFontLight
-        source: "qrc:/fonts/SF_UI_TEXt_Light.ttf"
-    }
-    FontLoader {
-        id: comfortFont
-        source: "qrc:/fonts/Comfortaa-Light.ttf"
-    }
-    FontLoader {
         id: museoSansMedium
-        source: "qrc:/fonts/MuseoSansMedium.ttf"
+        source:"qrc:/fonts/MuseoSansMedium.ttf"
+    }
+    FontLoader {
+        id: museoSansLight
+        source: "qrc:/fonts/MuseoSansLight.ttf"
     }
 }

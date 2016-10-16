@@ -14,46 +14,50 @@ public:
 
     User user;
     httpnetwork httpPost, httpGet;
-    QString domain = "http://couriers.app-labs.ru/";
+    QString domain = "http://couriers.applabsstory.ru/";
 
+    /*
     int pinInput = 0;
-    bool isPin= false;
     string mypin = "";
+    */
+    bool isPin= false;
 
 signals:
 
 public slots:
     bool getUsersInfo();
-    bool registrationPin(QString, QString, QString);
+    //bool registrationPin(QString, QString, QString);
     bool updateUsersInfo(QString, QString, QString, QString, QString, QString);
     bool registration(QString, QString, QString, QString, QString, QString, QString);
     bool networkLogin(QString, QString);
     void savingToFile(QString, QString);
-    QString getMePins(QString, QString);
+    //QString getMePins(QString, QString);
 
     bool sendStatus(int);
-    bool pinConnected();
     int getUserStatus();
-    int pinLength();
     void exitMenu();
-    void clearPin();
     bool isPined();
 
     void setFamily(QString);
-    void setMyPin(QString);
     void setPhone(QString);
     void setLogin(QString);
     void setPass(QString);
     void setMail(QString);
-    void setPin(QString);
     bool networkLogin();
+    /*
+    void setMyPin(QString);
+    void setPin(QString);
     void pinIncrement();
+    QString getMePins();
+    bool pinConnected();
+    QString getMyPin();
     int getPinInput();
     void cleanMePin();
+    int pinLength();
+    void clearPin();
+    */
 
     QString getFamily();
-    QString getMePins();
-    QString getMyPin();
     QString getPhone();
     QString getLogin();
     QString getPass();

@@ -14,6 +14,7 @@ int EventHandler::pinLength() {
     return -1;
 }
 
+/* for textArea in chat
 bool EventHandler::isBackArea() {
     return backArea;
 }
@@ -21,6 +22,37 @@ bool EventHandler::isBackArea() {
 bool EventHandler::isRekursia() {
     return rekursia;
 }
+
+int EventHandler::charsTextArea(int num) {
+    if(num > 0)
+        symbolsArea += num;
+    else if(num == 0)
+        symbolsArea=-1;
+    else
+        symbolsArea += num;
+    return symbolsArea;
+}
+
+int EventHandler::lineCount(int counter) {
+    if(counter > 0)
+        linecount= counter;
+    return linecount;
+}
+
+void EventHandler::setBackArea(bool state) {
+    backArea = state;
+}
+
+void EventHandler::setRekursia(bool state) {
+    rekursia = state;
+}
+
+int EventHandler::charTextAreaLength(int len) {
+    if(len > 0)
+        lengthTArea = len;
+    return lengthTArea;
+}
+*/
 
 int EventHandler::getPinInput() {
     return pinInput;
@@ -43,22 +75,6 @@ void EventHandler::pinIncrement(){
     pinInput++;
 }
 
-int EventHandler::charsTextArea(int num) {
-    if(num > 0)
-        symbolsArea += num;
-    else if(num == 0)
-        symbolsArea=-1;
-    else
-        symbolsArea += num;
-    return symbolsArea;
-}
-
-int EventHandler::lineCount(int counter) {
-    if(counter > 0)
-        linecount= counter;
-    return linecount;
-}
-
 void EventHandler::setPin(QString mypin) {
     user.setPin(mypin.toStdString());
 }
@@ -75,14 +91,6 @@ void EventHandler::clearPin(){mypin = "";}
 
 QString EventHandler::getMePins() {
     return QString(user.getPin().c_str());
-}
-
-void EventHandler::setBackArea(bool state) {
-    backArea = state;
-}
-
-void EventHandler::setRekursia(bool state) {
-    rekursia = state;
 }
 
 void EventHandler::setPhone(QString phone) {
@@ -103,12 +111,6 @@ QString EventHandler::getPhone() {
 
 void EventHandler::setFamily(QString family){
     user.setLastName(family.toStdString());
-}
-
-int EventHandler::charTextAreaLength(int len) {
-    if(len > 0)
-        lengthTArea = len;
-    return lengthTArea;
 }
 
 QString EventHandler::getFamily(){

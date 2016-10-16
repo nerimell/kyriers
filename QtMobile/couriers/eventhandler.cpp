@@ -8,6 +8,7 @@ bool EventHandler::isPined() {
     return isPin;
 }
 
+/*
 void EventHandler::pinIncrement() {
     pinInput++;
 }
@@ -31,10 +32,6 @@ void EventHandler::cleanMePin () {
     user.setPin("");
 }
 
-int EventHandler::getUserStatus(){
-    return user.getStatus();
-}
-
 void EventHandler::setPin(QString mypin) {
     user.setPin(mypin.toStdString());
 }
@@ -43,14 +40,19 @@ void EventHandler::setMyPin(QString pin) {
     mypin += pin.toStdString();
 }
 
-void EventHandler::setMail(QString mail) {
-    user.setMail(mail.toStdString());
-}
-
 void EventHandler::clearPin(){mypin = "";}
 
 QString EventHandler::getMePins() {
     return QString(user.getPin().c_str());
+}
+*/
+
+int EventHandler::getUserStatus(){
+    return user.getStatus();
+}
+
+void EventHandler::setMail(QString mail) {
+    user.setMail(mail.toStdString());
 }
 
 void EventHandler::setPhone(QString phone) {
@@ -85,36 +87,7 @@ QString EventHandler::getPass () {
     return QString(user.getPassword().c_str());
 }
 
-EventHandler::EventHandler(QObject *parent) : QObject(parent) {
-}
-
-void EventHandler::savingToFile(QString phone,QString mypass) {
-    QFile file("couriers.bin");
-    if (file.open(QIODevice::WriteOnly)) {
-    file.write(QString("phone="+ phone+ ";password=" + mypass).toStdString().c_str());
-    }
-    file.close();
-}
-
-bool EventHandler::sendStatus(int val) {
-    QUrl qUrl = domain+"users/update/status";
-    QByteArray requestString=("status=" + QString::number(val).toStdString()).c_str();
-
-    httpPost.setUrl(&qUrl);
-    user.setResponse(httpPost.sendPost(&requestString).toStdString());
-
-    string response = user.getResponse();
-
-    qDebug()<<"sendStatus "<< response.c_str();
-
-    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
-    QJsonObject itemObject= itemDoc.object();
-    if(itemObject["result"].toInt() == 200) {
-        return true;
-    }
-    return false;
-}
-
+/*
 bool EventHandler::pinConnected()
 {
     QFile file("couriers.bin");
@@ -185,6 +158,18 @@ bool EventHandler::registrationPin(QString pin, QString login, QString pass1) {
         return true;
     return false;
 }
+*/
+
+EventHandler::EventHandler(QObject *parent) : QObject(parent) {
+}
+
+void EventHandler::savingToFile(QString phone,QString mypass) {
+    QFile file("couriers.bin");
+    if (file.open(QIODevice::WriteOnly)) {
+    file.write(QString("phone="+ phone+ ";password=" + mypass).toStdString().c_str());
+    }
+    file.close();
+}
 
 bool EventHandler::getUsersInfo() {
     QByteArray requestString = "";
@@ -206,6 +191,25 @@ bool EventHandler::getUsersInfo() {
     user.setLastName(itemObject["lastname"].toString().toStdString());
 
     if (itemObject["result"].toInt() == 200) {
+        return true;
+    }
+    return false;
+}
+
+bool EventHandler::sendStatus(int val) {
+    QUrl qUrl = domain+"users/update/status";
+    QByteArray requestString=("status=" + QString::number(val).toStdString()).c_str();
+
+    httpPost.setUrl(&qUrl);
+    user.setResponse(httpPost.sendPost(&requestString).toStdString());
+
+    string response = user.getResponse();
+
+    qDebug()<<"sendStatus "<< response.c_str();
+
+    QJsonDocument itemDoc = QJsonDocument::fromJson(response.c_str());
+    QJsonObject itemObject= itemDoc.object();
+    if(itemObject["result"].toInt() == 200) {
         return true;
     }
     return false;
@@ -287,7 +291,7 @@ bool EventHandler::networkLogin(QString login, QString pass) {
     if (itemObject["result"].toInt() == 200) {
         user.setSsid(httpPost.sessID);
         return true;
-    }
+        }
     }
     return false;
 }
